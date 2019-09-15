@@ -36,6 +36,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="BaseClasses\AbstractEntities\" />
+  </ItemGroup>
+
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="$(SolutionDir)Copy_Output_Files_Core.bat $(TargetPath)" />
   </Target>

@@ -45,7 +45,7 @@ namespace ITSolution.Framework.Core.Host
             foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
             {
                 Assembly asm = ITSAssemblyResolve.ITSLoader.Load(file);
-                Type[] types = asm.GetTypes().Where(t => t.BaseType == typeof(ITSolutionContext)).ToArray();
+                Type[] types = asm.GetTypes().Where(t => t.BaseType.Name.Contains("ITSolutionContext")).ToArray();
                 if (types != null)
                 {
                     services.AddDbContext<ITSolutionContext>();
@@ -73,13 +73,6 @@ namespace ITSolution.Framework.Core.Host
 
             //app.UseHttpsRedirection();
             app.UseMvc();
-        }
-        private DbContextOptions DbContextOptionsFactory(IServiceProvider provider)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder();
-            optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
-
-            return optionsBuilder.Options;
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
 using ITSolution.Framework.Server.Core.BaseInterfaces;
-using ITSolution.Framework.Servers.Core.FirstAPI.Model;
-using ITSolution.Framework.Servers.Core.FirstAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
@@ -11,8 +9,11 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
+namespace ITSolution.Framework.Core.CustomUserAPI.Data
 {
+    /// <summary>
+    /// Customize your context
+    /// </summary>
     public class DBAccessContext : ITSolutionContext
     {
 
@@ -26,11 +27,8 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
-        public DbSet<Menu> MenuSet { get; set; }
-        public IITSReporitory<Menu, DBAccessContext> MenuRep { get { return new ITSRepository<Menu, DBAccessContext>(this); } }
 
-        public DbSet<Usuario> UsuarioSet { get; set; }
-        public IITSReporitory<Usuario, DBAccessContext> UsuarioRep { get { return new ITSRepository<Usuario, DBAccessContext>(this); } }
-
+        //public DbSet<YourEntity> EntitySet { get; set; }
+        //public IITSReporitory<YourEntity, DBAccessContext> EntityRep { get { return new ITSRepository<YourEntity, DBAccessContext>(this); } }
     }
 }

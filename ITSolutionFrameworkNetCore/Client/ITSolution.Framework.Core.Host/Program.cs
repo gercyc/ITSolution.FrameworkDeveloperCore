@@ -18,9 +18,6 @@ namespace ITSolution.Framework.Core.Host
         static IWebHostBuilder webHostBuilder;
         static void Main(string[] args)
         {
-            Console.WriteLine("Iniciando servidor...");
-            //Console.WriteLine(AppConfigManager.Configuration.ConnectionString);
-            //CreateHost(args);
             CreateWebHostBuilder(args);
             Console.WriteLine("Servidor Iniciado");
             Console.ReadLine();
