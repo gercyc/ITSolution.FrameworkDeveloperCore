@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.H
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core", "Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj", "{A552CF9B-D80E-4A12-BE5C-50C4CC5DC930}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Server.Core", "Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Server.Core.csproj", "{009E4D21-29E4-4772-B421-BCFB1779735A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.Server", "Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj", "{009E4D21-29E4-4772-B421-BCFB1779735A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.FirstAPI", "Servers\ITSolution.Framework.Servers.Core.FirstAPI\ITSolution.Framework.Servers.Core.FirstAPI.csproj", "{8BB461EB-CC46-452D-9BC6-904639A4DF0E}"
 EndProject
