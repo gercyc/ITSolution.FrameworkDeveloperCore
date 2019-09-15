@@ -22,8 +22,8 @@ Framework para desenvolvimento .NET Core
   * Aplicativo console para iniciar o WebHost;
 
 * ITSolution.Framework.Core.AspHost
- * Aplicativo ASP.NET Core com hospedagem das APIs customizadas;
+  * Aplicativo ASP.NET Core com hospedagem das APIs customizadas;
  
 * Online no Azure
- > https://itsolutionapiframework.azurewebsites.net/
+  https://itsolutionapiframework.azurewebsites.net/
  
