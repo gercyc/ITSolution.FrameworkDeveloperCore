@@ -30,6 +30,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Server
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{29076EF1-B5F8-43ED-8B28-69F1CA8A3649}"
 	ProjectSection(SolutionItems) = preProject
+		Templates\ITSolution ASP .NET Core Application.zip = Templates\ITSolution ASP .NET Core Application.zip
 		Templates\ITSolution.Framework.Servers.Core.CustomUserAPI.zip = Templates\ITSolution.Framework.Servers.Core.CustomUserAPI.zip
 		TemplateReadme.txt = TemplateReadme.txt
 	EndProjectSection

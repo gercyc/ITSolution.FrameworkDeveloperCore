@@ -30,12 +30,6 @@
     <None Update="Configuration\ITSConfig.xml">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="Core\APIAssemblies\APIFolder.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Core\CoreAssemblies\CoreFolder.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>
