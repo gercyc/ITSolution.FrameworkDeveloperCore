@@ -15,5 +15,15 @@ Framework para desenvolvimento .NET Core
   * DbContext (EntityFramework Core);
   * Repositório Genérico;
 
+* ITSolution.Framework.Servers.Core.CustomUserAPI
+  * Projeto template para criação de APIs e utilização do Host para exposição;
+
 * ITSolution.Framework.Core.Host
   * Aplicativo console para iniciar o WebHost;
+
+* ITSolution.Framework.Core.AspHost
+  * Aplicativo ASP.NET Core com hospedagem das APIs customizadas;
+ 
+* Online no Azure
+  https://itsolutionapiframework.azurewebsites.net/
+ 
