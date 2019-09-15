@@ -14,5 +14,15 @@ namespace ITSolution.Framework.BaseClasses
         public static string APIAssemblyFolder { get { return EnvironmentManager.Configuration.APIAssemblyFolder; } }
         public static string CoreAssemblyFolder { get { return EnvironmentManager.Configuration.CoreAssemblyFolder; } }
         public static string ConnectionString { get { return EnvironmentManager.Configuration.ConnectionString; } }
+        public static ITSApplicationPlataform ApplicationType
+        {
+            get
+            {
+                ITSApplicationPlataform applicationType = AppDomain.CurrentDomain.FriendlyName.Contains("w3wp")
+                   || AppDomain.CurrentDomain.FriendlyName.Contains("iisexpress")
+                   || AppDomain.CurrentDomain.BaseDirectory.Contains("wwwroot") ? ITSApplicationPlataform.Web : ITSApplicationPlataform.Desktop;
+                return applicationType;
+            }
+        }
     }
 }

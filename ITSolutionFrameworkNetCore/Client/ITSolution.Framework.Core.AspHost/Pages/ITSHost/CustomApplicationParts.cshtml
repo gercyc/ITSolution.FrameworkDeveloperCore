@@ -1,0 +1,31 @@
+﻿@page
+@model CustomApplicationPartsModel
+@{
+    ViewData["Title"] = "Custom Application Parts";
+}
+<h2>@ViewData["Title"]</h2>
+
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Application Part Assembly</th>
+                <th>Type Name</th>
+                <th>API Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var appPart in Model.LoadedParts)
+            {
+            <tr>
+                <td>@appPart.AssemblyName</td>
+                <td>@appPart.TypeName</td>
+                <td>@appPart.ApiName</td>
+                <td>
+                    <a href="../api/@appPart.ApiName" target="_blank">Test</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</form>

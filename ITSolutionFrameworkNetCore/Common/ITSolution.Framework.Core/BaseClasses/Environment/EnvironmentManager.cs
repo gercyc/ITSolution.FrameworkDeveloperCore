@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Collections;
 using ITSolution.Framework.Core.BaseInterfaces;
 using System.Web;
+using ITSolution.Framework.BaseClasses;
 
 namespace ITSolution.Framework.Core.BaseClasses
 {
@@ -92,8 +93,8 @@ namespace ITSolution.Framework.Core.BaseClasses
         {
             get
             {
-                ITSApplicationType applicationType = (AppDomain.CurrentDomain.FriendlyName.Contains("w3wp")
-                    || AppDomain.CurrentDomain.FriendlyName.Contains("iisexpress")) ? ITSApplicationType.Web : ITSApplicationType.Desktop;
+                ITSApplicationPlataform applicationType = (AppDomain.CurrentDomain.FriendlyName.Contains("w3wp")
+                    || AppDomain.CurrentDomain.FriendlyName.Contains("iisexpress")) ? ITSApplicationPlataform.Web : ITSApplicationPlataform.Desktop;
 
                 string startupPath = AppDomain.CurrentDomain.BaseDirectory;
                 string xmlPath = Path.Combine(startupPath, "Configuration", "ITSConfig.xml");
@@ -188,6 +189,18 @@ namespace ITSolution.Framework.Core.BaseClasses
                     }
                     //pasta onde estao os assemblies de core (referencias das apis)
                     else if (x.Name.LocalName.Equals("CoreAssemblyFolder"))
+                    {
+                        CoreAssemblyFolder = x.Attribute("name").Value.ToString();
+                    }
+
+                    else if (EnvironmentInformation.ApplicationType == ITSApplicationPlataform.Web
+                        && x.Name.LocalName.Equals("AzureAPIAssemblyFolder"))
+                    {
+                        APIAssemblyFolder = x.Attribute("name").Value.ToString();
+                    }
+                    //pasta onde estao os assemblies de core (referencias das apis)
+                    else if (EnvironmentInformation.ApplicationType == ITSApplicationPlataform.Web
+                        && x.Name.LocalName.Equals("CoreAssemblyFolder"))
                     {
                         CoreAssemblyFolder = x.Attribute("name").Value.ToString();
                     }
@@ -292,6 +305,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             }
             catch (Exception ex)
             {
+                Utils.ShowExceptionStack(ex);
                 //XMessageIts.ExceptionMessageDetails(ex, "Tag inválida durante alteração no arquivo de configuração", "Falha ao alterar conexão no App.xml");
                 return false;
             }
@@ -422,6 +436,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             }
             catch (Exception ex)
             {
+                Utils.ShowExceptionStack(ex);
                 //XMessageIts.ExceptionMessageDetails(ex, "Tag connectionString ausente no arquivo de configuração", "Falha ao criar conexão no App.xml");
 
             }
@@ -452,6 +467,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             }
             catch (Exception ex)
             {
+                Utils.ShowExceptionStack(ex);
                 //XMessageIts.ExceptionMessageDetails(ex, "Tag connectionString ausente no arquivo de configuração", "Falha ao remover conexão no App.xml");
             }
             return false;

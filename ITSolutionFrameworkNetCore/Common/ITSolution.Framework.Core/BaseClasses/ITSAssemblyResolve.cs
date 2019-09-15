@@ -111,6 +111,8 @@ namespace ITSolution.Framework.Core.BaseClasses
             string[] files = null;
             try
             {
+                string exec = AppDomain.CurrentDomain.FriendlyName;
+
                 files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
                     .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray();
 
@@ -118,6 +120,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
+                throw ex;
             }
             return files;
         }

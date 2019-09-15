@@ -5,7 +5,7 @@
   <defaultConnection name="ITS" />
   <serverPort name ="9000"/>
   <AssemblyRegisterServices name ="ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices"/>
-  
+
   <!--Directories-->
   <APIAssemblyFolder name ="C:\ITSolution\Core\APIAssemblies"/>
   <CoreAssemblyFolder name ="C:\ITSolution\Core\CoreAssemblies"/>
