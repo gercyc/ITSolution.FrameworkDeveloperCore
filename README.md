@@ -16,7 +16,7 @@ Framework para desenvolvimento .NET Core
   * Repositório Genérico;
 
 * ITSolution.Framework.Servers.Core.CustomUserAPI
- * Projeto template para criação de APIs e utilização do Host para exposição;
+  * Projeto template para criação de APIs e utilização do Host para exposição;
 
 * ITSolution.Framework.Core.Host
   * Aplicativo console para iniciar o WebHost;
