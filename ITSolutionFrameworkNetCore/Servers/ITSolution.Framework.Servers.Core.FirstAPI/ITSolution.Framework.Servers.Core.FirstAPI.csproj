@@ -18,8 +18,4 @@
     </Reference>
   </ItemGroup>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="$(SolutionDir)Copy_Output_Files_Api.bat $(TargetPath)" />
-  </Target>
-
 </Project>
