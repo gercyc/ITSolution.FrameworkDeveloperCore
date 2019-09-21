@@ -54,8 +54,8 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                     {
                         services.AddDbContext<ITSolutionContext>();
 
-                        ITSDbContextOptions dbContextOptions = new ITSDbContextOptions();
-                        object instance = Activator.CreateInstance(types[0], dbContextOptions);
+                        //ITSDbContextOptions dbContextOptions = new ITSDbContextOptions();
+                        //object instance = Activator.CreateInstance(types[0], dbContextOptions);
                         ServiceDescriptor descriptor = new ServiceDescriptor(typeof(DbContext), typeof(ITSolutionContext), ServiceLifetime.Scoped);
                         services.Replace(descriptor);
                     }

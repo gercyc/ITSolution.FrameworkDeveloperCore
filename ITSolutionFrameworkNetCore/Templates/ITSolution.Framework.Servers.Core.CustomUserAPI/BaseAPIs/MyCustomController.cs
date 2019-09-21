@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.CustomUserAPI.Data;
 using ITSolution.Framework.Core.CustomUserAPI.Model;
+using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+using ITSolution.Framework.Servers.Core.CustomUserAPI.Data;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
@@ -14,20 +17,27 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     [ApiController]
     public class MyCustomController : ControllerBase
     {
-        //TODO:
+
+        private readonly DBAccessContext _context;
+        public MyCustomController(ITSolutionContext context)
+        {
+            _context = new DBAccessContext(new ITSDbContextOptions());
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<ValuesModel>> Get()
+        public IEnumerable<Country> Get()
         {
-            return new ValuesModel[] { new ValuesModel() };
+            return _context.CountryRep.GetAll();
         }
+
 
         //TODO:
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public ActionResult<Country> Get(int id)
         {
-            return "value";
+            return _context.CountryRep.FirstOrDefault(id);
         }
 
         //TODO:

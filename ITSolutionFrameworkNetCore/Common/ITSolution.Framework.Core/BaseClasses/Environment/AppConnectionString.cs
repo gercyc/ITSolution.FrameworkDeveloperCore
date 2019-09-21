@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ITSolution.Framework.BaseClasses;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
@@ -35,14 +36,12 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// <summary>
         /// Usuário de acesso
         /// </summary>
-        //[Required(ErrorMessage = "Usuário não informado")]
         [StringLength(int.MaxValue, MinimumLength = 0, ErrorMessage = "Usuário inválido")]
         public string User { get; set; }
 
         /// <summary>
         /// Senha de acesso ao banco
         /// </summary>
-        //[StringLength(45, ErrorMessage = "Senha muito curta")]
         public string Password { get; set; }
 
         public List<string> DatabaseList { get; set; }
@@ -55,7 +54,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// <summary>
         /// Tipo de conexão utilizada
         /// </summary>
-        public string ServerType { get; set; }
+        public DatabaseType ServerType { get; set; }
 
         /// <summary>
         /// String de conexão utilizada pelo DbContext
@@ -63,10 +62,14 @@ namespace ITSolution.Framework.Core.BaseClasses
         public string ConnectionString { get; set; }
 
         public string Default { get; set; }
+        public object ServerPort { get; internal set; }
+        public string ServerHost { get; internal set; }
+        public string ConnectData { get; internal set; }
+        public string TnsAtp { get; internal set; }
+        public string WalletLocation { get; set; }
 
         public AppConnectionString()
         {
-            this.ServerType = "MSSQL";
             this.ConnectionName = "";
             this.IntegratedSecurity = "true";
             this.DatabaseList = new List<string>();
@@ -79,7 +82,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// <param name="connectionString"></param>
         public AppConnectionString(string name, string connectionString)
         {
-            this.ServerType = "MSSQL";
+            this.ServerType = DatabaseType.MSSQL;
             this.ConnectionName = name;
             this.ConnectionString = buildConnectionString(connectionString);
             this.DatabaseList = new List<string>();
@@ -98,7 +101,7 @@ namespace ITSolution.Framework.Core.BaseClasses
 
         public AppConnectionString(string connectionName, string serverName, string user, string pw, string database)
         {
-            this.ServerType = "MSSQL";
+            this.ServerType = DatabaseType.MSSQL;
             this.ConnectionName = connectionName;
             this.ServerName = serverName;
             this.Database = database;
@@ -119,8 +122,17 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// </summary>
         public void RebuildConnectionString()
         {
-            //constroi a string de conexão base
-            var builderConn = buildConnectionString();
+            StringBuilder builderConn = new StringBuilder(); ;
+
+            if (ServerType == DatabaseType.MSSQL)
+                //constroi a string de conexão base
+                builderConn = buildConnectionString();
+            else
+            {
+                string tnsbase = "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
+                this.TnsAtp = string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation);
+                builderConn.AppendFormat("User Id={0};Password={1};Data Source={2};", User, Password, ConnectionName);
+            }
 
             this.ConnectionString = builderConn.ToString();
 
