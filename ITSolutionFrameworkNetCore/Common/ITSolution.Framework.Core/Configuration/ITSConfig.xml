@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
   <!-- Tipo de Conexão-->
-  <serverType typeName="MSSQL" />
-  <defaultConnection name="ITS" />
+  <serverType typeName="Oracle" />
+  <defaultConnection name="ITS_Oracle" />
   <serverPort name ="9000"/>
   <AssemblyRegisterServices name ="ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices"/>
-  
+
   <!--Directories-->
   <APIAssemblyFolder name ="C:\ITSolution\Core\APIAssemblies"/>
   <CoreAssemblyFolder name ="C:\ITSolution\Core\CoreAssemblies"/>
@@ -13,19 +13,17 @@
   <AzureAPIAssemblyFolder name ="D:\home\site\wwwroot\"/>
   <AzureCoreAssemblyFolder name ="D:\home\site\wwwroot\"/>
 
-  <!--Local Debug Directories-->
-  <!--<APIAssemblyFolder name ="C:\ITSolution\Core\APIAssemblies"/>-->
-  <!--<CoreAssemblyFolder name ="C:\ITSolution\Core\CoreAssemblies"/>-->
-
-  <!--Azure Directories-->
-  <!--<APIAssemblyFolder name ="D:\home\site\wwwroot\"/>-->
-  <!--<CoreAssemblyFolder name ="D:\home\site\wwwroot\"/>-->
-
+  <!-- Oracle ATP-->
+  <WalletLocation name ="C:\Oracle\instantclient_19_3\network\admin\"/>
+  <WalletLocationAzure name ="D:\home\site\wwwroot\Configuration\Wallet"/>
+  
   <connectionStrings>
     <!--Azure Database to Developer-->
     <connection name="ITS" serverName="itsolution-sql.database.windows.net" database="dbBalcao_DEV" user="itsadmin" password="its12345%" security="false" />
     <!--Azure Database to Developer-->
     <connection name="Dev" serverName="(local)" database="dbBalcao_DEV" security="true" />
     <connection name="LocalDB" serverName="(localdb)\MSSQLLocalDB" database="dbBalcao_DEV" security="true" />
+    <connection name="ITS_Oracle" serverPort="1522" serverHost="adb.sa-saopaulo-1.oraclecloud.com" connectData="service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com" user="gercy" password="Grc#944692_91grcpro" security="ssl_server_cert_dn=CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US" />
+
   </connectionStrings>
 </configuration>

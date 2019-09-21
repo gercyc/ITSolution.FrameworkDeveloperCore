@@ -7,6 +7,7 @@ using System.Collections;
 using ITSolution.Framework.Core.BaseInterfaces;
 using System.Web;
 using ITSolution.Framework.BaseClasses;
+using System.Xml;
 
 namespace ITSolution.Framework.Core.BaseClasses
 {
@@ -53,6 +54,8 @@ namespace ITSolution.Framework.Core.BaseClasses
         public string AsmRegisterServices { get; set; }
         public string APIAssemblyFolder { get; set; }
         public string CoreAssemblyFolder { get; set; }
+        public DatabaseType DatabaseType { get; set; }
+        public string WalletLocation { get; set; }
 
         /// <summary>
         /// String de conexão lida da memória principal
@@ -84,6 +87,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// Retorna a string de conexão completa do App.xml
         /// </summary>
         public string ConnectionString { get { return _appConfig.ConnectionString; } }
+        public string DefaultConnectionName { get { return _appConfig.ConnectionName; } }
 
         /// <summary>
         /// O path do arquivo de configuração de conexão
@@ -93,9 +97,6 @@ namespace ITSolution.Framework.Core.BaseClasses
         {
             get
             {
-                ITSApplicationPlataform applicationType = (AppDomain.CurrentDomain.FriendlyName.Contains("w3wp")
-                    || AppDomain.CurrentDomain.FriendlyName.Contains("iisexpress")) ? ITSApplicationPlataform.Web : ITSApplicationPlataform.Desktop;
-
                 string startupPath = AppDomain.CurrentDomain.BaseDirectory;
                 string xmlPath = Path.Combine(startupPath, "Configuration", "ITSConfig.xml");
                 return xmlPath;
@@ -129,28 +130,58 @@ namespace ITSolution.Framework.Core.BaseClasses
                     if (x.Name.LocalName.Equals("serverType"))
                     {
                         serverType = x.Attribute("typeName").Value;
+                        DatabaseType = serverType == "MSSQL" ? DatabaseType.MSSQL : DatabaseType.Oracle;
                     }
                     //tag 2
                     else if (x.Name.LocalName.Equals("defaultConnection"))
                     {
                         defaultConnection = x.Attribute("name").Value;
                     }
+                    else if (x.Name.LocalName.Equals("WalletLocation"))
+                    {
+                        WalletLocation = x.Attribute("name").Value;
+                    }
+                    else if (EnvironmentInformation.ApplicationType == ITSApplicationPlataform.Web
+                        && x.Name.LocalName.Equals("WalletLocationAzure"))
+                    {
+                        WalletLocation = x.Attribute("name").Value.ToString();
+                    }
                     //tag 2.. monta a lista de connectionString disponiveis
                     else if (x.Name.LocalName.Equals("connectionStrings"))
                     {
 
                         //percorre os itens do xml
-                        foreach (XNode e in x.Nodes())
+                        foreach (XNode e in x.Nodes().Where(n => n.NodeType.Equals(XmlNodeType.Element) && ((XElement)n).Attribute("name").Value == defaultConnection))
                         {
                             if (e.GetType() == typeof(XElement))
                             {
                                 var i = e as XElement;
                                 AppConnectionString app = new AppConnectionString();
                                 app.Default = defaultConnection;
-                                app.ServerType = serverType;
+                                app.ServerType = this.DatabaseType;
                                 app.ConnectionName = i.Attribute("name").Value;
-                                app.ServerName = i.Attribute("serverName").Value;
-                                app.Database = i.Attribute("database").Value;
+                                
+                                if (serverType == "Oracle")
+                                {
+                                    try
+                                    {
+                                        //oracle atp
+                                        app.ServerPort = i.Attribute("serverPort").Value;
+                                        app.ServerHost = i.Attribute("serverHost").Value;
+                                        app.ConnectData = i.Attribute("connectData").Value;
+                                        app.WalletLocation = WalletLocation;
+                                    }
+                                    catch
+                                    {
+                                        Console.WriteLine("Falha ao gerar connection oracle");
+                                    }
+                                }
+                                else //mssql
+                                {
+                                    app.ServerName = i.Attribute("serverName").Value;
+                                    app.Database = i.Attribute("database").Value;
+
+                                }
 
                                 try
                                 {
@@ -200,10 +231,11 @@ namespace ITSolution.Framework.Core.BaseClasses
                     }
                     //pasta onde estao os assemblies de core (referencias das apis)
                     else if (EnvironmentInformation.ApplicationType == ITSApplicationPlataform.Web
-                        && x.Name.LocalName.Equals("CoreAssemblyFolder"))
+                        && x.Name.LocalName.Equals("AzureCoreAssemblyFolder"))
                     {
                         CoreAssemblyFolder = x.Attribute("name").Value.ToString();
                     }
+                    
                 }
                 catch (Exception ex)
                 {

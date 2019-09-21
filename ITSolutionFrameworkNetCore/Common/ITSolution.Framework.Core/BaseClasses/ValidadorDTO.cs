@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ITSolution.Framework.Core.BaseClasses;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -116,12 +117,12 @@ namespace ITSolution.Framework.Validador
             catch (System.ArgumentNullException ex)
             {
                 Console.WriteLine("Validação cancelada: objeto nulo" );
-                //LoggerUtilIts.ShowExceptionMessage(ex);
+                Utils.ShowExceptionStack(ex);
                 return false;
             }
             catch (Exception ex)
             {
-                //LoggerUtilIts.ShowExceptionMessage(ex);
+                Utils.ShowExceptionStack(ex);
                 return false;
             }
         }
@@ -158,7 +159,7 @@ namespace ITSolution.Framework.Validador
                 catch (Exception ex)
                 {
                     //XMessageIts.Erro("Entidade nula tentou ser válidada.","Atenção!!!");
-                    //LoggerUtilIts.GenerateLogs(ex);
+                    Utils.ShowExceptionStack(ex);
                 }
             }
 

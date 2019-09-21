@@ -1,6 +1,7 @@
 ﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
 using ITSolution.Framework.Server.Core.BaseInterfaces;
+using ITSolution.Framework.Servers.Core.CustomUserAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
@@ -28,7 +29,7 @@ namespace ITSolution.Framework.Core.CustomUserAPI.Data
         {
         }
 
-        //public DbSet<YourEntity> EntitySet { get; set; }
-        //public IITSReporitory<YourEntity, DBAccessContext> EntityRep { get { return new ITSRepository<YourEntity, DBAccessContext>(this); } }
+        public DbSet<Country> EntitySet { get; set; }
+        public IITSReporitory<Country, DBAccessContext> CountryRep { get { return new ITSRepository<Country, DBAccessContext>(this); } }
     }
 }

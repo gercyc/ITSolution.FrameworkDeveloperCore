@@ -1,4 +1,6 @@
-﻿using ITSolution.Framework.Core.BaseClasses;
+﻿using ITSolution.Framework.BaseClasses;
+using ITSolution.Framework.Core.BaseClasses;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using JetBrains.Annotations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
@@ -16,7 +18,13 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         public ITSDbContextOptions()
         {
             optionsBuilder = new DbContextOptionsBuilder();
-            optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
+            if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
+                optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
+            else
+            {
+                ITSOracleConfiguration.ConfigureDataSources();
+                optionsBuilder.UseOracle(EnvironmentManager.Configuration.ConnectionString);
+            }
         }
 
         public IEnumerable<IDbContextOptionsExtension> Extensions
