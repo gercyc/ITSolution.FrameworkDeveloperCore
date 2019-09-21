@@ -27,8 +27,10 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-
-- task: VSTest@2
+- task: AzureRmWebAppDeployment@4
   inputs:
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pago pelo Uso(9daebeb3-4006-49e9-a7c1-007561a37b58)'
+    appType: 'webApp'
+    WebAppName: 'ITSolutionAPIFramework'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
