@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <configuration>
-  <!-- Tipo de Conexão-->
-  <serverType typeName="Oracle" />
-  <defaultConnection name="ITS_Oracle" />
+  <!-- Tipo de Conexão (Oracle or MSSQL)-->
+  <serverType typeName="MSSQL" />
+  <defaultConnection name="ITS" />
   <serverPort name ="9000"/>
   <AssemblyRegisterServices name ="ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices"/>
 
