@@ -27,3 +27,4 @@ Framework para desenvolvimento .NET Core
 * Online no Azure
   https://itsolutionapiframework.azurewebsites.net/
  
+ [![Build Status](https://dev.azure.com/gercyc/MyDevelopments/_apis/build/status/gercyc.ITSolution.FrameworkDeveloperCore?branchName=master)](https://dev.azure.com/gercyc/MyDevelopments/_build/latest?definitionId=1&branchName=master)
