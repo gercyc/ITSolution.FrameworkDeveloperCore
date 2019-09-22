@@ -5,16 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="ITSolution.Framework.Core" Version="1.0.1" />
+    <PackageReference Include="ITSolution.Framework.Core.Server" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj">
-      <Private>true</Private>
-    </ProjectReference>
   </ItemGroup>
 
   <ItemGroup>
