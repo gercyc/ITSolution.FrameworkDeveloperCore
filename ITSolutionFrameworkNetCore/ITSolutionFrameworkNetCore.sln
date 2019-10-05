@@ -25,17 +25,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{CFDD1886-E192-48E7-8916-CF58886F16D3}"
+	ProjectSection(SolutionItems) = preProject
+		Templates\ITSolution ASP .NET Core Application.zip = Templates\ITSolution ASP .NET Core Application.zip
+		Templates\ITSolution ASP .NET Core Web API.zip = Templates\ITSolution ASP .NET Core Web API.zip
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.CustomUserAPI", "Templates\ITSolution.Framework.Servers.Core.CustomUserAPI\ITSolution.Framework.Servers.Core.CustomUserAPI.csproj", "{0A4726D3-402F-44A8-9B94-7DF022D34B9F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{29076EF1-B5F8-43ED-8B28-69F1CA8A3649}"
 	ProjectSection(SolutionItems) = preProject
-		Templates\ITSolution ASP .NET Core Application.zip = Templates\ITSolution ASP .NET Core Application.zip
-		Templates\ITSolution.Framework.Servers.Core.CustomUserAPI.zip = Templates\ITSolution.Framework.Servers.Core.CustomUserAPI.zip
 		TemplateReadme.txt = TemplateReadme.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSolution.Framework.Core.AspHost", "Client\ITSolution.Framework.Core.AspHost\ITSolution.Framework.Core.AspHost.csproj", "{16E9482F-2454-48A3-9CE0-CE206B1B67C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.AspHost", "Client\ITSolution.Framework.Core.AspHost\ITSolution.Framework.Core.AspHost.csproj", "{16E9482F-2454-48A3-9CE0-CE206B1B67C6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

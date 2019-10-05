@@ -1,6 +1,7 @@
 ﻿using ITSolution.Framework.BaseClasses;
 using ITSolution.Framework.Core.BaseClasses;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
         public ITSolutionContext(DbContextOptions dbContextOptions) : base(dbContextOptions)
         {
-
+            this.ITSDbContextOptions = new ITSDbContextOptions();
         }
     }
 }

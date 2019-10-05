@@ -9,15 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj">
-      <Private>true</Private>
-    </ProjectReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Update="Pages\ITSHost\CustomApplicationParts.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
@@ -27,27 +18,15 @@
     <None Update="Configuration\ITSConfig.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Configuration\Wallet\cwallet.sso">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\ewallet.p12">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\keystore.jks">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\ojdbc.properties">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\sqlnet.ora">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\tnsnames.ora">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Configuration\Wallet\truststore.jks">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\Wallet\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj" />
+    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj" />
   </ItemGroup>
 
 </Project>

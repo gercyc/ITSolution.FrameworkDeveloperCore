@@ -18,9 +18,16 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
-    public class StartupBase
+    public abstract class StartupBase : IStartup
     {
-        public StartupBase(IConfiguration configuration)
+        public StartupBase()
+        {
+
+        }
+
+        public abstract IServiceCollection ServiceDescriptors { get; set; }
+
+        public StartupBase(IConfiguration configuration) : this()
         {
             Configuration = configuration;
             //assinando o evento para definir quem vai resolver os assemblies
@@ -30,10 +37,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         {
             return ITSAssemblyResolve.ITSLoader.LoadFromAssemblyName(arg2);
         }
+
         public virtual IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -61,6 +69,14 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                     }
                     mvcBuilder.AddApplicationPart(asm);
                 }
+
+
+                foreach (var item in ServiceDescriptors)
+                {
+                    services.Replace(item);
+                }
+
+                return services.BuildServiceProvider();
             }
             catch (Exception ex)
             {
@@ -70,8 +86,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
+            var env = app.ApplicationServices.GetService<IHostingEnvironment>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -88,5 +105,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             app.UseMvc();
         }
+        
+
     }
 }

@@ -7,8 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj" />
-    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj" />
+    <PackageReference Include="ITSolution.Framework.Core.Server" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
