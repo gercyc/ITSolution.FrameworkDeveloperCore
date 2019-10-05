@@ -15,9 +15,9 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     public class UsuarioController : ControllerBase
     {
         private readonly DBAccessContext _context;
-        public UsuarioController(ITSolutionContext context)
+        public UsuarioController(ITSDbContextOptions iTSDbContextOptions)
         {
-            _context = new DBAccessContext(new ITSDbContextOptions());
+            _context = new DBAccessContext(iTSDbContextOptions);
         }
 
         // GET api/values

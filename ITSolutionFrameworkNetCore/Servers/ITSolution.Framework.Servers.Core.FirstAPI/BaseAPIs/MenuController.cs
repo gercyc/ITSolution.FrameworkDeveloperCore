@@ -14,10 +14,8 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     public class MenuController : ControllerBase
     {
         private readonly DBAccessContext _context;
-        private readonly ITSDbContextOptions iTSDbContextOptions;
         public MenuController(ITSDbContextOptions iTSDbContextOptions)
         {
-            this.iTSDbContextOptions = iTSDbContextOptions;
             _context = new DBAccessContext(iTSDbContextOptions);
         }
 
