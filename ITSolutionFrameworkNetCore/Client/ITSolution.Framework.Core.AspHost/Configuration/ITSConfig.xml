@@ -2,7 +2,7 @@
 <configuration>
   <!-- Tipo de Conexão (Oracle or MSSQL)-->
   <serverType typeName="MSSQL" />
-  <defaultConnection name="Dev" />
+  <defaultConnection name="ITS" />
   <serverPort name ="9000"/>
   <AssemblyRegisterServices name ="ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices"/>
 
