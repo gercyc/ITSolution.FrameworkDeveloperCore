@@ -14,9 +14,11 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     public class MenuController : ControllerBase
     {
         private readonly DBAccessContext _context;
-        public MenuController(ITSolutionContext context)
+        private readonly ITSDbContextOptions iTSDbContextOptions;
+        public MenuController(ITSDbContextOptions iTSDbContextOptions)
         {
-            _context = new DBAccessContext(new ITSDbContextOptions());
+            this.iTSDbContextOptions = iTSDbContextOptions;
+            _context = new DBAccessContext(iTSDbContextOptions);
         }
 
         // GET api/values
