@@ -3,8 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>Gercy Campos</Authors>
-    <FileVersion>1.0.0.1</FileVersion>
+    <FileVersion>1.0.0.3</FileVersion>
     <Version>1.0.1</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>1.0.3</PackageVersion>
+    <Title>Classes comuns</Title>
+    <Description>Classes comuns para utilização durante desenvolvimento. </Description>
+    <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
