@@ -17,11 +17,10 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     [ApiController]
     public class MyCustomController : ControllerBase
     {
-
         private readonly DBAccessContext _context;
-        public MyCustomController(ITSolutionContext context)
+        public MyCustomController(ITSDbContextOptions iTSDbContextOptions)
         {
-            _context = new DBAccessContext(new ITSDbContextOptions());
+            _context = new DBAccessContext(iTSDbContextOptions);
         }
 
         // GET api/values
