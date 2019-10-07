@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Servers.Core.FirstAPI.Data;
 using ITSolution.Framework.Servers.Core.FirstAPI.Models;
@@ -13,10 +14,10 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     [ApiController]
     public class MenuController : ControllerBase
     {
-        private readonly DBAccessContext _context;
-        public MenuController(ITSDbContextOptions iTSDbContextOptions)
+        private readonly DbAccessContext _context;
+        public MenuController(ItsDbContextOptions iTsDbContextOptions)
         {
-            _context = new DBAccessContext(iTSDbContextOptions);
+            _context = new DbAccessContext(iTsDbContextOptions);
         }
 
         // GET api/values
