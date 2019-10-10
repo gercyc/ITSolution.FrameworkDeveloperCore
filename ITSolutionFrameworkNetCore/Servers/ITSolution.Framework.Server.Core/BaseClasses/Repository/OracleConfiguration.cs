@@ -8,6 +8,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
     public static class ITSOracleConfiguration
     {
+        /// <summary>
+        /// Add oracle tns provider. Needs use instant client or normal client
+        /// </summary>
         public static void ConfigureDataSources()
         {
             OracleConfiguration.OracleDataSources.Add(EnvironmentInformation.DefaultConnectionName, EnvironmentInformation.TnsAtpSource);

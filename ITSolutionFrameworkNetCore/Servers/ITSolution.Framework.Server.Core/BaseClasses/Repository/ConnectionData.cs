@@ -5,7 +5,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
     public class ConnectionData
     {
-        private Stopwatch _stopwatch;
+        readonly Stopwatch _stopwatch;
 
         public ConnectionData(DbConnection connection)
         {

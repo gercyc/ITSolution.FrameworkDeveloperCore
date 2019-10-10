@@ -27,5 +27,6 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         public override bool SourceColumnNullMapping { get; set; }
         public override int Size { get; set; }
         public Operator Operator { get; set; }
+        public Condition Condition { get; set; }
     }
 }

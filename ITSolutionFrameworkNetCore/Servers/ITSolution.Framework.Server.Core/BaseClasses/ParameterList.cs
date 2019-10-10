@@ -64,14 +64,24 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
         public void Add(CustomDbParameter value)
         {
-            _parameters.Add( value);
+            _parameters.Add(value);
         }
 
         public void Add(string parameterName, Operator @operator, object value)
         {
+            InternalAdd(parameterName, @operator, value);
+        }
+        public void Add(string parameterName, Operator @operator, object value, Condition condition)
+        {
+            InternalAdd(parameterName, @operator, value, condition);
+        }
+
+        private void InternalAdd(string parameterName, Operator @operator, object value,
+            Condition condition = Condition.None)
+        {
             CustomDbParameter customDbParameter = new CustomDbParameter(parameterName, value);
             customDbParameter.Operator = @operator;
-            
+            customDbParameter.Condition = condition;
             Add(customDbParameter);
         }
 
@@ -103,7 +113,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             get => _parameters[index];
             set => _parameters[index] = value;
         }
-        
+
         public CustomDbParameter this[string parameterName]
         {
             get => _parameters.FirstOrDefault(p => p.ParameterName == parameterName);
