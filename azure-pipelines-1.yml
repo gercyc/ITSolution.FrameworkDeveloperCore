@@ -27,7 +27,12 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: '$coreCommon, $coreServer'
+    projects: '$coreCommon'
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+    projects: '$coreServer'
 
 - task: NuGetCommand@2
   inputs:
