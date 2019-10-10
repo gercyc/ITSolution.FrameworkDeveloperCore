@@ -3,8 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <Authors>Gercy Campos</Authors>
-    <FileVersion>1.0.0.1</FileVersion>
+    <FileVersion>1.0.0.3</FileVersion>
     <Version>1.0.2</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageVersion>1.0.3</PackageVersion>
+    <Description>Projeto com classes base para criação de novas aplicações ASP NET Core.</Description>
+    <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>
+    <PackageReleaseNotes>Correções na classe startupBase, herança de IStartup</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

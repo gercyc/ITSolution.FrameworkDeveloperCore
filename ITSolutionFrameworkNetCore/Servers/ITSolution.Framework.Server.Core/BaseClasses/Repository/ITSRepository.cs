@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
 using ITSolution.Framework.Server.Core.BaseInterfaces;
 using Microsoft.EntityFrameworkCore;
@@ -14,7 +15,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
     /// Generic repository
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class ITSRepository<TEntity, TContext> : IITSReporitory<TEntity, TContext> where TEntity : class where TContext : ITSolutionDbContext
+    public class ITSRepository<TEntity, TContext> : IITSReporitory<TEntity, TContext> where TEntity : class where TContext : ItSolutionAncestorDbContext
     {
             #region Private properties
             private readonly TContext _context;

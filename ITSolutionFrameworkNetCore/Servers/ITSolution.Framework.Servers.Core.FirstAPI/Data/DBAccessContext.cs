@@ -10,27 +10,36 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 {
-    public class DBAccessContext : ITSolutionContext
+    public class DbAccessContext : ItSolutionBaseContext
     {
-
-        public DBAccessContext(ITSDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
+        public DbAccessContext(ItsDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
         {
-            this.ITSDbContextOptions = itsDbContextOptions;
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
+
         public DbSet<Menu> MenuSet { get; set; }
-        public IITSReporitory<Menu, DBAccessContext> MenuRep { get { return new ITSRepository<Menu, DBAccessContext>(this); } }
+
+        public IITSReporitory<Menu, DbAccessContext> MenuRep
+        {
+            get { return new ITSRepository<Menu, DbAccessContext>(this); }
+        }
 
         public DbSet<Usuario> UsuarioSet { get; set; }
-        public IITSReporitory<Usuario, DBAccessContext> UsuarioRep { get { return new ITSRepository<Usuario, DBAccessContext>(this); } }
 
+        public IITSReporitory<Usuario, DbAccessContext> UsuarioRep
+        {
+            get { return new ITSRepository<Usuario, DbAccessContext>(this); }
+        }
     }
 }

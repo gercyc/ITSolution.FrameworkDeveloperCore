@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 
 namespace ITSolution.Framework.Server.Core.BaseInterfaces
 {
@@ -13,7 +14,7 @@ namespace ITSolution.Framework.Server.Core.BaseInterfaces
 
     public interface IITSReporitory<TEntity, TContext> 
                                     where TEntity : class
-                                    where TContext : ITSolutionDbContext
+                                    where TContext : ItSolutionAncestorDbContext
     {
         /// <summary>
         /// Synchronously retrieve all entities.

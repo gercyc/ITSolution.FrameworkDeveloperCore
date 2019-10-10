@@ -16,63 +16,24 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 using System.Text;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
+using StartupBase = ITSolution.Framework.Core.Server.BaseClasses.StartupBase;
 
 namespace ITSolution.Framework.Core.Host
 {
-    public class Startup
+    public class Startup : StartupBase
     {
-        public Startup(IConfiguration configuration)
+        IServiceCollection _serviceDescriptors;
+
+        protected sealed override IServiceCollection ServiceDescriptors
         {
-            Configuration = configuration;
-            //assinando o evento para definir quem vai resolver os assemblies
-            AssemblyLoadContext.Default.Resolving += Default_Resolving;
+            get => _serviceDescriptors ?? (_serviceDescriptors = new ServiceCollection());
+            set => _serviceDescriptors = value;
         }
-
-        private Assembly Default_Resolving(AssemblyLoadContext arg1, AssemblyName arg2)
+        
+        public Startup(IConfiguration configuration) : base(configuration)
         {
-            return ITSAssemblyResolve.ITSLoader.LoadFromAssemblyName(arg2);
-        }
-
-        public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
-        {
-            //services.AddOptions()
-            IMvcBuilder mvcBuilder = services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
-            //starting application parts
-            foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
-            {
-                Assembly asm = ITSAssemblyResolve.ITSLoader.Load(file);
-                Type[] types = asm.GetTypes().Where(t => t.BaseType.Name.Contains("ITSolutionContext")).ToArray();
-                if (types != null)
-                {
-                    services.AddDbContext<ITSolutionContext>();
-
-                    //ITSDbContextOptions dbContextOptions = new ITSDbContextOptions();
-                    //object instance = Activator.CreateInstance(types[0], dbContextOptions);
-                    ServiceDescriptor descriptor = new ServiceDescriptor(typeof(DbContext), typeof(ITSolutionContext), ServiceLifetime.Scoped);
-                    services.Replace(descriptor);
-                }
-                mvcBuilder.AddApplicationPart(asm);
-            }
-
-        }
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                app.UseHsts();
-            }
-
-            //app.UseHttpsRedirection();
-            app.UseMvc();
+            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
         }
     }
 }

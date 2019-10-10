@@ -6,6 +6,7 @@ using System.Runtime.Loader;
 using System.Threading.Tasks;
 using ITSolution.Framework.Core.AspHost.Inject;
 using ITSolution.Framework.Core.BaseClasses;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -22,27 +23,18 @@ namespace ITSolution.Framework.Core.AspHost
 {
     public class Startup : ITSolution.Framework.Core.Server.BaseClasses.StartupBase
     {
-        IServiceCollection serviceDescriptors;
+        IServiceCollection _serviceDescriptors;
 
-        public override IServiceCollection ServiceDescriptors
+        protected sealed override IServiceCollection ServiceDescriptors
         {
-            get
-            {
-                if (serviceDescriptors == null)
-                    serviceDescriptors = new ServiceCollection();
-
-                return serviceDescriptors;
-            }
-            set
-            {
-                serviceDescriptors = value;
-            }
+            get => _serviceDescriptors ?? (_serviceDescriptors = new ServiceCollection());
+            set => _serviceDescriptors = value;
         }
 
         public Startup(IConfiguration configuration) : base(configuration)
         {
             ServiceDescriptors.Add(new ServiceDescriptor(typeof(IMyCalc), typeof(MyCalc), ServiceLifetime.Scoped));
-            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ITSDbContextOptions), typeof(ITSDbContextOptions), ServiceLifetime.Scoped));
+            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
         }
     }
 }
