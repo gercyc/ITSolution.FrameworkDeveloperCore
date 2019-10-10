@@ -7,6 +7,8 @@ namespace ITSolution.Framework.Core.BaseClasses
 {
     public class AppConnectionString
     {
+        #region Private fields
+
         //Chaves p/montar a string
         private const string DataSource_Key = "Data Source=";
         private const string Server_Key = "Server=";
@@ -14,6 +16,10 @@ namespace ITSolution.Framework.Core.BaseClasses
         private const string UserID_Key = "User ID=";
         private const string Password_Key = "Password=";
         private const string IntegratedSecurity_Key = "Integrated Security=";
+
+        #endregion
+
+        #region Public properties
 
         [Required]
         [StringLength(int.MaxValue, MinimumLength = 2, ErrorMessage = "Nome da Conexão inválido")]
@@ -60,13 +66,19 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// String de conexão utilizada pelo DbContext
         /// </summary>
         public string ConnectionString { get; set; }
-
         public string Default { get; set; }
         public object ServerPort { get; internal set; }
         public string ServerHost { get; internal set; }
         public string ConnectData { get; internal set; }
         public string TnsAtp { get; internal set; }
         public string WalletLocation { get; set; }
+        public string MinPoolSize { get; set; }
+        public string MaxPoolSize { get; set; }
+        public string ConnectionTimeOut { get; set; }
+
+        #endregion
+
+        #region Constructors
 
         public AppConnectionString()
         {
@@ -96,7 +108,6 @@ namespace ITSolution.Framework.Core.BaseClasses
         public AppConnectionString(string connectionString)
             : this("ITS", connectionString)
         {
-
         }
 
         public AppConnectionString(string connectionName, string serverName, string user, string pw, string database)
@@ -111,10 +122,13 @@ namespace ITSolution.Framework.Core.BaseClasses
             this.ConnectionString = buildConnectionString().ToString();
         }
 
+        #endregion
+
+        #region Methods
 
         public AppConnectionString Clone()
         {
-            return (AppConnectionString)this.MemberwiseClone();
+            return (AppConnectionString) this.MemberwiseClone();
         }
 
         /// <summary>
@@ -122,21 +136,24 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// </summary>
         public void RebuildConnectionString()
         {
-            StringBuilder builderConn = new StringBuilder(); ;
+            StringBuilder builderConn = new StringBuilder();
+            ;
 
             if (ServerType == DatabaseType.MSSQL)
                 //constroi a string de conexão base
                 builderConn = buildConnectionString();
             else
             {
-                string tnsbase = "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
+                string tnsbase =
+                    "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
                 this.TnsAtp = string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation);
                 builderConn.AppendFormat("User Id={0};Password={1};Data Source={2};", User, Password, ConnectionName);
             }
 
             this.ConnectionString = builderConn.ToString();
-
         }
+
+        #endregion
 
         #region Interno
 
@@ -180,11 +197,9 @@ namespace ITSolution.Framework.Core.BaseClasses
                     if (i < split.Length - 1)
                         //use o q tem na string de conexao
                         sb.Append(split[i]).Append(";");
-                    else//o ultimo nao precisa de ;
+                    else //o ultimo nao precisa de ;
                         sb.Append(split[i]);
-
                 }
-
             }
 
             //se nao tem usuário
@@ -233,14 +248,11 @@ namespace ITSolution.Framework.Core.BaseClasses
                     builderConn.Append(";");
                     builderConn.Append("Integrated Security=False;");
                 }
-
             }
             else
             {
                 builderConn.Append("Integrated Security=True;");
             }
-
-
 
             return builderConn;
         }
@@ -253,4 +265,3 @@ namespace ITSolution.Framework.Core.BaseClasses
         }
     }
 }
-
