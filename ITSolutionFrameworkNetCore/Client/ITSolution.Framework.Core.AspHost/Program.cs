@@ -14,12 +14,11 @@ namespace ITSolution.Framework.Core.AspHost
     public class Program
     {
         public static IWebHost DefaultWebHostBuilder { get { return _webHost; } }
-        static IWebHost _webHost;
+        private static IWebHost _webHost;
         static IWebHostBuilder _webHostBuilder;
         public static void Main(string[] args)
         {
             _webHost = CreateWebHostBuilder(args).Build();
-
             _webHost.Run();
         }
 

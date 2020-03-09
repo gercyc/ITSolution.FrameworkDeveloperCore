@@ -33,8 +33,7 @@ namespace ITSolution.Framework.Core.AspHost
 
         public Startup(IConfiguration configuration) : base(configuration)
         {
-            ServiceDescriptors.Add(new ServiceDescriptor(typeof(IMyCalc), typeof(MyCalc), ServiceLifetime.Scoped));
-            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
+            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Singleton));
         }
     }
 }

@@ -128,7 +128,7 @@ namespace ITSolution.Framework.Core.BaseClasses
 
         public AppConnectionString Clone()
         {
-            return (AppConnectionString) this.MemberwiseClone();
+            return (AppConnectionString)this.MemberwiseClone();
         }
 
         /// <summary>
@@ -142,12 +142,17 @@ namespace ITSolution.Framework.Core.BaseClasses
             if (ServerType == DatabaseType.MSSQL)
                 //constroi a string de conexão base
                 builderConn = buildConnectionString();
-            else
+            else if (ServerType == DatabaseType.Oracle)
             {
                 string tnsbase =
                     "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
                 this.TnsAtp = string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation);
                 builderConn.AppendFormat("User Id={0};Password={1};Data Source={2};", User, Password, ConnectionName);
+            }
+            else if (ServerType == DatabaseType.SQLITE)
+            {
+                builderConn.AppendFormat("Data Source={0}", Database);
+                this.ConnectionString = string.Format("Data Source={0}", Database);
             }
 
             this.ConnectionString = builderConn.ToString();

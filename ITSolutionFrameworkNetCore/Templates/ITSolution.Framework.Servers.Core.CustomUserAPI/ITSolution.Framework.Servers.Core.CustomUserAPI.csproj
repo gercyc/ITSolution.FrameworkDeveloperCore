@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>ITSolution.Framework.Servers.Core.CustomUserAPI</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ITSolution.Framework.Core.Server" Version="1.0.1" />
+    <PackageReference Include="ITSolution.Framework.Core.Server" Version="1.0.4" />
   </ItemGroup>
 
   <ItemGroup>

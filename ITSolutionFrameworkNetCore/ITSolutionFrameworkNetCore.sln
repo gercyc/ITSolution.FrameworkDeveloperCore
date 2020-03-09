@@ -39,7 +39,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{29076EF1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.AspHost", "Client\ITSolution.Framework.Core.AspHost\ITSolution.Framework.Core.AspHost.csproj", "{16E9482F-2454-48A3-9CE0-CE206B1B67C6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "Client\ConsoleApp1\ConsoleApp1.csproj", "{76DDCC01-C8EF-4A70-9285-23F3DDA7258B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "Client\ConsoleApp1\ConsoleApp1.csproj", "{76DDCC01-C8EF-4A70-9285-23F3DDA7258B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

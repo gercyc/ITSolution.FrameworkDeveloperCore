@@ -7,14 +7,18 @@ using System.Threading.Tasks;
 using ITSolution.Framework.Core.BaseClasses;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
+using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
@@ -42,6 +46,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            services.ConfigureIdentity();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -49,21 +54,21 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            IMvcBuilder mvcBuilder = services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             try
             {
+                services.AddRazorPages();
                 //starting application parts
                 foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
                 {
                     Assembly asm = ITSAssemblyResolve.ITSLoader.Load(file);
-                    mvcBuilder.AddApplicationPart(asm);
+                    services.AddMvc().AddApplicationPart(asm);
                 }
 
                 foreach (var item in ServiceDescriptors)
                 {
                     services.Replace(item);
                 }
-                
+
                 return services.BuildServiceProvider();
             }
             catch (Exception ex)
@@ -76,22 +81,33 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            var env = app.ApplicationServices.GetService<IHostingEnvironment>();
+            var env = app.ApplicationServices.GetService<IHostEnvironment>();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
                 app.UseExceptionHandler("/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
 
-            app.UseMvc();
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapRazorPages();
+                endpoints.MapControllers();
+            });
         }
     }
 }

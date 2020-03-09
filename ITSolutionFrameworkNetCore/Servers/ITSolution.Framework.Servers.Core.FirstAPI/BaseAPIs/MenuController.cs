@@ -6,12 +6,14 @@ using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Servers.Core.FirstAPI.Data;
 using ITSolution.Framework.Servers.Core.FirstAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class MenuController : ControllerBase
     {
         private readonly DbAccessContext _context;
