@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore.Internal;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
@@ -70,7 +71,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                 DbConnection conn = null;
                 if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                 {
-                    //conn = new OracleConnection(EnvironmentInformation.ConnectionString);
+                    conn = new OracleConnection(EnvironmentInformation.ConnectionString);
                 }
                 else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                     conn = new SqlConnection(EnvironmentInformation.ConnectionString);
@@ -165,7 +166,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                 {
                     if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                     {
-                        //dbCommand.Parameters.Add(new OracleParameter(parameter.ParameterName, parameter.Value)); 
+                        dbCommand.Parameters.Add(new OracleParameter(parameter.ParameterName, parameter.Value)); 
                     } 
                     else
                         dbCommand.Parameters.Add(new SqlParameter(parameter.ParameterName, parameter.Value));
@@ -190,11 +191,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                     {
                         if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                         {
-                            //OracleDataAdapter oracleDataAdapter =
-                            //    new OracleDataAdapter(
-                            //        (OracleCommand) CreateCommand(commandText,
-                            //            currentConnection, parameterList));
-                            //oracleDataAdapter.Fill(dt);
+                            OracleDataAdapter oracleDataAdapter =
+                                new OracleDataAdapter(
+                                    (OracleCommand)CreateCommand(commandText,
+                                        currentConnection, parameterList));
+                            oracleDataAdapter.Fill(dt);
                         }
                         else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                         {
@@ -228,9 +229,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                     {
                         if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                         {
-                            //dbDataReader =
-                            //    ((OracleCommand) CreateCommand(commandText, currentConnection, parameterList))
-                            //    .ExecuteReader();
+                            dbDataReader =
+                                ((OracleCommand)CreateCommand(commandText, currentConnection, parameterList))
+                                .ExecuteReader();
                         }
                         else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                         {

@@ -15,7 +15,7 @@
   <AzureCoreAssemblyFolder name ="D:\home\site\wwwroot\"/>
 
   <!-- Oracle ATP-->
-  <WalletLocation name ="C:\Oracle\instantclient_19_3\network\admin\"/>
+  <WalletLocation name ="C:\Oracle\instantclient_19_5\network\admin\"/>
   <WalletLocationAzure name ="D:\home\site\wwwroot\Configuration\Wallet"/>
 
   <connectionStrings>
@@ -24,7 +24,7 @@
     <!--Azure Database to Developer-->
     <connection name="Dev" serverName="(local)" database="dbBalcao_DEV" security="true" />
     <connection name="LocalDB" serverName="(localdb)\MSSQLLocalDB" database="dbBalcao_DEV" security="true" />
-    <connection name="ITS_Oracle" serverPort="1522" serverHost="adb.sa-saopaulo-1.oraclecloud.com" connectData="service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com" user="gercy" password="Grc#944692_91grcpro" security="ssl_server_cert_dn=CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US" />
+    <connection name="ITS_Oracle" serverPort="1522" serverHost="adb.sa-saopaulo-1.oraclecloud.com" connectData="service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com" user="gercy" password="Ygr#944692ao@#campos" security="ssl_server_cert_dn=CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US" />
     <connection name="SQLite" database="sqliteDatabase.db" />
 
   </connectionStrings>

@@ -74,7 +74,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
         }
 
