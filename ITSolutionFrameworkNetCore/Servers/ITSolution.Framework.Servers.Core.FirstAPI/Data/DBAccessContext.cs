@@ -18,7 +18,7 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
     {
         public DbAccessContext(ItsDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
         {
-            base.Database.Migrate();
+            //base.Database.Migrate();
         }
         /// <summary>
         /// Constructor for EF Migrations

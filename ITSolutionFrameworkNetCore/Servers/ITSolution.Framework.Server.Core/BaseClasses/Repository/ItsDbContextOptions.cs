@@ -15,11 +15,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
         {
             _optionsBuilder = new DbContextOptionsBuilder();
             if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
-                _optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
+                _optionsBuilder.UseSqlServer(EnvironmentInformation.ConnectionString);
             else if(EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
             {
                 ITSOracleConfiguration.ConfigureDataSources();
-                _optionsBuilder.UseOracle(EnvironmentManager.Configuration.ConnectionString);
+                _optionsBuilder.UseOracle(EnvironmentInformation.ConnectionString);
             }
             else if(EnvironmentInformation.DatabaseType == DatabaseType.SQLITE)
             {

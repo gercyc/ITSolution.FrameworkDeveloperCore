@@ -17,30 +17,36 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
             //if(EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
             base.Database.EnsureCreated();
         }
+        public ITSIdentityContext() : base(new ItsDbContextOptions().DbContextOptions)
+        {
+            //if(EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
+            base.Database.EnsureCreated();
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             
             base.OnModelCreating(builder);
+            string owner = "GERCY";
             builder.Entity<ApplicationRole>()
-                        .ToTable("ITS_ROLES", "dbo");
+                        .ToTable("ITS_ROLES", owner);
 
             builder.Entity<ApplicationRoleClaim>()
-                        .ToTable("ITS_ROLE_CLAIMS", "dbo");
+                        .ToTable("ITS_ROLE_CLAIMS", owner);
 
             builder.Entity<ApplicationUser>()
-                        .ToTable("ITS_USER", "dbo");
+                        .ToTable("ITS_USER", owner);
 
             builder.Entity<ApplicationUserClaim>()
-                        .ToTable("ITS_USER_CLAIMS", "dbo");
+                        .ToTable("ITS_USER_CLAIMS", owner);
 
             builder.Entity<ApplicationUserLogin>()
-                        .ToTable("ITS_USER_LOGINS", "dbo");
+                        .ToTable("ITS_USER_LOGINS", owner);
 
             builder.Entity<ApplicationUserRole>()
-                        .ToTable("ITS_USER_ROLES", "dbo");
+                        .ToTable("ITS_USER_ROLES", owner);
 
             builder.Entity<ApplicationUserToken>()
-                        .ToTable("ITS_USER_TOKENS", "dbo");
+                        .ToTable("ITS_USER_TOKENS", owner);
         }
     }
 }

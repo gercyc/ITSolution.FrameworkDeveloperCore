@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
@@ -56,7 +57,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             try
             {
-                services.AddRazorPages();
+                services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
                 //starting application parts
                 foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
                 {
@@ -81,7 +82,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            var env = app.ApplicationServices.GetService<IHostEnvironment>();
+            var env = app.ApplicationServices.GetService<IHostingEnvironment>();
 
             if (env.IsDevelopment())
             {
@@ -97,17 +98,15 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
-
             app.UseAuthentication();
-            app.UseAuthorization();
+            app.UseMvc();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-                endpoints.MapControllers();
-            });
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller}/{action=Index}/{id?}");
+            //});
         }
     }
 }

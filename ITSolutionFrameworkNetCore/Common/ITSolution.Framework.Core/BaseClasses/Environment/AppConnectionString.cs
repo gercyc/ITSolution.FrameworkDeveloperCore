@@ -145,7 +145,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             else if (ServerType == DatabaseType.Oracle)
             {
                 string tnsbase =
-                    "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
+                    "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory=\"{3}\")))";
                 this.TnsAtp = string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation);
                 builderConn.AppendFormat("User Id={0};Password={1};Data Source={2};", User, Password, ConnectionName);
             }

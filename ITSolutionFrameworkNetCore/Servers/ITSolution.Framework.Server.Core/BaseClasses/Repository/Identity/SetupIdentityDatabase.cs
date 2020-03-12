@@ -4,7 +4,6 @@ using ITSolution.Framework.Core.BaseClasses.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -23,13 +22,15 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
                     options.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
                 else if (EnvironmentInformation.DatabaseType == DatabaseType.SQLITE)
                     options.UseSqlite(EnvironmentInformation.ConnectionString);
+                else if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
+                    options.UseOracle(EnvironmentInformation.ConnectionString);
             });
 
             //configurando o uso do ASP.NET Identity
             services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
             {
                 //configura as opcoes de senha. Devido a debug a segurança foi reduzida
-                options.SignIn.RequireConfirmedAccount = false;
+                //options.SignIn.RequireConfirmedAccount = false;
                 options.Password.RequireUppercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireDigit = false;
