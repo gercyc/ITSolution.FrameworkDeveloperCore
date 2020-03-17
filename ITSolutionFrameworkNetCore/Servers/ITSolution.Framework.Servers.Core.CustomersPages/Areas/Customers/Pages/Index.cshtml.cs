@@ -7,7 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ITSolution.Framework.Servers.Core.CustomersPages.MyFeature.Pages
 {
-    public class CustomersModel : PageModel
+    [Route("Customers")]
+    public class Index : PageModel
     {
         public void OnGet()
         {

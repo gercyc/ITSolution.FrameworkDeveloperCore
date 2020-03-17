@@ -5,26 +5,27 @@
 }
 <h2 class="card-title">@ViewData["Title"]</h2>
 <p>List all WebParts are loaded current Application Domain</p>
-
-<table class="table">
-    <thead>
-        <tr>
-            <th>Application Part Assembly</th>
-            <th>Type Name</th>
-            <th>API Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var appPart in Model.LoadedParts)
-        {
+<div class="table-responsive">
+    <table class="table">
+        <thead>
             <tr>
-                <td>@appPart.AssemblyName</td>
-                <td>@appPart.TypeName</td>
-                <td>@appPart.ApiName</td>
-                <td>
-                    <a href="../api/@appPart.ApiName" target="_blank">Test</a>
-                </td>
+                <th>Application Part Assembly</th>
+                <th>Type Name</th>
+                <th>API Name</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var appPart in Model.LoadedParts)
+            {
+                <tr>
+                    <td>@appPart.AssemblyName</td>
+                    <td>@appPart.TypeName</td>
+                    <td>@appPart.ApiName</td>
+                    <td>
+                        <a href="../api/@appPart.ApiName" target="_blank">Test</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
