@@ -1,4 +1,5 @@
-﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+﻿using ITSolution.Framework.Core.Server.BaseClasses.Repository;
+using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
 using ITSolution.Framework.Server.Core.BaseInterfaces;
 using ITSolution.Framework.Servers.Core.CustomUserAPI.Data;
@@ -15,12 +16,11 @@ namespace ITSolution.Framework.Core.CustomUserAPI.Data
     /// <summary>
     /// Customize your context
     /// </summary>
-    public class DBAccessContext : ITSolutionContext
+    public class DBAccessContext : ItSolutionBaseContext
     {
 
-        public DBAccessContext(ITSDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
+        public DBAccessContext(ItsDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
         {
-            this.ITSDbContextOptions = itsDbContextOptions;
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

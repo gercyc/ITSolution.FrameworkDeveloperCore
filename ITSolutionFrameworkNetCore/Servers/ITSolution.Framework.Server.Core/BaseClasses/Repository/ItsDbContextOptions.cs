@@ -3,6 +3,7 @@ using ITSolution.Framework.BaseClasses;
 using ITSolution.Framework.Core.BaseClasses;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Oracle.ManagedDataAccess.Types;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
@@ -15,10 +16,14 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
             _optionsBuilder = new DbContextOptionsBuilder();
             if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                 _optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
-            else
+            else if(EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
             {
                 ITSOracleConfiguration.ConfigureDataSources();
                 _optionsBuilder.UseOracle(EnvironmentManager.Configuration.ConnectionString);
+            }
+            else if(EnvironmentInformation.DatabaseType == DatabaseType.SQLITE)
+            {
+                _optionsBuilder.UseSqlite(EnvironmentInformation.ConnectionString);
             }
         }
 

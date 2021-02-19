@@ -7,6 +7,7 @@ namespace ITSolution.Framework.Core.BaseClasses
     public enum DatabaseType
     {
         MSSQL = 0,
-        Oracle = 1
+        Oracle = 1,
+        SQLITE = 2
     }
 }

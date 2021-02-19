@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ITSolution.Framework.Core.CustomUserAPI.Data;
 using ITSolution.Framework.Core.CustomUserAPI.Model;
+using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Servers.Core.CustomUserAPI.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     public class MyCustomController : ControllerBase
     {
         private readonly DBAccessContext _context;
-        public MyCustomController(ITSDbContextOptions iTSDbContextOptions)
+        public MyCustomController(ItsDbContextOptions iTSDbContextOptions)
         {
             _context = new DBAccessContext(iTSDbContextOptions);
         }

@@ -130,7 +130,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                     if (x.Name.LocalName.Equals("serverType"))
                     {
                         serverType = x.Attribute("typeName").Value;
-                        DatabaseType = serverType == "MSSQL" ? DatabaseType.MSSQL : DatabaseType.Oracle;
+                        DatabaseType = Utils.GetDatabaseType(serverType);
                     }
                     //tag 2
                     else if (x.Name.LocalName.Equals("defaultConnection"))
@@ -161,7 +161,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                                 app.ServerType = this.DatabaseType;
                                 app.ConnectionName = i.Attribute("name").Value;
                                 
-                                if (serverType == "Oracle")
+                                if (DatabaseType == DatabaseType.Oracle)
                                 {
                                     try
                                     {
@@ -176,11 +176,15 @@ namespace ITSolution.Framework.Core.BaseClasses
                                         Console.WriteLine("Falha ao gerar connection oracle");
                                     }
                                 }
-                                else //mssql
+                                else if(DatabaseType == DatabaseType.MSSQL) //mssql
                                 {
                                     app.ServerName = i.Attribute("serverName").Value;
                                     app.Database = i.Attribute("database").Value;
 
+                                }
+                                else if(DatabaseType == DatabaseType.SQLITE)
+                                {
+                                    app.Database = i.Attribute("database").Value;
                                 }
 
                                 try

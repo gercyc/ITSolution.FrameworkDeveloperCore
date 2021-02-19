@@ -1,5 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace ITSolution.Framework.Core.BaseClasses
 {
@@ -55,6 +60,19 @@ namespace ITSolution.Framework.Core.BaseClasses
         public static void ShowExceptionStack(Exception exception)
         {
             Console.WriteLine(GetExceptionStack(exception));
+        }
+
+        public static DatabaseType GetDatabaseType(string databaseType)
+        {
+            switch (databaseType)
+            {
+                case "Oracle":
+                    return DatabaseType.Oracle;
+                case "SQLITE":
+                    return DatabaseType.SQLITE;
+                default:
+                    return DatabaseType.MSSQL;
+            }
         }
     }
 }

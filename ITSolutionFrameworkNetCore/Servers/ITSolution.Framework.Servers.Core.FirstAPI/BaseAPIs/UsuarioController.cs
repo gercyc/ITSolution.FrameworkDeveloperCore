@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.BaseClasses.Identity;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Servers.Core.FirstAPI.Data;
 using ITSolution.Framework.Servers.Core.FirstAPI.Model;
 using ITSolution.Framework.Servers.Core.FirstAPI.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
@@ -16,16 +18,21 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
     public class UsuarioController : ControllerBase
     {
         private readonly DbAccessContext _context;
-        public UsuarioController(ItsDbContextOptions iTsDbContextOptions)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
+
+        public UsuarioController(ItsDbContextOptions iTsDbContextOptions, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
             _context = new DbAccessContext(iTsDbContextOptions);
+            _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         // GET api/values
         [HttpGet]
         public IEnumerable<Usuario> Get()
         {
-            return _context.UsuarioRep.GetAll();
+            return _context.UsuarioRep.GetAll();  //_userManager.Users.AsEnumerable();
         }
 
         // GET api/values/5
@@ -37,7 +44,7 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Usuario value)
+        public void CreateUser([FromBody] Usuario value)
         {
             _context.UsuarioRep.Create(value, true);
         }

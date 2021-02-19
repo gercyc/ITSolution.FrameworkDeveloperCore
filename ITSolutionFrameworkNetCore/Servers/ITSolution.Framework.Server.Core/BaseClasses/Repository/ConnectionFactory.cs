@@ -1,6 +1,6 @@
 ﻿using ITSolution.Framework.BaseClasses;
 using ITSolution.Framework.Core.BaseClasses;
-using Oracle.ManagedDataAccess.Client;
+//using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -11,8 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore.Internal;
+using Oracle.ManagedDataAccess.Client;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
@@ -42,7 +42,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                     while (true)
                     {
                         double interval = TimeSpan.FromSeconds(10).TotalSeconds;
-                        int intervalVerifyTask = (int) TimeSpan.FromSeconds(2).TotalMilliseconds;
+                        int intervalVerifyTask = (int)TimeSpan.FromSeconds(2).TotalMilliseconds;
                         Thread.Sleep(intervalVerifyTask);
                         foreach (var conn in _connections.Where(
                             c => c.Value.SecondsOpened > interval))
@@ -70,7 +70,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
             {
                 DbConnection conn = null;
                 if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
+                {
                     conn = new OracleConnection(EnvironmentInformation.ConnectionString);
+                }
                 else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                     conn = new SqlConnection(EnvironmentInformation.ConnectionString);
 
@@ -163,7 +165,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                 foreach (CustomDbParameter parameter in parameterList)
                 {
                     if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
-                        dbCommand.Parameters.Add(new OracleParameter(parameter.ParameterName, parameter.Value));
+                    {
+                        dbCommand.Parameters.Add(new OracleParameter(parameter.ParameterName, parameter.Value)); 
+                    } 
                     else
                         dbCommand.Parameters.Add(new SqlParameter(parameter.ParameterName, parameter.Value));
                 }
@@ -189,14 +193,14 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                         {
                             OracleDataAdapter oracleDataAdapter =
                                 new OracleDataAdapter(
-                                    (OracleCommand) CreateCommand(commandText,
+                                    (OracleCommand)CreateCommand(commandText,
                                         currentConnection, parameterList));
                             oracleDataAdapter.Fill(dt);
                         }
                         else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                         {
                             SqlDataAdapter sqlDataAdapter =
-                                new SqlDataAdapter((SqlCommand) CreateCommand(commandText,
+                                new SqlDataAdapter((SqlCommand)CreateCommand(commandText,
                                     currentConnection, parameterList));
                             sqlDataAdapter.Fill(dt);
                         }
@@ -226,12 +230,12 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
                         if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                         {
                             dbDataReader =
-                                ((OracleCommand) CreateCommand(commandText, currentConnection, parameterList))
+                                ((OracleCommand)CreateCommand(commandText, currentConnection, parameterList))
                                 .ExecuteReader();
                         }
                         else if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                         {
-                            dbDataReader = ((SqlCommand) CreateCommand(commandText, currentConnection, parameterList))
+                            dbDataReader = ((SqlCommand)CreateCommand(commandText, currentConnection, parameterList))
                                 .ExecuteReader();
                         }
 
@@ -251,9 +255,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 
         private ConnectionFactory()
         {
-            if(EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
+            if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
                 ITSOracleConfiguration.ConfigureDataSources();
-            
+
             if (_connections == null)
                 _connections = new ConcurrentDictionary<string, ConnectionData>();
 

@@ -3,10 +3,9 @@
 @{
     ViewData["Title"] = "Custom Application Parts";
 }
-<h2>@ViewData["Title"]</h2>
+<h2 class="card-title">@ViewData["Title"]</h2>
 <p>List all WebParts are loaded current Application Domain</p>
-
-<form method="post">
+<div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -18,15 +17,15 @@
         <tbody>
             @foreach (var appPart in Model.LoadedParts)
             {
-            <tr>
-                <td>@appPart.AssemblyName</td>
-                <td>@appPart.TypeName</td>
-                <td>@appPart.ApiName</td>
-                <td>
-                    <a href="../api/@appPart.ApiName" target="_blank">Test</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@appPart.AssemblyName</td>
+                    <td>@appPart.TypeName</td>
+                    <td>@appPart.ApiName</td>
+                    <td>
+                        <a href="../api/@appPart.ApiName" target="_blank">Test</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
-</form>
+</div>
