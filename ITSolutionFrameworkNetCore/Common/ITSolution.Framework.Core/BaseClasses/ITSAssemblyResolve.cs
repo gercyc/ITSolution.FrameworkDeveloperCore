@@ -120,7 +120,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
             return files;
         }

@@ -3,10 +3,10 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Gercy Campos</Authors>
-    <FileVersion>1.0.0.5</FileVersion>
-    <Version>1.0.5</Version>
+    <FileVersion>1.0.0.7</FileVersion>
+    <Version>1.0.7</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageVersion>1.0.6</PackageVersion>
+    <PackageVersion>1.0.7</PackageVersion>
     <Description>Projeto com classes base para criação de novas aplicações ASP NET Core.</Description>
     <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>
     <PackageReleaseNotes>Correções na classe startupBase, herança de IStartup</PackageReleaseNotes>

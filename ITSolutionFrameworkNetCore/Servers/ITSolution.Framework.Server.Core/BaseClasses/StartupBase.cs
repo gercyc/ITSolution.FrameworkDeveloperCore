@@ -63,7 +63,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             try
             {
-                
+                services.AddDatabaseDeveloperPageExceptionFilter();
                 IMvcBuilder mvcBuilder = services.AddMvc();
                 //starting application parts
                 foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
@@ -95,7 +95,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
+                app.UseMigrationsEndPoint();
             }
             else
             {
