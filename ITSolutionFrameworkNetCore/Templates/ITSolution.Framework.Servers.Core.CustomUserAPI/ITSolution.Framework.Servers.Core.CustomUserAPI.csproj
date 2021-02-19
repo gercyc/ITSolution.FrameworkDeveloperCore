@@ -4,6 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <RootNamespace>ITSolution.Framework.Servers.Core.CustomUserAPI</RootNamespace>
+    <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

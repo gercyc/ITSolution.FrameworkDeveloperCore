@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity;
+using ITSolution.Framework.BaseClasses;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
@@ -62,12 +63,13 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             try
             {
-                services.AddRazorPages();
+                
+                IMvcBuilder mvcBuilder = services.AddMvc();
                 //starting application parts
                 foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
                 {
                     Assembly asm = ITSAssemblyResolve.ITSLoader.Load(file);
-                    services.AddMvc().AddApplicationPart(asm);
+                    mvcBuilder.AddApplicationPart(asm);
                 }
 
                 foreach (var item in ServiceDescriptors)
@@ -75,6 +77,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                     services.Replace(item);
                 }
 
+                services.AddRazorPages();
                 return services.BuildServiceProvider();
             }
             catch (Exception ex)
@@ -106,6 +109,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
             app.UseRouting();
 
+
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -113,7 +117,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
+
             });
+
         }
     }
 }
