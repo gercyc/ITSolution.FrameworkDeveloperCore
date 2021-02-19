@@ -28,13 +28,13 @@ namespace ITSolution.Framework.Validador
                 Validator.TryValidateObject(obj, contexto, validationList, true);
 
             }
-            catch (OverflowException )
+            catch (OverflowException ex1)
             {
-                throw ;
+                throw ex1;
             }
-            catch (Exception )
+            catch (Exception ex2)
             {
-                throw ;
+                throw ex2;
             }
 
             return validationList;

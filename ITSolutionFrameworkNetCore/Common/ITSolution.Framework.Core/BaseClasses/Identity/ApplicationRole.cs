@@ -8,7 +8,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
     //AspNetRoles
     //[Table("ITS_ROLES")]
-    public class ApplicationRole : IdentityRole<string>
+    public class ApplicationRole : IdentityRole<int>
     {
     }
 }

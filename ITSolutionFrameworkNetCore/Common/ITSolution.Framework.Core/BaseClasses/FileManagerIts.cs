@@ -120,10 +120,10 @@ namespace ITSolution.Framework.Core.BaseClasses
                 DirectoryInfo dir = new DirectoryInfo(tarjet);
                 return dir.GetFiles();
             }
-            catch (Exception )
+            catch (Exception ex)
             {
 
-                throw ;
+                throw ex;
             }
         }
 
@@ -137,10 +137,10 @@ namespace ITSolution.Framework.Core.BaseClasses
                 return dir.GetDirectories();
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
 
-                throw ;
+                throw ex;
             }
         }
 
@@ -196,7 +196,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 string msg = string.Format("Falha ao abrir o arquivo {0}\n{1}", pathFile, ex.Message);
                 Console.WriteLine(msg);
-                throw;
+                throw ex;
             }
             return result;
         }
@@ -291,7 +291,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 string msg = string.Format("Falha ao abrir o arquivo {0}\n{1}", pathFile, ex.Message);
                 Trace.WriteLine(msg);
-                throw ;
+                throw ex;
             }
             finally
             {
@@ -553,9 +553,9 @@ namespace ITSolution.Framework.Core.BaseClasses
                 else
                     return false;
             }
-            catch (System.IO.FileNotFoundException )
+            catch (System.IO.FileNotFoundException ex)
             {
-                throw ;
+                throw ex;
             }
         }
 
@@ -836,9 +836,9 @@ namespace ITSolution.Framework.Core.BaseClasses
                 return File.ReadAllBytes(path);
 
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-                throw ;
+                throw ex;
             }
         }
 
@@ -1075,7 +1075,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw;
+                throw ex;
             }
             return fileList;
         }
@@ -1157,7 +1157,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ;
+                throw ex;
             }
 
         }
@@ -1180,7 +1180,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw;
+                throw ex;
             }
 
         }
@@ -1230,7 +1230,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 Console.WriteLine("Falha ao mover " + alvo + " para " + destino);
                 Utils.ShowExceptionStack(ex);
-                throw ;
+                throw ex;
             }
         }
 

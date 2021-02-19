@@ -10,17 +10,17 @@ using System.Text;
 
 namespace ITSolution.Framework.Core.BaseClasses
 {
-    public class ITSAssemblyResolve : AssemblyLoadContext
+    public class ItsAssemblyResolve : AssemblyLoadContext
     {
         #region Singleton
-        static ITSAssemblyResolve _loader;
-        public static ITSAssemblyResolve ITSLoader
+        static ItsAssemblyResolve _loader;
+        public static ItsAssemblyResolve ItsLoader
         {
             get
             {
                 if (_loader == null)
                 {
-                    _loader = new ITSAssemblyResolve();
+                    _loader = new ItsAssemblyResolve();
                 }
                 return _loader;
             }
@@ -49,7 +49,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                 {
                     Utils.ShowExceptionStack(exApi);
                     Utils.ShowExceptionStack(fileNotFound);
-
+                    throw;
                 }
 
             }
@@ -58,7 +58,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                 Utils.ShowExceptionStack(exAsmNotFound);
                 throw;
             }
-            return assembly;
+            //return assembly;
         }
 
         public Assembly Load(string assemblyPath)
@@ -82,17 +82,16 @@ namespace ITSolution.Framework.Core.BaseClasses
             try
             {
                 assembly = Assembly.LoadFile(assemblyPath);
-                AssemblyName[] refAssemblies;
                 var dps = DependencyContext.Default;
 
                 //try resolve dependencies
                 if (assembly != null)
                 {
                     DependencyContext.Load(assembly);
-                    refAssemblies = assembly.GetReferencedAssemblies();
+                    var refAssemblies = assembly.GetReferencedAssemblies();
 
                     foreach (var asm in refAssemblies.Where(n => n.FullName.Contains("ITSolution.Framework.Core")
-                    || n.FullName.Contains("ITSolution.Framework.Server.Core")))
+                    || n.FullName.Contains("ITSolution.Framework.Server.Core") || n.FullName.Contains("Hunter.API")))
                     {
                         this.Load(asm);
                     }
@@ -106,7 +105,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             return assembly;
         }
 
-        internal string[] InternalGetServerAssemblies()
+        private string[] InternalGetServerAssemblies()
         {
             string[] files = null;
             try
@@ -114,13 +113,13 @@ namespace ITSolution.Framework.Core.BaseClasses
                 string exec = AppDomain.CurrentDomain.FriendlyName;
 
                 files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
-                    .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray();
+                    .Where(f => f.Contains("ITSolution.Framework.Servers.Core") || f.Contains("Hunter.API")).ToArray();
 
             }
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw;
+                throw ex;
             }
             return files;
         }

@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Common;
 using System.Linq;
 
@@ -71,6 +73,10 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         {
             InternalAdd(parameterName, @operator, value);
         }
+        public void Add(string parameterName, Operator @operator, object value, Type type)
+        {
+            InternalAdd(parameterName, @operator, value, type);
+        }
         public void Add(string parameterName, Operator @operator, object value, Condition condition)
         {
             InternalAdd(parameterName, @operator, value, condition);
@@ -83,6 +89,36 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             customDbParameter.Operator = @operator;
             customDbParameter.Condition = condition;
             Add(customDbParameter);
+        }
+        private void InternalAdd(string parameterName, Operator @operator, object value, Type type,
+           Condition condition = Condition.None)
+        {
+            CustomDbParameter customDbParameter = new CustomDbParameter(parameterName, value);
+            customDbParameter.Operator = @operator;
+            customDbParameter.Condition = condition;
+            customDbParameter.DbType = GetDbType(type);
+            Add(customDbParameter);
+        }
+        private DbType GetDbType(Type type)
+        {
+            DbType dbType = DbType.String;
+            switch (type.Name)
+            {
+                case "DateTime":
+                    dbType = DbType.DateTime;
+                    break;
+                case "Int32":
+                    dbType = DbType.Int32;
+                    break;
+                case "Int64":
+                    dbType = DbType.Int64;
+                    break;
+                default:
+                    break;
+            }
+
+            return dbType;
+
         }
 
         public void Clear()

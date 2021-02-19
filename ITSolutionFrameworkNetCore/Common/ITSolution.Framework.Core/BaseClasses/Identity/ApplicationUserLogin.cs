@@ -8,7 +8,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
     //AspNetUserLogins
     //[Table("ITS_USER_LOGINS")]
-    public class ApplicationUserLogin : IdentityUserLogin<string>
+    public class ApplicationUserLogin : IdentityUserLogin<int>
     {
     }
 }

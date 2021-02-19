@@ -2,8 +2,8 @@
 <configuration>
   <!-- Tipo de Conexão -->
   <!-- Tipos: MSSQL, Oracle, SQLITE -->
-  <serverType typeName="SQLITE" />
-  <defaultConnection name="SQLite" />
+  <serverType typeName="MSSQL" />
+  <defaultConnection name="Hunter" />
   <serverPort name ="9000"/>
   <AssemblyRegisterServices name ="ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices"/>
 
@@ -20,12 +20,12 @@
 
   <connectionStrings>
     <!--Azure Database to Developer-->
-    <connection name="ITS" serverName="itsolution-sql.database.windows.net" database="dbBalcao_DEV" user="itsadmin" password="its12345%" security="false" />
-    <!--Azure Database to Developer-->
-    <connection name="Dev" serverName="(local)" database="dbBalcao_DEV" security="true" />
-    <connection name="LocalDB" serverName="(localdb)\MSSQLLocalDB" database="dbBalcao_DEV" security="true" />
-    <connection name="ITS_Oracle" serverPort="1522" serverHost="adb.sa-saopaulo-1.oraclecloud.com" connectData="service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com" user="gercy" password="Grc#944692_91grcpro" security="ssl_server_cert_dn=CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US" />
+    <connection name="Hunter_Azure" serverName="itsolution.database.windows.net" database="h_invest_dev" user="itsadmin" password="superHunter00" security="false" />
+    <!--Local Database to Developer-->
+    <connection name="Hunter" serverName="(localdb)\MSSQLLocalDB" database="HunterInvestimentos_Int" security="true" />
     <connection name="SQLite" database="sqliteDatabase.db" />
+
+    <connection name="ITS_Oracle" serverPort="1522" serverHost="adb.sa-saopaulo-1.oraclecloud.com" connectData="service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com" user="gercy" password="Grc#944692_91grcpro" security="ssl_server_cert_dn=CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US" />
 
   </connectionStrings>
 </configuration>

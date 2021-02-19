@@ -20,11 +20,21 @@ using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity;
 using ITSolution.Framework.BaseClasses;
+using Hangfire;
+using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
+using System.IO;
+using Newtonsoft.Json.Converters;
+using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.FileProviders;
+//using Microsoft.Net.Http.Headers;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
     public abstract class StartupBase : IStartup
     {
+        string HunterPolicy = "HunterPolicy";
         protected StartupBase()
         {
         }
@@ -40,13 +50,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
         private Assembly Default_Resolving(AssemblyLoadContext arg1, AssemblyName arg2)
         {
-            if (arg2.Name.Contains("ITSolution"))
-                return ITSAssemblyResolve.ITSLoader.LoadFromAssemblyName(arg2);
-            else
-            {
-                AssemblyLoadContext ctx = new AssemblyLoadContext("StandardNET", false);
-                return ctx.LoadFromAssemblyName(arg2);
-            }
+            return ItsAssemblyResolve.ItsLoader.LoadFromAssemblyName(arg2);
         }
 
         protected virtual IConfiguration Configuration { get; }
@@ -54,23 +58,35 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.ConfigureIdentity();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
                 options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
+                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
             });
+
+            services.AddHttpContextAccessor();
+
+            services.AddHangfire(config =>
+                config.UseSqlServerStorage(EnvironmentManager.Configuration.ConnectionString));
 
             try
             {
-                services.AddDatabaseDeveloperPageExceptionFilter();
-                IMvcBuilder mvcBuilder = services.AddMvc();
+
+                IMvcBuilder mvcBuilder = services.AddMvc()
+                    .AddNewtonsoftJson(o =>
+                    {
+                        o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                        o.SerializerSettings.Converters.Add(new StringEnumConverter());
+                    });
+
                 //starting application parts
-                foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
-                {
-                    Assembly asm = ITSAssemblyResolve.ITSLoader.Load(file);
-                    mvcBuilder.AddApplicationPart(asm);
-                }
+                //foreach (var file in ItsAssemblyResolve.ItsLoader.GetServerAssemblies())
+                //{
+                //    Assembly asm = ItsAssemblyResolve.ItsLoader.Load(file);
+                //    mvcBuilder.AddApplicationPart(asm);
+                //}
 
                 foreach (var item in ServiceDescriptors)
                 {
@@ -78,6 +94,60 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                 }
 
                 services.AddRazorPages();
+
+                //TODO:
+                //implementar logica de carregar xml's de documentacao de assemblies...
+                //string caminhoXmlDoc = Path.Combine(EnvironmentInformation.APIAssemblyFolder, "Hunter.API.CadastrosBasicos.xml");
+                var dic = Directory.GetFiles(AppContext.BaseDirectory, "Hunter.*.xml");
+
+                //TODO:
+                //encapsular para método a chamada da config do swagger
+                services.AddSwaggerGen(c =>
+                {
+
+                    c.SwaggerDoc("v1",
+                        new OpenApiInfo
+                        {
+                            Title = "Hunter Investimentos",
+                            Version = "v1",
+                            Description = "APIs Hunter Investimentos",
+                            Contact = new OpenApiContact
+                            {
+                                Name = "IT Solution",
+                                Url = new Uri("https://www.itsolutioninformatica.com.br")
+                            }
+                        });
+                    //c.IncludeXmlComments(caminhoXmlDoc);
+
+                    foreach (var f in dic)
+                    {
+                        c.IncludeXmlComments(f);
+                    }
+                });
+
+                services.AddCors(options =>
+                    {
+                        options.AddPolicy(name: HunterPolicy,
+                            builder =>
+                            {
+                                builder.WithOrigins("*");
+                                builder.WithHeaders(HeaderNames.ContentType, "x-custom-header");
+                                builder.WithMethods("PUT", "DELETE", "GET");
+                            });
+
+                        //options.AddDefaultPolicy(policy => 
+                        //{ 
+
+                        //    policy.AllowAnyOrigin();
+                        //    policy.AllowAnyMethod();
+                        //    policy.AllowAnyHeader();
+                        //});
+                    });
+
+                //react
+                services.ConfigureReact();
+
+                //standard ITS framework. nao remover.
                 return services.BuildServiceProvider();
             }
             catch (Exception ex)
@@ -95,7 +165,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseMigrationsEndPoint();
+                app.UseDatabaseErrorPage();
+                //app.UseBrowserLink();
+
             }
             else
             {
@@ -105,20 +177,39 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
+                RequestPath = "/Uploads"
+            });
 
+            app.UseCors(HunterPolicy);
             app.UseRouting();
-
-
             app.UseAuthentication();
             app.UseAuthorization();
 
+            //hangfire jobs
+            app.UseHangfireDashboard("/jobs", new DashboardOptions() { Authorization = new[] { new AuthorizationFilter() } });//
+            app.UseHangfireServer();
+
+            // Ativando middlewares para uso do Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json",
+                    "Hunter Investimentos");
+
+            });
+
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapRazorPages();
+                //endpoints.MapRazorPages();
                 endpoints.MapControllers();
 
             });
+
+            app.UseReact(env);
 
         }
     }

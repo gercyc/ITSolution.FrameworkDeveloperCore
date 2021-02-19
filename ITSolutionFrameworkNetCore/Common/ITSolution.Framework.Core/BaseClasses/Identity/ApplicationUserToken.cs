@@ -8,7 +8,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
     //AspNetUserTokens
     //[Table("ITS_USER_TOKENS")]
-    public class ApplicationUserToken : IdentityUserToken<string>
+    public class ApplicationUserToken : IdentityUserToken<int>
     {
     }
 }

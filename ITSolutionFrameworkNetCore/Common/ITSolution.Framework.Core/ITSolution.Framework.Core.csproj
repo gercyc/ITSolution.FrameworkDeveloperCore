@@ -1,12 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Gercy Campos</Authors>
-    <FileVersion>1.0.0.7</FileVersion>
-    <Version>1.0.7</Version>
+    <FileVersion>1.0.0.5</FileVersion>
+    <Version>1.0.5</Version>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <PackageVersion>1.0.7</PackageVersion>
+    <PackageVersion>1.0.6</PackageVersion>
     <Title>Classes comuns</Title>
     <Description>Classes comuns para utilização durante desenvolvimento. </Description>
     <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>

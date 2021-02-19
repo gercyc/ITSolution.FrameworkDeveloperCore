@@ -9,19 +9,18 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
     //AspNetUsers
     //[Table("ITS_USER")]
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<int>
     {
-        [Required]
-        [Display(Name = "Data Inclusão")]
-        public DateTime DataInclusao { get; set; }
-
-        [StringLength(200)]
-        public string Skin { get; set; }
-
+        //for json
         [NotMapped]
         public string Password { get; set; }
+        //for json
         [NotMapped]
         public string NewPassword { get; set; }
+
+        public string Endereco { get; set; }
+        public string Ancord { get; set; }
+        public DateTime? DataDesativado { get; set; }
 
         public ApplicationUser()
         {

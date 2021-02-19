@@ -8,7 +8,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
     //AspNetUserClaims
     //[Table("ITS_USER_CLAIMS")]
-    public class ApplicationUserClaim : IdentityUserClaim<string>
+    public class ApplicationUserClaim : IdentityUserClaim<int>
     {
     }
 }

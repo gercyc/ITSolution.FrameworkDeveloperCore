@@ -10,19 +10,19 @@ namespace ITSolution.Framework.Core.BaseClasses.CommonEntities
 {
     [Serializable]
     [Table("ITS_MENU")]
-    public class ApplicationMenu
+    public class ApplicationMenu: Entity<int>
     {
-        [Key]//pk
-        [Column]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]//sera auto increment
-        public int IdMenu { get; set; }
-        [StringLength(300)]
         public string NomeMenu { get; set; }
-        public Nullable<int> MenuPai { get; set; }
+        public int? MenuPai { get; set; }
+        
+        [NotMapped]
+        public ApplicationMenu ParentMenu { get; set; }
+
+        [NotMapped]
+        public List<ApplicationMenu> ChildMenus { get; set; }
+
         public bool Status { get; set; }
-        [StringLength(500)]
         public string MenuText { get; set; }
-        [StringLength(50)]
         public string MenuType { get; set; }
         public string ControllerClass { get; set; }
         public string ActionController { get; set; }
