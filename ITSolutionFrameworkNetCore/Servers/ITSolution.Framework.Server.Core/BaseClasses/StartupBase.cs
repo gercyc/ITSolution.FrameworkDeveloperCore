@@ -34,12 +34,18 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         {
             Configuration = configuration;
             //assinando o evento para definir quem vai resolver os assemblies
-            AssemblyLoadContext.Default.Resolving += Default_Resolving;
+            //AssemblyLoadContext.Default.Resolving += Default_Resolving;
         }
 
         private Assembly Default_Resolving(AssemblyLoadContext arg1, AssemblyName arg2)
         {
-            return ITSAssemblyResolve.ITSLoader.LoadFromAssemblyName(arg2);
+            if (arg2.Name.Contains("ITSolution"))
+                return ITSAssemblyResolve.ITSLoader.LoadFromAssemblyName(arg2);
+            else
+            {
+                AssemblyLoadContext ctx = new AssemblyLoadContext("StandardNET", false);
+                return ctx.LoadFromAssemblyName(arg2);
+            }
         }
 
         protected virtual IConfiguration Configuration { get; }
