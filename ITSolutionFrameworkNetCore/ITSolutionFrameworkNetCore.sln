@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29306.81
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31512.422
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{BB131043-263D-44F6-B6BB-70072D0C783D}"
 EndProject
@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Copy_Output_Files_Api.bat = Copy_Output_Files_Api.bat
 		Copy_Output_Files_Core.bat = Copy_Output_Files_Core.bat
+		Leiame_PostBuild_Events.txt = Leiame_PostBuild_Events.txt
 		SolutionInfo.cs = SolutionInfo.cs
 	EndProjectSection
 EndProject
@@ -41,7 +42,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "Client\ConsoleApp1\ConsoleApp1.csproj", "{76DDCC01-C8EF-4A70-9285-23F3DDA7258B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSolution.Framework.Servers.Core.CustomersPages", "Servers\ITSolution.Framework.Servers.Core.CustomersPages\ITSolution.Framework.Servers.Core.CustomersPages.csproj", "{55B7970B-2266-4862-8323-4DFFC848E627}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.CustomersPages", "Servers\ITSolution.Framework.Servers.Core.CustomersPages\ITSolution.Framework.Servers.Core.CustomersPages.csproj", "{55B7970B-2266-4862-8323-4DFFC848E627}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.Pages", "Templates\ITSolution.Framework.Servers.Core.Pages\ITSolution.Framework.Servers.Core.Pages.csproj", "{CC71F43A-CA7A-4160-84C9-8298BE110893}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +84,10 @@ Global
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +102,7 @@ Global
 		{16E9482F-2454-48A3-9CE0-CE206B1B67C6} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 		{76DDCC01-C8EF-4A70-9285-23F3DDA7258B} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 		{55B7970B-2266-4862-8323-4DFFC848E627} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
+		{CC71F43A-CA7A-4160-84C9-8298BE110893} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5142566D-4AB3-46E6-99D0-9F766D6EC922}

@@ -33,7 +33,7 @@ namespace ITSolution.Framework.Core.AspHost
 
         public Startup(IConfiguration configuration) : base(configuration)
         {
-            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Singleton));
+            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
         }
     }
 }

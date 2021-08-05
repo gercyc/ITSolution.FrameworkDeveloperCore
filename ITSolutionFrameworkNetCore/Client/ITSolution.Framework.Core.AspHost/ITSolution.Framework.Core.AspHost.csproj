@@ -41,6 +41,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj" />
     <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj" />
+    <ProjectReference Include="..\..\Templates\ITSolution.Framework.Servers.Core.Pages\ITSolution.Framework.Servers.Core.Pages.csproj" />
   </ItemGroup>
 
   <ItemGroup>

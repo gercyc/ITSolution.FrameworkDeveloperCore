@@ -1,0 +1,15 @@
+itsolutiondb_high = (description= (address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=ottee24edsrryod_itsolutiondb_high.atp.oraclecloud.com))(security=(ssl_server_cert_dn=
+        "CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US"))   )
+
+itsolutiondb_low = (description= (address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=ottee24edsrryod_itsolutiondb_low.atp.oraclecloud.com))(security=(ssl_server_cert_dn=
+        "CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US"))   )
+
+itsolutiondb_medium = (description= (address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=ottee24edsrryod_itsolutiondb_medium.atp.oraclecloud.com))(security=(ssl_server_cert_dn=
+        "CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US"))   )
+
+itsolutiondb_tp = (description= (address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=ottee24edsrryod_itsolutiondb_tp.atp.oraclecloud.com))(security=(ssl_server_cert_dn=
+        "CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US"))   )
+
+itsolutiondb_tpurgent = (description= (address=(protocol=tcps)(port=1522)(host=adb.sa-saopaulo-1.oraclecloud.com))(connect_data=(service_name=ottee24edsrryod_itsolutiondb_tpurgent.atp.oraclecloud.com))(security=(ssl_server_cert_dn=
+        "CN=adb.sa-saopaulo-1.oraclecloud.com,OU=Oracle ADB SAOPAULO,O=Oracle Corporation,L=Redwood City,ST=California,C=US"))   )
+

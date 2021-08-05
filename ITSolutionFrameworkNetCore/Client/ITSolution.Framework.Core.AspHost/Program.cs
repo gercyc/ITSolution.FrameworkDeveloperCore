@@ -25,8 +25,9 @@ namespace ITSolution.Framework.Core.AspHost
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             string url = string.Format("http://*:{0}", EnvironmentInformation.ServerPort);
+            string urlHttps = string.Format("https://*:{0}", 5001);
 
-            _webHostBuilder = WebHost.CreateDefaultBuilder(args).UseUrls(url)
+            _webHostBuilder = WebHost.CreateDefaultBuilder(args).UseUrls(url, urlHttps)
                 .UseStartup<Startup>();
 
             return _webHostBuilder;

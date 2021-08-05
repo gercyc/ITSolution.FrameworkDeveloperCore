@@ -35,8 +35,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
                 options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 6;
                 options.Password.RequireLowercase = false;
-
-            }).AddEntityFrameworkStores<ITSIdentityContext>().AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<ITSIdentityContext>().AddDefaultTokenProviders();//.AddDefaultUI();
 
             //configura os cookies que armazenarão os dados do usuário logado
             services.ConfigureApplicationCookie(options =>

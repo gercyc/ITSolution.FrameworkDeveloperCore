@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "ITSolution.Framework.Core.Host": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "remoteDebugEnabled": false
+    }
+  }
+}

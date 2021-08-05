@@ -17,11 +17,11 @@ using System.Reflection;
 using System.Runtime.Loader;
 using System.Text;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
-using StartupBase = ITSolution.Framework.Core.Server.BaseClasses.StartupBase;
+using ITSolution.Framework.Core.Server.BaseClasses;
 
 namespace ITSolution.Framework.Core.Host
 {
-    public class Startup : StartupBase
+    public class Startup : ITSolution.Framework.Core.Server.BaseClasses.StartupBase
     {
         IServiceCollection _serviceDescriptors;
 
@@ -34,6 +34,7 @@ namespace ITSolution.Framework.Core.Host
         public Startup(IConfiguration configuration) : base(configuration)
         {
             ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
+            
         }
     }
 }

@@ -12,6 +12,12 @@ namespace ITSolution.Framework.Core.BaseClasses
 {
     public class ITSAssemblyResolve : AssemblyLoadContext
     {
+        private AssemblyDependencyResolver _resolver;
+        public ITSAssemblyResolve(string contextName) : base(name: contextName, isCollectible: false)
+        {
+            _resolver = new AssemblyDependencyResolver(EnvironmentInformation.APIAssemblyFolder);
+        }
+
         #region Singleton
         static ITSAssemblyResolve _loader;
         public static ITSAssemblyResolve ITSLoader
@@ -20,7 +26,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 if (_loader == null)
                 {
-                    _loader = new ITSAssemblyResolve();
+                    _loader = new ITSAssemblyResolve("ITSolution");
                 }
                 return _loader;
             }
@@ -30,6 +36,7 @@ namespace ITSolution.Framework.Core.BaseClasses
 
         protected override Assembly Load(AssemblyName assemblyName)
         {
+            string AsmPath = _resolver.ResolveAssemblyToPath(assemblyName);
             Assembly assembly = null;
             try
             {
@@ -47,12 +54,26 @@ namespace ITSolution.Framework.Core.BaseClasses
                 }
                 catch (Exception exApi)
                 {
+                    try
+                    {
+                        assembly = Assembly.LoadFile(Path.Combine(AppContext.BaseDirectory, assemblyName.Name + ".dll"));
+                        DependencyContext.Load(assembly);
+                        return assembly;
+                    }
+                    catch (Exception ex1)
+                    {
+                        Utils.ShowExceptionStack(ex1);
+                        Utils.ShowExceptionStack(ex1);
+                    }
+
                     Utils.ShowExceptionStack(exApi);
-                    Utils.ShowExceptionStack(fileNotFound);
-
+                    Utils.ShowExceptionStack(exApi);
                 }
-
+                assembly = Assembly.LoadFile(AsmPath);
+                Utils.ShowExceptionStack(fileNotFound);
+                Utils.ShowExceptionStack(fileNotFound);
             }
+
             catch (Exception exAsmNotFound)
             {
                 Utils.ShowExceptionStack(exAsmNotFound);
@@ -109,13 +130,32 @@ namespace ITSolution.Framework.Core.BaseClasses
         internal string[] InternalGetServerAssemblies()
         {
             string[] files = null;
+            List<string> fileList = new List<string>();
+
             try
             {
                 string exec = AppDomain.CurrentDomain.FriendlyName;
 
-                files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
-                    .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray();
+                foreach (var apiAssembly in Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
+                    .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray())
+                {
+                    fileList.Add(apiAssembly);
+                }
 
+                foreach (var coreAssembly in Directory.GetFiles(EnvironmentInformation.CoreAssemblyFolder, "*.dll")
+                    .Where(f => f.Contains("ITSolution.Framework.Core")).ToArray())
+                {
+                    fileList.Add(coreAssembly);
+                }
+
+
+                //files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
+                //    .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray();
+
+                //  files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
+                //    .Where(f => f.Contains("ITSolution.Framework.Servers.Core")).ToArray();
+
+                files = fileList.ToArray();
             }
             catch (Exception ex)
             {

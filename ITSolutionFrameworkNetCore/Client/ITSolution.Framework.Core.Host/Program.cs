@@ -13,7 +13,30 @@ using System.Runtime.Loader;
 
 namespace ITSolution.Framework.Core.Host
 {
-    class Program
+    public class Program
+    {
+        public static IWebHost DefaultWebHostBuilder { get { return _webHost; } }
+        private static IWebHost _webHost;
+        static IWebHostBuilder _webHostBuilder;
+        public static void Main(string[] args)
+        {
+            _webHost = CreateWebHostBuilder(args).Build();
+            _webHost.Run();
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
+            string url = string.Format("http://*:{0}", EnvironmentInformation.ServerPort);
+
+            _webHostBuilder = WebHost.CreateDefaultBuilder(args).UseUrls(url)
+                .UseStartup<Startup>().UseStaticWebAssets();
+
+            return _webHostBuilder;
+        }
+    }
+
+    /*
+         class Program
     {
         static IWebHostBuilder webHostBuilder;
         static void Main(string[] args)
@@ -31,5 +54,6 @@ namespace ITSolution.Framework.Core.Host
             return webHostBuilder;
         }
     }
+     */
 
 }

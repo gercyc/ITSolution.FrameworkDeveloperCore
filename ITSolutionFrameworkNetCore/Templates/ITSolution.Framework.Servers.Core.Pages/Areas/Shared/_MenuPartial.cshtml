@@ -1,0 +1,61 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ITSolution.Framework.Core.BaseClasses.CommonEntities
+@using ITSolution.Framework.Core.BaseClasses
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!-- Heading -->
+@*<div class="sidebar-heading">
+        Operações
+    </div>*@
+<!-- Nav Item - Pages Collapse Menu -->
+
+@{
+    string url = string.Format("{0}://{1}/api/menu", this.Context.Request.Scheme, this.Context.Request.Host);
+
+    List<ApplicationMenu> MenusP = new List<ApplicationMenu>();
+
+    if (SignInManager.IsSignedIn(User))
+    {
+        var c = Context.Request.Headers;
+        MenusP = await APIUtil.GetListFromAPI<ApplicationMenu>(url, Context);
+    }
+
+    if (MenusP != null && MenusP.Count > 0)
+    {
+        int menuIdPai = 0;
+        var mnuGrouped = MenusP.GroupBy(m => m.MenuPai).Select(g => new { Parent = g.Key, List = g.ToList() });
+        @foreach (var item in mnuGrouped.OrderBy(mo => mo.Parent))
+        {
+            foreach (var mnuParent in item.List.Where(mn => mn.MenuPai == null && mn.MenuType == "Page"))
+            {
+                menuIdPai = mnuParent.IdMenu;
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id=@string.Concat(@mnuParent.NomeMenu, mnuParent.IdMenu) role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>@mnuParent.MenuText</span>
+                    </a>
+
+                    <div class="dropdown-menu" aria-labelledby=@string.Concat(@mnuParent.NomeMenu, mnuParent.IdMenu)>
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            @foreach (var childMenu in MenusP.Where(mnm => mnm.MenuPai == menuIdPai && mnm.MenuType == "Button"))
+                            {
+                                if (childMenu.ActionController != null)
+                                {
+                                    <a class="dropdown-item" href=@string.Concat(@childMenu.ControllerClass, "/", @childMenu.ActionController)>@childMenu.MenuText</a>
+
+                                }
+                                else
+                                {
+                                    <a class="dropdown-item" href="#">@childMenu.MenuText</a>
+
+                                }
+                            }
+                        </div>
+                    </div>
+                </li>
+            }
+        }
+    }
+
+}
+
+

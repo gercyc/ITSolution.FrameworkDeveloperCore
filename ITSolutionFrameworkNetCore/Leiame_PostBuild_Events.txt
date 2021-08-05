@@ -1,0 +1,6 @@
+Colocar no evento posBuild para copiar assemblies que contenham razor pages
+call $(SolutionDir)Copy_Output_Files_Api.bat $(TargetDir)$(TargetName).dll
+call $(SolutionDir)Copy_Output_Files_Api.bat $(TargetDir)$(TargetName).Views.dll
+
+Caso seja somente uma API sem paginas, colocar somente o comando abaixo
+call $(SolutionDir)Copy_Output_Files_Api.bat $(TargetDir)$(TargetName).dll

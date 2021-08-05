@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
     {
         private readonly ITSIdentityContext _context;
 
-        public AuthController(ITSIdentityContext context)
+
+        public AuthController()
         {
-            _context = context;
+            ItsDbContextOptions opt = new ItsDbContextOptions();
+            _context = new ITSIdentityContext(opt);
         }
 
         [HttpGet]
