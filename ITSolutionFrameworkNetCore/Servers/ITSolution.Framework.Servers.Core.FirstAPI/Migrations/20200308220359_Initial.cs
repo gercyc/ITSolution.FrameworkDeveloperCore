@@ -18,8 +18,8 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Migrations
                     Status = table.Column<bool>(nullable: false),
                     MenuText = table.Column<string>(maxLength: 500, nullable: true),
                     MenuType = table.Column<string>(maxLength: 50, nullable: true),
-                    ControllerClass = table.Column<string>(nullable: true),
-                    ActionController = table.Column<string>(nullable: true)
+                    ControllerClass = table.Column<string>(maxLength: 50, nullable: true),
+                    ActionController = table.Column<string>(maxLength: 50, nullable: true)
                 },
                 constraints: table =>
                 {

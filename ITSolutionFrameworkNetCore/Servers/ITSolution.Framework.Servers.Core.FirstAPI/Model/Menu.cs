@@ -20,7 +20,9 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Models
         public string MenuText { get; set; }
         [StringLength(50)]
         public string MenuType { get; set; }
+        [StringLength(50)]
         public string ControllerClass { get; set; }
+        [StringLength(50)]
         public string ActionController { get; set; }
         public Menu()
         {
