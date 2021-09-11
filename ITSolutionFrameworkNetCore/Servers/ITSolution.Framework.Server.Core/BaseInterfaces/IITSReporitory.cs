@@ -7,14 +7,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
+using System.Linq;
 
 namespace ITSolution.Framework.Server.Core.BaseInterfaces
 {
     //base https://github.com/stuartmcg123/GenericRepository/
 
-    public interface IITSReporitory<TEntity, TContext> 
-                                    where TEntity : class
+    public interface IITSReporitory<TEntity, TContext, Tpk>
+                                    where TEntity : ITSolution.Framework.Core.BaseClasses.Entity<Tpk>
                                     where TContext : ItSolutionAncestorDbContext
+                                    where Tpk : IEquatable<Tpk>
     {
         /// <summary>
         /// Synchronously retrieve all entities.
@@ -33,6 +35,35 @@ namespace ITSolution.Framework.Server.Core.BaseInterfaces
            int skip = 0,
            int take = 0,
            Expression<Func<TEntity, object>>[] includes = null);
+
+        /// <summary>
+        /// Synchronously retrieve all entities.
+        /// </summary>
+        /// <param name="predicate">Filter the results.</param>
+        /// <param name="orderBy">Order the results.</param>
+        /// <param name="orderDirection">Specify the direction of the ordering.</param>
+        /// <param name="skip">Number of rows to skip</param>
+        /// <param name="take">Number of rows to retrieve</param>
+        /// <param name="includes">Child properites to include.</param>
+        /// <returns>The filtered list of <see cref="TEntity"/></returns>
+        IQueryable<TEntity> GetAll();
+
+        /// <summary>
+        /// Synchronously retrieve all entities.
+        /// </summary>
+        /// <param name="predicate">Filter the results.</param>
+        /// <param name="orderBy">Order the results.</param>
+        /// <param name="orderDirection">Specify the direction of the ordering.</param>
+        /// <param name="skip">Number of rows to skip</param>
+        /// <param name="take">Number of rows to retrieve</param>
+        /// <param name="includes">Child properites to include.</param>
+        /// <returns>The filtered list of <see cref="TEntity"/></returns>
+        public IQueryable<TEntity> Select(Expression<Func<TEntity, bool>> predicate = null,
+            Expression<Func<TEntity, object>> orderBy = null,
+            OrderDirection orderDirection = OrderDirection.Ascending,
+            int skip = 0,
+            int take = 0,
+            Expression<Func<TEntity, object>>[] includes = null);
 
         /// <summary>
         /// Asynchronously retrieve all entities.
@@ -123,5 +154,7 @@ namespace ITSolution.Framework.Server.Core.BaseInterfaces
         /// </summary>
         /// <returns>{TEntity}</returns>
         Task SaveChangesAsync();
+
+        int NextVal(TEntity entity);
     }
 }

@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net5</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\css\Site.css" />
+    <Content Remove="wwwroot\css\style.css" />
+    <Content Remove="wwwroot\css\style.css.map" />
+    <Content Remove="wwwroot\js\custom.min.js" />
+    <Content Remove="wwwroot\js\dashboard\dashboard-1.js" />
+    <Content Remove="wwwroot\js\gleek.js" />
+    <Content Remove="wwwroot\js\plugins-init\amchart-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\block-ui-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-duallistbox-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-editable-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-multiselect-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-notify-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-select-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-tagsinput-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bootstrap-touchpin-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bs-date-picker-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\bs-daterange-picker-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\c3-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chart-google-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chartist.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chartjs-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chartjs-plugin-datalabels-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chartjs-streaming-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\chartjs-widget-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\circle-invoice-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\circle-progress-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\clipboard-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\clock-picker-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\color-picker-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\counterup-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\cropperjs-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\croppie-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datamap-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datamap-usa-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datamap-world-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datatable-page-contact-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datatables.init (Saiful Islam's conflicted copy 2018-10-28).js" />
+    <Content Remove="wwwroot\js\plugins-init\datatables.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\datedropper-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\dragula-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\dropify-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\easy-pie-chart-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\echarts-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\editor-ck-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\editor-tinymice-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\email-editor-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\footable-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\form-bootstrap-validate-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\form-pickers-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\fullcalendar-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\highcharts-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\icheck.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery-asColorPicker.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery-countto-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery-steps-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery.bootgrid-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery.flot.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jquery.validate-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jqvmap-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jsgrid-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\jstree-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\justgage.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\knob.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\magnific-popup-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\material-date-picker-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\morris-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\nestable.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\nouislider-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\nouislider-ticket-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\owl-carousel-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\peitychart.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\pickadate-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\pickatime-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\pignose.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\pricint-switch-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\quill-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\repeater-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\rickshaw-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\select2-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\shepherd-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\smartwizard-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\sparkline.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\summernote-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\sweetalert.init.js" />
+    <Content Remove="wwwroot\js\plugins-init\switchery-init.js" />
+    <Content Remove="wwwroot\js\plugins-init\toastr.init.js" />
+    <Content Remove="wwwroot\js\settings.js" />
+    <Content Remove="wwwroot\js\site.js" />
+    <Content Remove="wwwroot\js\styleSwitcher.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <Content Remove="wwwroot\lib\bootstrap\LICENSE" />
+    <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <Content Remove="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <Content Remove="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <Content Remove="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <Content Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <Content Remove="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <Content Remove="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <Content Remove="wwwroot\lib\jquery\dist\jquery.js" />
+    <Content Remove="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <Content Remove="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <Content Remove="wwwroot\lib\jquery\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\css\Site.css" />
+    <None Include="wwwroot\css\style.css" />
+    <None Include="wwwroot\css\style.css.map" />
+    <None Include="wwwroot\js\custom.min.js" />
+    <None Include="wwwroot\js\dashboard\dashboard-1.js" />
+    <None Include="wwwroot\js\gleek.js" />
+    <None Include="wwwroot\js\plugins-init\amchart-init.js" />
+    <None Include="wwwroot\js\plugins-init\block-ui-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-duallistbox-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-editable-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-multiselect-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-notify-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-select-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-tagsinput-init.js" />
+    <None Include="wwwroot\js\plugins-init\bootstrap-touchpin-init.js" />
+    <None Include="wwwroot\js\plugins-init\bs-date-picker-init.js" />
+    <None Include="wwwroot\js\plugins-init\bs-daterange-picker-init.js" />
+    <None Include="wwwroot\js\plugins-init\c3-init.js" />
+    <None Include="wwwroot\js\plugins-init\chart-google-init.js" />
+    <None Include="wwwroot\js\plugins-init\chartist.init.js" />
+    <None Include="wwwroot\js\plugins-init\chartjs-init.js" />
+    <None Include="wwwroot\js\plugins-init\chartjs-plugin-datalabels-init.js" />
+    <None Include="wwwroot\js\plugins-init\chartjs-streaming-init.js" />
+    <None Include="wwwroot\js\plugins-init\chartjs-widget-init.js" />
+    <None Include="wwwroot\js\plugins-init\circle-invoice-init.js" />
+    <None Include="wwwroot\js\plugins-init\circle-progress-init.js" />
+    <None Include="wwwroot\js\plugins-init\clipboard-init.js" />
+    <None Include="wwwroot\js\plugins-init\clock-picker-init.js" />
+    <None Include="wwwroot\js\plugins-init\color-picker-init.js" />
+    <None Include="wwwroot\js\plugins-init\counterup-init.js" />
+    <None Include="wwwroot\js\plugins-init\cropperjs-init.js" />
+    <None Include="wwwroot\js\plugins-init\croppie-init.js" />
+    <None Include="wwwroot\js\plugins-init\datamap-init.js" />
+    <None Include="wwwroot\js\plugins-init\datamap-usa-init.js" />
+    <None Include="wwwroot\js\plugins-init\datamap-world-init.js" />
+    <None Include="wwwroot\js\plugins-init\datatable-page-contact-init.js" />
+    <None Include="wwwroot\js\plugins-init\datatables.init (Saiful Islam's conflicted copy 2018-10-28).js" />
+    <None Include="wwwroot\js\plugins-init\datatables.init.js" />
+    <None Include="wwwroot\js\plugins-init\datedropper-init.js" />
+    <None Include="wwwroot\js\plugins-init\dragula-init.js" />
+    <None Include="wwwroot\js\plugins-init\dropify-init.js" />
+    <None Include="wwwroot\js\plugins-init\easy-pie-chart-init.js" />
+    <None Include="wwwroot\js\plugins-init\echarts-init.js" />
+    <None Include="wwwroot\js\plugins-init\editor-ck-init.js" />
+    <None Include="wwwroot\js\plugins-init\editor-tinymice-init.js" />
+    <None Include="wwwroot\js\plugins-init\email-editor-init.js" />
+    <None Include="wwwroot\js\plugins-init\footable-init.js" />
+    <None Include="wwwroot\js\plugins-init\form-bootstrap-validate-init.js" />
+    <None Include="wwwroot\js\plugins-init\form-pickers-init.js" />
+    <None Include="wwwroot\js\plugins-init\fullcalendar-init.js" />
+    <None Include="wwwroot\js\plugins-init\highcharts-init.js" />
+    <None Include="wwwroot\js\plugins-init\icheck.init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery-asColorPicker.init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery-countto-init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery-steps-init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery.bootgrid-init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery.flot.init.js" />
+    <None Include="wwwroot\js\plugins-init\jquery.validate-init.js" />
+    <None Include="wwwroot\js\plugins-init\jqvmap-init.js" />
+    <None Include="wwwroot\js\plugins-init\jsgrid-init.js" />
+    <None Include="wwwroot\js\plugins-init\jstree-init.js" />
+    <None Include="wwwroot\js\plugins-init\justgage.init.js" />
+    <None Include="wwwroot\js\plugins-init\knob.init.js" />
+    <None Include="wwwroot\js\plugins-init\magnific-popup-init.js" />
+    <None Include="wwwroot\js\plugins-init\material-date-picker-init.js" />
+    <None Include="wwwroot\js\plugins-init\morris-init.js" />
+    <None Include="wwwroot\js\plugins-init\nestable.init.js" />
+    <None Include="wwwroot\js\plugins-init\nouislider-init.js" />
+    <None Include="wwwroot\js\plugins-init\nouislider-ticket-init.js" />
+    <None Include="wwwroot\js\plugins-init\owl-carousel-init.js" />
+    <None Include="wwwroot\js\plugins-init\peitychart.init.js" />
+    <None Include="wwwroot\js\plugins-init\pickadate-init.js" />
+    <None Include="wwwroot\js\plugins-init\pickatime-init.js" />
+    <None Include="wwwroot\js\plugins-init\pignose.init.js" />
+    <None Include="wwwroot\js\plugins-init\pricint-switch-init.js" />
+    <None Include="wwwroot\js\plugins-init\quill-init.js" />
+    <None Include="wwwroot\js\plugins-init\repeater-init.js" />
+    <None Include="wwwroot\js\plugins-init\rickshaw-init.js" />
+    <None Include="wwwroot\js\plugins-init\select2-init.js" />
+    <None Include="wwwroot\js\plugins-init\shepherd-init.js" />
+    <None Include="wwwroot\js\plugins-init\smartwizard-init.js" />
+    <None Include="wwwroot\js\plugins-init\sparkline.init.js" />
+    <None Include="wwwroot\js\plugins-init\summernote-init.js" />
+    <None Include="wwwroot\js\plugins-init\sweetalert.init.js" />
+    <None Include="wwwroot\js\plugins-init\switchery-init.js" />
+    <None Include="wwwroot\js\plugins-init\toastr.init.js" />
+    <None Include="wwwroot\js\settings.js" />
+    <None Include="wwwroot\js\site.js" />
+    <None Include="wwwroot\js\styleSwitcher.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css" />
+    <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+    <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+    <None Include="wwwroot\lib\bootstrap\LICENSE" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+    <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    <None Include="wwwroot\lib\jquery\LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.8.2" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="21.1.3" />
+    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Configuration\ITSConfig.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  
+</Project>

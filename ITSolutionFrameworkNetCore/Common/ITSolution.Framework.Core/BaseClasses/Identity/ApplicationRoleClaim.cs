@@ -6,8 +6,6 @@ using System.Text;
 
 namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
-    //AspNetRoleClaims
-    //[Table("ITS_ROLE_CLAIMS")]
     public class ApplicationRoleClaim : IdentityRoleClaim<string>
     {
 

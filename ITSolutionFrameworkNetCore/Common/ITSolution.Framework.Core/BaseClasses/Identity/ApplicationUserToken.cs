@@ -6,8 +6,6 @@ using System.Text;
 
 namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
-    //AspNetUserTokens
-    //[Table("ITS_USER_TOKENS")]
     public class ApplicationUserToken : IdentityUserToken<string>
     {
     }

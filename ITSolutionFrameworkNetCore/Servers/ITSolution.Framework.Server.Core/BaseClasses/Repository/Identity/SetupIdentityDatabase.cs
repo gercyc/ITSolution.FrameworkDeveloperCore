@@ -15,14 +15,20 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
 {
     public static class SetupIdentityDatabase
     {
+        /// <summary>
+        /// Add default configuration and context for ASP.NET Identity
+        /// </summary>
+        /// <param name="services"></param>
         public static void ConfigureIdentity(this IServiceCollection services)
         {
             services.AddDbContext<ITSIdentityContext>(options =>
             {
                 if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
-                    options.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
+                    options.UseSqlServer(EnvironmentInformation.ConnectionString);
                 else if (EnvironmentInformation.DatabaseType == DatabaseType.SQLITE)
                     options.UseSqlite(EnvironmentInformation.ConnectionString);
+                else if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
+                    options.UseOracle(EnvironmentInformation.ConnectionString);
             });
 
             //configurando o uso do ASP.NET Identity

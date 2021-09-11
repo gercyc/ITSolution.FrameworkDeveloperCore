@@ -1,8 +1,6 @@
 ﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
 using ITSolution.Framework.Server.Core.BaseInterfaces;
-using ITSolution.Framework.Servers.Core.FirstAPI.Model;
-using ITSolution.Framework.Servers.Core.FirstAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
@@ -11,15 +9,16 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
+using ITSolution.Framework.Core.BaseClasses.CommonEntities;
+using ITSolution.Framework.Core.BaseClasses.Identity;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 {
     public class DbAccessContext : ItSolutionBaseContext
     {
-        public DbAccessContext(ItsDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
-        {
-            base.Database.Migrate();
-        }
+
         /// <summary>
         /// Constructor for EF Migrations
         /// The new instance of ItsDbContextOptions was created using default configurations on ITSolution.Framework.Core.Server\Configuration\ITSConfig.xml
@@ -28,7 +27,21 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
         {
             base.Database.EnsureCreated();
         }
+        public DbAccessContext(ItsDbContextOptions itsDbContextOptions) : base(itsDbContextOptions)
+        {
+            base.Database.Migrate();
+        }
+        public DbAccessContext(ItsDbContextOptions itsDbContextOptions, UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IHttpContextAccessor accessor) : base(itsDbContextOptions, userManager, signInManager, accessor)
+        {
+            try
+            {
+                base.Database.Migrate();
 
+            }
+            catch (Exception)
+            {
+            }
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.LogTo(Console.WriteLine);
@@ -40,18 +53,11 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 
         }
 
-        public DbSet<Menu> MenuSet { get; set; }
+        public DbSet<ApplicationMenu> MenuSet { get; set; }
 
-        public IITSReporitory<Menu, DbAccessContext> MenuRep
+        public IITSReporitory<ApplicationMenu, DbAccessContext, string> MenuRep
         {
-            get { return new ITSRepository<Menu, DbAccessContext>(this); }
-        }
-
-        public DbSet<Usuario> UsuarioSet { get; set; }
-
-        public IITSReporitory<Usuario, DbAccessContext> UsuarioRep
-        {
-            get { return new ITSRepository<Usuario, DbAccessContext>(this); }
+            get { return new ITSRepository<ApplicationMenu, DbAccessContext, string>(this); }
         }
     }
 }

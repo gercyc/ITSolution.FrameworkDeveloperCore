@@ -72,6 +72,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         public string ConnectData { get; internal set; }
         public string TnsAtp { get; internal set; }
         public string WalletLocation { get; set; }
+        public bool OracleWalletSecurity { get; set; }
         public string MinPoolSize { get; set; }
         public string MaxPoolSize { get; set; }
         public string ConnectionTimeOut { get; set; }
@@ -144,9 +145,16 @@ namespace ITSolution.Framework.Core.BaseClasses
                 builderConn = buildConnectionString();
             else if (ServerType == DatabaseType.Oracle)
             {
-                string tnsbase =
-                    "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))";
-                this.TnsAtp = string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation);
+                
+                string tnsbase = OracleWalletSecurity ?
+                    "(description= (address=(protocol=tcps)(port={0})(host={1}))(connect_data=({2}))(security=(my_wallet_directory={3})))":
+                    "(description= (address=(protocol=tcp)(port={0})(host={1}))(connect_data=({2})))";
+
+
+                this.TnsAtp = OracleWalletSecurity?
+                    string.Format(tnsbase, ServerPort, ServerHost, ConnectData, WalletLocation):
+                    string.Format(tnsbase, ServerPort, ServerHost, ConnectData);
+
                 builderConn.AppendFormat("User Id={0};Password={1};Data Source={2};", User, Password, ConnectionName);
             }
             else if (ServerType == DatabaseType.SQLITE)

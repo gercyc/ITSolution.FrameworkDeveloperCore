@@ -56,6 +56,8 @@ namespace ITSolution.Framework.Core.BaseClasses
         public string CoreAssemblyFolder { get; set; }
         public DatabaseType DatabaseType { get; set; }
         public string WalletLocation { get; set; }
+        public bool OracleWalletSecurity { get; set; }
+        public string DefaultSchema { get; set; }
 
         /// <summary>
         /// String de conexão lida da memória principal
@@ -160,7 +162,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                                 app.Default = defaultConnection;
                                 app.ServerType = this.DatabaseType;
                                 app.ConnectionName = i.Attribute("name").Value;
-                                
+
                                 if (DatabaseType == DatabaseType.Oracle)
                                 {
                                     try
@@ -169,20 +171,22 @@ namespace ITSolution.Framework.Core.BaseClasses
                                         app.ServerPort = i.Attribute("serverPort").Value;
                                         app.ServerHost = i.Attribute("serverHost").Value;
                                         app.ConnectData = i.Attribute("connectData").Value;
+                                        app.OracleWalletSecurity = i.Attribute("security") != null ? true : false; /*!string.IsNullOrEmpty(i.Attribute("security").Value);*/
                                         app.WalletLocation = WalletLocation;
+                                        DefaultSchema = i.Attribute("user") != null ? i.Attribute("user").Value : "dbo";
                                     }
                                     catch
                                     {
                                         Console.WriteLine("Falha ao gerar connection oracle");
                                     }
                                 }
-                                else if(DatabaseType == DatabaseType.MSSQL) //mssql
+                                else if (DatabaseType == DatabaseType.MSSQL) //mssql
                                 {
                                     app.ServerName = i.Attribute("serverName").Value;
                                     app.Database = i.Attribute("database").Value;
 
                                 }
-                                else if(DatabaseType == DatabaseType.SQLITE)
+                                else if (DatabaseType == DatabaseType.SQLITE)
                                 {
                                     app.Database = i.Attribute("database").Value;
                                 }
@@ -239,7 +243,7 @@ namespace ITSolution.Framework.Core.BaseClasses
                     {
                         CoreAssemblyFolder = x.Attribute("name").Value.ToString();
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {

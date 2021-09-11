@@ -46,6 +46,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Server
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.Pages", "Templates\ITSolution.Framework.Servers.Core.Pages\ITSolution.Framework.Servers.Core.Pages.csproj", "{CC71F43A-CA7A-4160-84C9-8298BE110893}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Client.App", "Client\DXWebApplication1\ITSolution.Framework.Client.App.csproj", "{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,6 +90,10 @@ Global
 		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC71F43A-CA7A-4160-84C9-8298BE110893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +109,7 @@ Global
 		{76DDCC01-C8EF-4A70-9285-23F3DDA7258B} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 		{55B7970B-2266-4862-8323-4DFFC848E627} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
 		{CC71F43A-CA7A-4160-84C9-8298BE110893} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
+		{9F5AB8EF-D047-48CB-B82B-C2E605C48E5D} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5142566D-4AB3-46E6-99D0-9F766D6EC922}

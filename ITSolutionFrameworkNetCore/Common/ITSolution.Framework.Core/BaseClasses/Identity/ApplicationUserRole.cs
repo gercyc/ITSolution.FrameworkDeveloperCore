@@ -6,8 +6,6 @@ using System.Text;
 
 namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
-    //AspNetUserRoles
-    //[Table("ITS_USER_ROLES")]
     public class ApplicationUserRole : IdentityUserRole<string>
     {
     }

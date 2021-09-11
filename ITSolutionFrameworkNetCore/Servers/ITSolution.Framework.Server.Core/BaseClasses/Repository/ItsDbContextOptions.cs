@@ -14,6 +14,9 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
         public ItsDbContextOptions()
         {
             _optionsBuilder = new DbContextOptionsBuilder();
+            
+            System.Console.WriteLine(EnvironmentInformation.DatabaseType);
+
             if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
                 _optionsBuilder.UseSqlServer(EnvironmentManager.Configuration.ConnectionString);
             else if(EnvironmentInformation.DatabaseType == DatabaseType.Oracle)

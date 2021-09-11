@@ -7,16 +7,11 @@ using System.Text;
 
 namespace ITSolution.Framework.Core.BaseClasses.Identity
 {
-    //AspNetUsers
-    //[Table("ITS_USER")]
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<string>
     {
         [Required]
         [Display(Name = "Data Inclusão")]
         public DateTime DataInclusao { get; set; }
-
-        [StringLength(200)]
-        public string Skin { get; set; }
 
         [NotMapped]
         public string Password { get; set; }
@@ -25,6 +20,8 @@ namespace ITSolution.Framework.Core.BaseClasses.Identity
 
         public ApplicationUser()
         {
+            if (Id == null)
+                Id = Guid.NewGuid().ToString();
         }
     }
 }

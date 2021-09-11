@@ -34,32 +34,18 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
 
         [AllowAnonymous]
         [HttpPost("Login")]
-        public object Login(
+        public async Task<object> Login(
             [FromBody]ApplicationUser usuario,
             [FromServices]UserManager<ApplicationUser> userManager,
             [FromServices]SignInManager<ApplicationUser> signInManager)
         {
-            bool credenciaisValidas = false;
-            // Verifica a existência do usuário nas tabelas do
-            // ASP.NET Core Identity
-            var userIdentity = userManager
-                .FindByNameAsync(usuario.Email).Result;
-            if (usuario != null && !String.IsNullOrWhiteSpace(usuario.Email))
-            {
-                if (userIdentity != null)
-                {
-                    // Efetua o login com base no Id do usuário e sua senha
-                    signInManager.SignInAsync(userIdentity, false);
-                    credenciaisValidas = signInManager.IsSignedIn(User);
-                }
-            }
-
-            if (credenciaisValidas)
+            Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(usuario.UserName, usuario.Password, true, false);
+            
+            if (result.Succeeded)
             {
                 return new
                 {
                     authenticated = true,
-                    userId = userIdentity.Id,
                     message = "OK"
                 };
             }
@@ -165,8 +151,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity
             }
 
             ApplicationUser currentUser = await userManager.FindByIdAsync(id);
-            currentUser.Email = user.Email;
-            currentUser.Skin = user.Skin;
+            currentUser.Email = user.Email;            
             currentUser.PhoneNumber = user.PhoneNumber;
 
             _context.Entry(currentUser).State = EntityState.Modified;

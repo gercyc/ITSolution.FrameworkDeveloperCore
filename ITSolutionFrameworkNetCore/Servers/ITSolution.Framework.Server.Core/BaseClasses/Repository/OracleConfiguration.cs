@@ -14,8 +14,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
         /// </summary>
         public static void ConfigureDataSources()
         {
-            OracleConfiguration.OracleDataSources.Add(EnvironmentInformation.DefaultConnectionName, EnvironmentInformation.TnsAtpSource);
-            OracleConfiguration.WalletLocation = EnvironmentInformation.WalletLocation;
+            if (string.IsNullOrEmpty(OracleConfiguration.OracleDataSources[EnvironmentInformation.DefaultConnectionName]))
+                OracleConfiguration.OracleDataSources.Add(EnvironmentInformation.DefaultConnectionName, EnvironmentInformation.TnsAtpSource);
+
+            if (EnvironmentInformation.OracleWalletSecurity)
+                OracleConfiguration.WalletLocation = EnvironmentInformation.WalletLocation;
         }
     }
 }

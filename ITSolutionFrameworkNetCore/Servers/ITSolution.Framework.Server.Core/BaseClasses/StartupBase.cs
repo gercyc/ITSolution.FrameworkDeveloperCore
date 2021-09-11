@@ -25,6 +25,9 @@ using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
+using ITSolution.Framework.Core.Server.BaseClasses.SetupServices;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
@@ -64,51 +67,23 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
             services.ConfigureIdentity();
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = SameSiteMode.None;
-            });
-
-            try
-            {
-                services.AddDatabaseDeveloperPageExceptionFilter();
-
-                IMvcBuilder mvcBuilder = services.AddMvc();
-                //starting application parts
-                foreach (var file in ITSAssemblyResolve.ITSLoader.GetServerAssemblies())
-                {
-                    Assembly asm = ITSAssemblyResolve.Default.LoadFromAssemblyPath(file);
-                    mvcBuilder.AddApplicationPart(asm)
-                            .AddRazorRuntimeCompilation(options =>
-                            {
-                                options.FileProviders.Add(new EmbeddedFileProvider(asm));
-                            });
-                }
-
-                foreach (var item in ServiceDescriptors)
-                {
-                    services.Replace(item);
-                }
-                services.AddSwaggerGen();
-                services.AddRazorPages();
-                services.AddControllersWithViews();
-                services.AddScoped<IDbContextOptions, ItsDbContextOptions>();
-                return services.BuildServiceProvider();
-            }
-            catch (Exception ex)
-            {
-                Utils.ShowExceptionStack(ex);
-                throw;
-            }
+            services.ConfigureForwards();
+            services.AddHttpContextAccessor();
+            services.AddDatabaseDeveloperPageExceptionFilter();
+            services.ConfigureMVC(ServiceDescriptors);
+            services.AddSwaggerGen();
+            services.AddSingleton<IDbContextOptions, ItsDbContextOptions>();
+            services.AddHttpClient();
+            services.AddScoped<IDbContextOptions, ItsDbContextOptions>();
+            services.AddLogging();
+            return services.BuildServiceProvider();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
             var env = app.ApplicationServices.GetService<IHostEnvironment>();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -120,7 +95,11 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
             app.UseStaticFiles();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
@@ -133,16 +112,12 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             });
 
             app.UseRouting();
-
-
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
-
             });
 
         }

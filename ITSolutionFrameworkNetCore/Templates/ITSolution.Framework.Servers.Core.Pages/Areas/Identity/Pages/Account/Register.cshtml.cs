@@ -76,7 +76,6 @@ namespace ITSolution.Framework.Core.AspHost.Areas.Identity.Pages.Account
                 { 
                     UserName = Input.Email, 
                     Email = Input.Email,
-                    Skin = "Blue",
                     DataInclusao = DateTime.Now
 
                 };

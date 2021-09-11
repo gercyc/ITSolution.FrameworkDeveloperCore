@@ -3,6 +3,8 @@
 @using ITSolution.Framework.Core.BaseClasses
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject System.Net.Http.HttpClient HttpClient
 <!-- Heading -->
 @*<div class="sidebar-heading">
         Operações
@@ -17,26 +19,28 @@
     if (SignInManager.IsSignedIn(User))
     {
         var c = Context.Request.Headers;
-        MenusP = await APIUtil.GetListFromAPI<ApplicationMenu>(url, Context);
+        MenusP = await APIUtil.GetListFromAPI<ApplicationMenu>(url, HttpClient);
     }
 
     if (MenusP != null && MenusP.Count > 0)
     {
-        int menuIdPai = 0;
+        string menuIdPai = string.Empty;
         var mnuGrouped = MenusP.GroupBy(m => m.MenuPai).Select(g => new { Parent = g.Key, List = g.ToList() });
         @foreach (var item in mnuGrouped.OrderBy(mo => mo.Parent))
         {
             foreach (var mnuParent in item.List.Where(mn => mn.MenuPai == null && mn.MenuType == "Page"))
             {
-                menuIdPai = mnuParent.IdMenu;
+                menuIdPai = mnuParent.Id;
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id=@string.Concat(@mnuParent.NomeMenu, mnuParent.IdMenu) role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id=@string.Concat(@mnuParent.NomeMenu, mnuParent.Id) role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span>@mnuParent.MenuText</span>
                     </a>
 
-                    <div class="dropdown-menu" aria-labelledby=@string.Concat(@mnuParent.NomeMenu, mnuParent.IdMenu)>
+                    <div class="dropdown-menu" aria-labelledby=@string.Concat(@mnuParent.NomeMenu, mnuParent.Id)>
                         <div class="bg-white py-2 collapse-inner rounded">
-                            @foreach (var childMenu in MenusP.Where(mnm => mnm.MenuPai == menuIdPai && mnm.MenuType == "Button"))
+                            @foreach (ApplicationMenu childMenu in 
+                                MenusP.Where(mnm => mnm.Id == menuIdPai).FirstOrDefault()
+                                .ChildMenus.Where(cm => cm.MenuPai == menuIdPai && cm.MenuType == "Button"))
                             {
                                 if (childMenu.ActionController != null)
                                 {
@@ -55,7 +59,6 @@
             }
         }
     }
-
 }
 
 

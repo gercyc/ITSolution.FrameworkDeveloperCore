@@ -18,6 +18,8 @@ namespace ITSolution.Framework.BaseClasses
         public static string DefaultConnectionName { get { return EnvironmentManager.Configuration.DefaultConnectionName; } }
         public static string TnsAtpSource { get { return EnvironmentManager.Configuration.AppConfig.TnsAtp; } }
         public static string WalletLocation { get { return EnvironmentManager.Configuration.WalletLocation; } }
+        public static bool OracleWalletSecurity { get { return EnvironmentManager.Configuration.OracleWalletSecurity; } }
+        public static string DefaultSchema { get { return EnvironmentManager.Configuration.DefaultSchema; } }
 
         public static ITSApplicationPlataform ApplicationType
         {

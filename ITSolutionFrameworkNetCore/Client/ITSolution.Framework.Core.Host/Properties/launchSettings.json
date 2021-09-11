@@ -6,6 +6,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "remoteDebugEnabled": false
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "distributionName": "Ubuntu"
     }
   }
 }
