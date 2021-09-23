@@ -1,0 +1,123 @@
+2021-09-22 20:05:35.516 -03:00 [INF] Seeded Administrator Role.
+2021-09-22 20:05:36.098 -03:00 [INF] Seeded Default SuperAdmin User.
+2021-09-22 20:05:39.190 -03:00 [INF] Seeded Basic Role.
+2021-09-22 20:05:39.276 -03:00 [INF] Seeded User with Basic Role.
+2021-09-22 20:05:39.328 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:05:39.329 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:05:39.337 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:07:41.618 -03:00 [INF] Application is shutting down...
+2021-09-22 20:28:39.778 -03:00 [INF] Now listening on: https://localhost:5001
+2021-09-22 20:28:39.895 -03:00 [INF] Now listening on: http://localhost:5000
+2021-09-22 20:28:39.903 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:28:39.906 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:28:39.909 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:35:00.194 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:35:00.364 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:35:00.369 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:39:08.102 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:39:08.226 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:39:08.233 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:40:37.885 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:40:38.060 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:40:38.068 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:42:20.917 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:42:21.107 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:42:21.137 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 20:47:30.563 -03:00 [INF] Seeded Administrator Role.
+2021-09-22 20:47:31.478 -03:00 [INF] Seeded Default SuperAdmin User.
+2021-09-22 20:47:32.889 -03:00 [INF] Seeded Basic Role.
+2021-09-22 20:47:32.966 -03:00 [INF] Seeded User with Basic Role.
+2021-09-22 20:47:33.061 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 20:47:33.061 -03:00 [INF] Hosting environment: Development
+2021-09-22 20:47:33.077 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 21:41:45.529 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 21:41:45.690 -03:00 [INF] Hosting environment: Development
+2021-09-22 21:41:45.697 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 21:53:40.930 -03:00 [ERR] Failed executing DbCommand (335ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[CreatedBy], [a].[CreatedOn], [a].[LastModifiedBy], [a].[LastModifiedOn], [a].[MenuName], [a].[ParentMenu]
+FROM [AppMenu] AS [a]
+2021-09-22 21:53:41.455 -03:00 [ERR] An exception occurred while iterating over the results of a query for context type 'ITSolution.Framework.Blazor.Infrastructure.Contexts.BlazorHeroContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AppMenu'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:707dc790-8dd5-4c27-aad1-5d193c428517
+Error Number:208,State:1,Class:16
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'AppMenu'.
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<ExecuteDbDataReaderAsync>b__169_0(Task`1 result)
+   at System.Threading.Tasks.ContinuationResultTaskFromResultTask`2.InnerInvoke()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state)
+--- End of stack trace from previous location ---
+   at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(DbContext _, Boolean result, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:707dc790-8dd5-4c27-aad1-5d193c428517
+Error Number:208,State:1,Class:16
+2021-09-22 22:02:22.458 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:02:22.584 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:02:22.610 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:05:54.834 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:05:55.055 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:05:55.064 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:15:41.753 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:15:41.993 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:15:42.004 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:17:33.637 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:17:33.782 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:17:33.818 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:19:07.252 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:19:07.378 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:19:07.407 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:25:59.350 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:25:59.470 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:25:59.500 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:31:10.987 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:31:11.123 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:31:11.151 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:45:08.167 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:45:08.308 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:45:08.314 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 22:52:06.798 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 22:52:06.921 -03:00 [INF] Hosting environment: Development
+2021-09-22 22:52:06.926 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 23:03:54.070 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 23:03:54.182 -03:00 [INF] Hosting environment: Development
+2021-09-22 23:03:54.188 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 23:29:13.376 -03:00 [ERR] Failed executing DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "AuditTrails" (
+    "Id" int NOT NULL CONSTRAINT "PK_AuditTrails" PRIMARY KEY,
+    "UserId" nvarchar(max) NULL,
+    "Type" nvarchar(max) NULL,
+    "TableName" nvarchar(max) NULL,
+    "DateTime" datetime2 NOT NULL,
+    "OldValues" nvarchar(max) NULL,
+    "NewValues" nvarchar(max) NULL,
+    "AffectedColumns" nvarchar(max) NULL,
+    "PrimaryKey" nvarchar(max) NULL
+);
+2021-09-22 23:37:33.360 -03:00 [INF] Seeded Administrator Role.
+2021-09-22 23:37:34.097 -03:00 [INF] Seeded Default SuperAdmin User.
+2021-09-22 23:37:36.939 -03:00 [INF] Seeded Basic Role.
+2021-09-22 23:37:37.085 -03:00 [INF] Seeded User with Basic Role.
+2021-09-22 23:37:37.176 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 23:37:37.195 -03:00 [INF] Hosting environment: Development
+2021-09-22 23:37:37.214 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-22 23:50:48.549 -03:00 [INF] Seeded Administrator Role.
+2021-09-22 23:50:49.645 -03:00 [INF] Seeded Default SuperAdmin User.
+2021-09-22 23:50:53.902 -03:00 [INF] Seeded Basic Role.
+2021-09-22 23:50:54.110 -03:00 [INF] Seeded User with Basic Role.
+2021-09-22 23:50:54.240 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-22 23:50:54.240 -03:00 [INF] Hosting environment: Development
+2021-09-22 23:50:54.277 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server

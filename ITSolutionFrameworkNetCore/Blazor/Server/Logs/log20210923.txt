@@ -1,0 +1,40 @@
+2021-09-23 00:05:58.864 -03:00 [INF] Seeded Administrator Role.
+2021-09-23 00:05:59.831 -03:00 [INF] Seeded Default SuperAdmin User.
+2021-09-23 00:06:02.051 -03:00 [INF] Seeded Basic Role.
+2021-09-23 00:06:02.154 -03:00 [INF] Seeded User with Basic Role.
+2021-09-23 00:06:02.327 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 00:06:02.327 -03:00 [INF] Hosting environment: Development
+2021-09-23 00:06:02.376 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 14:45:30.566 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 14:45:30.821 -03:00 [INF] Hosting environment: Development
+2021-09-23 14:45:30.830 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 14:54:53.435 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 14:54:53.699 -03:00 [INF] Hosting environment: Development
+2021-09-23 14:54:53.714 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 14:57:06.330 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 14:57:06.548 -03:00 [INF] Hosting environment: Development
+2021-09-23 14:57:06.559 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:00:01.585 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:00:01.738 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:00:01.746 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:01:58.974 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:01:59.194 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:01:59.202 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:12:03.223 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:12:03.381 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:12:03.388 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:14:41.823 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:14:41.979 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:14:41.986 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:18:30.710 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:18:30.905 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:18:30.912 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:21:38.586 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:21:38.827 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:21:38.836 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:31:51.225 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:31:51.420 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:31:51.426 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
+2021-09-23 15:37:46.349 -03:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-09-23 15:37:46.477 -03:00 [INF] Hosting environment: Development
+2021-09-23 15:37:46.482 -03:00 [INF] Content root path: C:\Source_Grc\ITSolution.FrameworkDeveloperCore\ITSolutionFrameworkNetCore\Blazor\Server
