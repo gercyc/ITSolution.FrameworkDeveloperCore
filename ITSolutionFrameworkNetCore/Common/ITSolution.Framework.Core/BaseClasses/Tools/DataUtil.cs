@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.Reflection;
-using System.Text;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public static class DataUtil
     {
@@ -14,19 +12,17 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         ///Converte uma lista tipada para um DataTable por reflexão.
         ///
         /// A class POCO não pode conter propriedas de outras classes.
-        /// 
-        /// Exemplo: 
-        ///     CentroCusto
-        ///         string nome;
-        ///         ....
-        ///         //considerando uma classe com chave estrangeira
-        ///         Lancamento lancamento;
-        ///          public virtual ICollection<Lancamento> Lancamentos;
-        ///     Caso haja o metódo irá falhas
-        ///     
         /// </summary>
         /// <typeparam colName="T"></typeparam>
         /// <param colName="lista"></param>
+        /// <example>
+        ///     CentroCusto
+        ///     string nome;
+        ///     ....
+        ///     //considerando uma classe com chave estrangeira
+        ///     Lancamento lancamento;
+        ///     public virtual ICollection T Lancamentos;
+        ///     Caso haja o metódo irá falhas.</example>
         /// <returns></returns>
         public static DataTable ConvertToDataTable<T>(List<T> lista)
         {
@@ -79,7 +75,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
                         Console.WriteLine("Falha na conversão do paramentro da lista em dados\n"
                             + ex.StackTrace + "\n\n" + ex.Message);
 
-                        throw ex;
+                        throw;
                     }
 
 

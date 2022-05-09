@@ -1,40 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
-using System.Threading.Tasks;
-using ITSolution.Framework.Core.BaseClasses;
-using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+﻿using Hangfire;
+using ITSolution.Framework.Core.Common.BaseClasses;
+using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Core.Server.BaseInterfaces;
+using ITSolution.Framework.Core.Server.Services;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-//using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository.Identity;
-using ITSolution.Framework.BaseClasses;
-using Hangfire;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
-using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
-using System.IO;
-using Newtonsoft.Json.Converters;
-using Microsoft.Net.Http.Headers;
 using Microsoft.Extensions.FileProviders;
-//using Microsoft.Net.Http.Headers;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Net.Http.Headers;
+using System;
+using System.IO;
+using System.Reflection;
+using System.Runtime.Loader;
+using ITSolution.Framework.Common.Abstractions.EntityFramework;
+using ITSolution.Framework.Common.Abstractions.Identity;
+using ITSolution.Framework.Common.Abstractions.Modules;
+using ITSolution.Framework.Common.Abstractions.OpenApi;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
     public abstract class StartupBase : IStartup
     {
-        string HunterPolicy = "HunterPolicy";
+        private readonly IConfiguration _configuration;
+
+        string ITSolutionCorsPolicy = "ITSolutionCorsPolicy";
         protected StartupBase()
         {
         }
@@ -43,109 +35,56 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
 
         protected StartupBase(IConfiguration configuration) : this()
         {
-            Configuration = configuration;
-            //assinando o evento para definir quem vai resolver os assemblies
-            //AssemblyLoadContext.Default.Resolving += Default_Resolving;
+            _configuration = configuration;
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
         }
 
-        private Assembly Default_Resolving(AssemblyLoadContext arg1, AssemblyName arg2)
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            return ItsAssemblyResolve.ItsLoader.LoadFromAssemblyName(arg2);
+            Utils.ShowExceptionStack(e.ExceptionObject as Exception);
         }
-
-        protected virtual IConfiguration Configuration { get; }
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.ConfigureIdentity();
-
-            services.Configure<CookiePolicyOptions>(options =>
-            {
-                // This lambda determines whether user consent for non-essential cookies is needed for a given request.
-                options.CheckConsentNeeded = context => true;
-                options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
-            });
-
-            services.AddHttpContextAccessor();
-
-            services.AddHangfire(config =>
-                config.UseSqlServerStorage(EnvironmentManager.Configuration.ConnectionString));
-
             try
             {
+                services.AddIdentity();
+                services.AddRazorPages();
+                services.AddScoped(typeof(ItsDbContextOptions));
+                services.AddCookiePolicy(options =>
+                {
+                    // This lambda determines whether user consent for non-essential cookies is needed for a given request.
+                    options.CheckConsentNeeded = context => true;
+                    options.MinimumSameSitePolicy = Microsoft.AspNetCore.Http.SameSiteMode.None;
+                });
 
-                IMvcBuilder mvcBuilder = services.AddMvc()
-                    .AddNewtonsoftJson(o =>
-                    {
-                        o.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                        o.SerializerSettings.Converters.Add(new StringEnumConverter());
-                    });
+                services.AddJwtAuth(_configuration);
+                services.AddScoped<ITokenService, TokenService>();
+                
 
-                //starting application parts
-                //foreach (var file in ItsAssemblyResolve.ItsLoader.GetServerAssemblies())
-                //{
-                //    Assembly asm = ItsAssemblyResolve.ItsLoader.Load(file);
-                //    mvcBuilder.AddApplicationPart(asm);
-                //}
+                services.AddCors(options =>
+                {
+                    options.AddPolicy(name: ITSolutionCorsPolicy,
+                        builder =>
+                        {
+                            builder.WithOrigins("*");
+                            builder.WithHeaders(HeaderNames.ContentType, "x-custom-header");
+                            builder.WithMethods("PUT", "DELETE", "GET");
+                        });
+                });
+
+                services.AddHttpContextAccessor();
+                services.AddHangfire(config => config.UseSqlServerStorage(EnvironmentConfiguration.Instance.ConnectionStrings["DevConnection"]));
+                services.AddHangfireServer();
+                services.AddApplicationParts();
+             
+                services.AddDatabaseDeveloperPageExceptionFilter();
+                services.AddOpenApi(_configuration);
 
                 foreach (var item in ServiceDescriptors)
                 {
                     services.Replace(item);
                 }
-
-                services.AddRazorPages();
-
-                //TODO:
-                //implementar logica de carregar xml's de documentacao de assemblies...
-                //string caminhoXmlDoc = Path.Combine(EnvironmentInformation.APIAssemblyFolder, "Hunter.API.CadastrosBasicos.xml");
-                var dic = Directory.GetFiles(AppContext.BaseDirectory, "Hunter.*.xml");
-
-                //TODO:
-                //encapsular para método a chamada da config do swagger
-                services.AddSwaggerGen(c =>
-                {
-
-                    c.SwaggerDoc("v1",
-                        new OpenApiInfo
-                        {
-                            Title = "Hunter Investimentos",
-                            Version = "v1",
-                            Description = "APIs Hunter Investimentos",
-                            Contact = new OpenApiContact
-                            {
-                                Name = "IT Solution",
-                                Url = new Uri("https://www.itsolutioninformatica.com.br")
-                            }
-                        });
-                    //c.IncludeXmlComments(caminhoXmlDoc);
-
-                    foreach (var f in dic)
-                    {
-                        c.IncludeXmlComments(f);
-                    }
-                });
-
-                services.AddCors(options =>
-                    {
-                        options.AddPolicy(name: HunterPolicy,
-                            builder =>
-                            {
-                                builder.WithOrigins("*");
-                                builder.WithHeaders(HeaderNames.ContentType, "x-custom-header");
-                                builder.WithMethods("PUT", "DELETE", "GET");
-                            });
-
-                        //options.AddDefaultPolicy(policy => 
-                        //{ 
-
-                        //    policy.AllowAnyOrigin();
-                        //    policy.AllowAnyMethod();
-                        //    policy.AllowAnyHeader();
-                        //});
-                    });
-
-                //react
-                services.ConfigureReact();
 
                 //standard ITS framework. nao remover.
                 return services.BuildServiceProvider();
@@ -157,6 +96,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             }
         }
 
+
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
@@ -165,9 +105,8 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-                //app.UseBrowserLink();
-
+                app.UseMigrationsEndPoint();
+                app.UseBrowserLink();
             }
             else
             {
@@ -177,40 +116,33 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-            Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
-                RequestPath = "/Uploads"
-            });
 
-            app.UseCors(HunterPolicy);
+            var staticFilesPath = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+            app.UseStaticFiles();
+            if (Directory.Exists(staticFilesPath))
+            {
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(staticFilesPath),
+                    RequestPath = "/Uploads"
+                });
+            }
+
+            app.UseCors(ITSolutionCorsPolicy);
             app.UseRouting();
+
             app.UseAuthentication();
             app.UseAuthorization();
 
             //hangfire jobs
-            app.UseHangfireDashboard("/jobs", new DashboardOptions() { Authorization = new[] { new AuthorizationFilter() } });//
-            app.UseHangfireServer();
-
-            // Ativando middlewares para uso do Swagger
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json",
-                    "Hunter Investimentos");
-
-            });
+            app.UseHangfireDashboard("/jobs", new DashboardOptions() { Authorization = new[] { new AuthorizationFilter() } });
+            app.UseOpenApiDocumentation(_configuration);
 
             app.UseEndpoints(endpoints =>
             {
-                //endpoints.MapRazorPages();
+                endpoints.MapRazorPages();
                 endpoints.MapControllers();
-
             });
-
-            app.UseReact(env);
-
         }
     }
 }

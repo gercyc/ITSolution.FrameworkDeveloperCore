@@ -4,8 +4,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
 using System.Threading.Tasks;
+using ITSolution.Framework.Common.Abstractions.EntityFramework;
 using ITSolution.Framework.Core.AspHost.Inject;
-using ITSolution.Framework.Core.BaseClasses;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -27,13 +27,13 @@ namespace ITSolution.Framework.Core.AspHost
 
         protected sealed override IServiceCollection ServiceDescriptors
         {
-            get => _serviceDescriptors ?? (_serviceDescriptors = new ServiceCollection());
+            get => _serviceDescriptors ??= new ServiceCollection();
             set => _serviceDescriptors = value;
         }
 
         public Startup(IConfiguration configuration) : base(configuration)
         {
-            ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Singleton));
+            //ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));
         }
     }
 }

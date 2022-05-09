@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Http;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
-namespace ITSolution.Framework.Core.BaseClasses
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
-    public class APIUtil
+    public class ApiUtil
     {
         public static HttpClient HttpClient
         {

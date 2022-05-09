@@ -1,22 +1,20 @@
-﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+﻿using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
+using ITSolution.Framework.Core.Common.BaseInterfaces;
 using ITSolution.Framework.Server.Core.BaseEnums;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
 
-namespace ITSolution.Framework.Server.Core.BaseInterfaces
+namespace ITSolution.Framework.Core.Server.BaseInterfaces
 {
     //base https://github.com/stuartmcg123/GenericRepository/
 
-    public interface IITSReporitory<TEntity, TContext, Tpk> 
-                                    where TEntity : ITSolution.Framework.Core.BaseClasses.Entity<Tpk>
+    public interface IItsReporitory<TEntity, TContext, TPk> 
+                                    where TEntity : IEntity<TPk>
                                     where TContext : ItSolutionAncestorDbContext
-                                    where Tpk : IEquatable<Tpk>
+                                    where TPk : IEquatable<TPk>
     {
         /// <summary>
         /// Synchronously retrieve all entities.

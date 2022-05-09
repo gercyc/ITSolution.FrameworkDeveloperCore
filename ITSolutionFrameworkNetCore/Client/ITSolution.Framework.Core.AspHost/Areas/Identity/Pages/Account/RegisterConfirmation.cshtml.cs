@@ -1,12 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Core.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
-using ITSolution.Framework.Core.BaseClasses.Identity;
 
 namespace ITSolution.Framework.Core.AspHost.Areas.Identity.Pages.Account
 {

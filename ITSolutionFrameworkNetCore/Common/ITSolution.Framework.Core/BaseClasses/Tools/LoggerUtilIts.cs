@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.Versioning;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
+    [SupportedOSPlatform("windows")]
     public class LoggerUtilIts
     {
         /// <summary>

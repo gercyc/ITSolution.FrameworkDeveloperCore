@@ -1,4 +1,4 @@
-﻿namespace ITSolution.Framework.Core.BaseInterfaces
+﻿namespace ITSolution.Framework.Core.Common.BaseInterfaces
 {
     public interface IConfigurationService
     {

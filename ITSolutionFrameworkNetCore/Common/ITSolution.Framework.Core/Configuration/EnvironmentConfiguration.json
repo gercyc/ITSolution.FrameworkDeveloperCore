@@ -1,0 +1,17 @@
+{
+  "AssemblyRegisterServices": "ITSolution.Framework.BaseClasses.RegisterServices.RegisterServices",
+  "ServerPort": 9000,
+  "ApiAssemblyFolder": "C:\\ITSolution\\Core\\APIAssemblies",
+  "CoreAssemblyFolder": "C:\\ITSolution\\Core\\CoreAssemblies",
+  "DatabaseType": "MSSQL",
+  "DefaultConnection": "DevConnection",
+  "ConnectionStrings": {
+    "DevConnection": "Server=localhost;Database=Itsframework;Trusted_Connection=True;MultipleActiveResultSets=true"
+  },
+  "WalletLocation": "C:\\Oracle\\instantclient_19_3\\network\\admin",
+  "JwtSettings": {
+    "key": "S0M3RAN0MS3CR3T!1!MAG1C!1!",
+    "tokenExpirationInMinutes": 60,
+    "refreshTokenExpirationInDays": 7
+  }
+}

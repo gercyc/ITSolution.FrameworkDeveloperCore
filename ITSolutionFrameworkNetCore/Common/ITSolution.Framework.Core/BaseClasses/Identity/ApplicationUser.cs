@@ -1,29 +1,17 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+using Microsoft.AspNetCore.Identity;
 
-namespace ITSolution.Framework.Core.BaseClasses.Identity
+namespace ITSolution.Framework.Core.Common.BaseClasses.Identity
 {
     //AspNetUsers
     //[Table("ITS_USER")]
-    public class ApplicationUser : IdentityUser<int>
+    public sealed class ApplicationUser : IdentityUser<string>
     {
-        //for json
-        [NotMapped]
-        public string Password { get; set; }
-        //for json
-        [NotMapped]
-        public string NewPassword { get; set; }
-
-        public string Endereco { get; set; }
-        public string Ancord { get; set; }
-        public DateTime? DataDesativado { get; set; }
-
         public ApplicationUser()
         {
+            Id = Guid.NewGuid().ToString();
+            SecurityStamp = Guid.NewGuid().ToString();
         }
     }
 }

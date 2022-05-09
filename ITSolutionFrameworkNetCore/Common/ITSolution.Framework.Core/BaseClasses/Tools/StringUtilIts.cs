@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public static class StringUtilIts
     {

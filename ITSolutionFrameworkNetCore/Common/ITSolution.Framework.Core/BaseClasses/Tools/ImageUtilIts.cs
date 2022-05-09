@@ -5,8 +5,9 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Threading.Tasks;
 
+#pragma warning disable CA1416 // Validate platform compatibility
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public static class ImageUtilIts
     {
@@ -256,9 +257,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
 
             switch (rotation)
             {
-                /**
-                * Sentido Horario
-                */
+                //Sentido Horario
                 //	Especifica uma rotação de 90 graus no sentido horário sem inversão.
                 case TypeRotacao.Graus90Horario://90
                     rotacao = RotateFlipType.Rotate90FlipNone;
@@ -368,7 +367,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         /// <param name="image"></param>Image a ser reduzida
         /// <param name="porcentagem"></param>Valor referente ao novo tamanho da imagem Ex: 10 => Seria 10% o valor total da imagem
         /// <returns></returns>A imagem redimensionada
-        public async static Task<Image> ResizeImageAsync(Image image, int porcentagem)
+        public static async Task<Image> ResizeImageAsync(Image image, int porcentagem)
         {
 
             return await Task.Run(() => ResizeImage(image, porcentagem));

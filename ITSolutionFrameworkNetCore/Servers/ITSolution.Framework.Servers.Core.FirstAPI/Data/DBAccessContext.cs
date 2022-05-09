@@ -1,8 +1,5 @@
 ﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
-using ITSolution.Framework.Server.Core.BaseInterfaces;
-using ITSolution.Framework.Servers.Core.FirstAPI.Model;
-using ITSolution.Framework.Servers.Core.FirstAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
@@ -10,7 +7,12 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Common.Abstractions.EfOptions;
+using ITSolution.Framework.Common.Abstractions.EntityFramework;
+using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
+using ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
+using ITSolution.Framework.Core.Server.BaseInterfaces;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 {
@@ -39,18 +41,12 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 
         }
 
-        public DbSet<Menu> MenuSet { get; set; }
+        public DbSet<ApplicationMenu> MenuSet { get; set; }
 
-        public IITSReporitory<Menu, DbAccessContext> MenuRep
+        public IItsReporitory<ApplicationMenu, DbAccessContext, string> MenuRep
         {
-            get { return new ITSRepository<Menu, DbAccessContext>(this); }
+            get { return new ItsRepository<ApplicationMenu, DbAccessContext, string>(this); }
         }
-
-        public DbSet<Usuario> UsuarioSet { get; set; }
-
-        public IITSReporitory<Usuario, DbAccessContext> UsuarioRep
-        {
-            get { return new ITSRepository<Usuario, DbAccessContext>(this); }
-        }
+        
     }
 }

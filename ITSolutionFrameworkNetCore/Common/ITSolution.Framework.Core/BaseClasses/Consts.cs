@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ITSolution.Framework.Core.BaseClasses
+﻿namespace ITSolution.Framework.Core.Common.BaseClasses
 {
     public static class Consts
     {

@@ -1,6 +1,4 @@
-﻿using ITSolution.Framework.BaseClasses;
-using ITSolution.Framework.Core.BaseClasses;
-using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -27,10 +25,10 @@ namespace ITSolution.Framework.Core.Host
 
         protected sealed override IServiceCollection ServiceDescriptors
         {
-            get => _serviceDescriptors ?? (_serviceDescriptors = new ServiceCollection());
+            get => _serviceDescriptors ??= new ServiceCollection();
             set => _serviceDescriptors = value;
         }
-        
+
         public Startup(IConfiguration configuration) : base(configuration)
         {
             ServiceDescriptors.Add(new ServiceDescriptor(typeof(ItsDbContextOptions), typeof(ItsDbContextOptions), ServiceLifetime.Scoped));

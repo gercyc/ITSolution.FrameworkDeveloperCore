@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     /// <summary>
     /// 
@@ -18,6 +14,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         /// </summary>
         /// <param name="bytes"></param>
         /// <returns></returns>
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static T DeserializeObject<T>(byte[] bytes) where T : class
         {
             if (bytes != null)
@@ -37,6 +34,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
                 return null;
         }
 
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static Object DeserializeObjectO(byte[] bytes)
         {
             if (bytes != null)
@@ -55,7 +53,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
             else
                 return null;
         }
-
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static byte[] SerializeObject(Object obj)
         {
             if (obj != null)

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using ITSolution.Framework.Core.BaseClasses.Identity;
+using ITSolution.Framework.Core.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -75,9 +75,7 @@ namespace ITSolution.Framework.Core.AspHost.Areas.Identity.Pages.Account
                 var user = new ApplicationUser 
                 { 
                     UserName = Input.Email, 
-                    Email = Input.Email,
-                    Skin = "Blue",
-                    DataInclusao = DateTime.Now
+                    Email = Input.Email
 
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);

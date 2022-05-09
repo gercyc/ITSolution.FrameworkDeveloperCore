@@ -1,9 +1,8 @@
-﻿using ITSolution.Framework.Core.BaseClasses;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITSolution.Framework.Validador
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
     /// <summary>
     /// Classe para validar os dados do Objeto antes da persistência
@@ -32,9 +31,9 @@ namespace ITSolution.Framework.Validador
             {
                 throw ex1;
             }
-            catch (Exception ex2)
+            catch (Exception)
             {
-                throw ex2;
+                throw;
             }
 
             return validationList;

@@ -1,9 +1,10 @@
 ﻿using System;
-using System.Drawing;
 using System.IO;
 using System.Management;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+#pragma warning disable CA1416 // Validate platform compatibility
+
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public class InfoSystemUtil
     {

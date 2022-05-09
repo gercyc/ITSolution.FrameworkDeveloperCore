@@ -1,4 +1,4 @@
-﻿namespace ITSolution.Framework.Core.BaseClasses.Tools
+﻿namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public enum TypeRotacao
     {

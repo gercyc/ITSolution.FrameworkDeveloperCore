@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     [Serializable]
     public class Computer

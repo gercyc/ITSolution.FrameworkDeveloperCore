@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     /// <summary>
     /// Extensão de metodo para String

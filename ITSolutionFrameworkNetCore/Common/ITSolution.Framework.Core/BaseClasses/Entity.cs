@@ -1,29 +1,15 @@
-﻿using ITSolution.Framework.Core.BaseClasses.Identity;
-using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
+﻿using System;
+using ITSolution.Framework.Core.Common.BaseInterfaces;
 
-namespace ITSolution.Framework.Core.BaseClasses
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
-    public class Entity<Tpk> where Tpk : IEquatable<Tpk>
+    public class Entity<TPk> : IEntity<TPk>
     {
-        [Key]
-        public Tpk Id { get; set; }
-        [JsonIgnore]
+        public TPk Id { get; set; }
         public DateTime CreatedTimestamp { get; set; }
-        [JsonIgnore]
         public DateTime? ModifiedDate { get; set; }
-        [JsonIgnore]
         public int? CreatedBy { get; set; }
-        [JsonIgnore]
         public int? ModifiedBy { get; set; }
-        public Entity()
-        {
-
-        }
 
     }
 }

@@ -1,19 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using ITSolution.Framework.BaseClasses;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using ITSolution.Framework.Common.Abstractions.Configurations;
 
 namespace ITSolution.Framework.Core.AspHost
 {
     public class Program
     {
-        public static IWebHost DefaultWebHostBuilder { get { return _webHost; } }
         private static IWebHost _webHost;
         static IWebHostBuilder _webHostBuilder;
         public static void Main(string[] args)
@@ -24,11 +16,8 @@ namespace ITSolution.Framework.Core.AspHost
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            string url = string.Format("http://*:{0}", EnvironmentInformation.ServerPort);
-
-            _webHostBuilder = WebHost.CreateDefaultBuilder(args).UseUrls(url)
+            _webHostBuilder = WebHost.CreateDefaultBuilder(args).ConfigureAppConfiguration()
                 .UseStartup<Startup>();
-
             return _webHostBuilder;
         }
     }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Xml.Serialization;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     /// <summary>
     /// 
@@ -15,6 +14,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         /// </summary>
         /// <param name="bytes"></param>bytes
         /// <returns></returns>Objeto deserializado
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static T DeserializeObject<T>(byte[] bytes) where T : class
         {
             try
@@ -41,6 +41,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         /// </summary>
         /// <param name="bytes"></param>bytes
         /// <returns></returns>Objeto deserializado
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static object DeserializeObject(byte[] bytes)
         {
             if (bytes != null)
@@ -65,6 +66,7 @@ namespace ITSolution.Framework.Core.BaseClasses.Tools
         /// </summary>
         /// <param name="obj"></param>objeto a ser serializado
         /// <returns></returns>bytes
+        [Obsolete("Utilize JsonSerializer ou XmlSerializer")]
         public static byte[] SerializeObject(Object obj)
         {
             if (obj != null)

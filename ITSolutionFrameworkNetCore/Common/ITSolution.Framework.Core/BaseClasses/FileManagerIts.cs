@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Xml;
-using System.Xml.Linq;
 
 
 //https://msdn.microsoft.com/pt-br/library/as2f1fez.aspx
-namespace ITSolution.Framework.Core.BaseClasses
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
     public class FileManagerIts
     {
@@ -54,7 +52,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         {
             get
             {
-                string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string desktop = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop);
 
                 return desktop;
             }
@@ -65,9 +63,9 @@ namespace ITSolution.Framework.Core.BaseClasses
         /// </summary>
         /// <param name="sf"></param>Enumerador de pastas especiais
         /// <returns></returns>O path da pasta especial
-        public static string SpecialFolder(Environment.SpecialFolder sf)
+        public static string SpecialFolder(System.Environment.SpecialFolder sf)
         {
-            string sfPath = Environment.GetFolderPath(sf);
+            string sfPath = System.Environment.GetFolderPath(sf);
             return sfPath;
         }
 
@@ -75,7 +73,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         {
             get
             {
-                return Environment.GetLogicalDrives();
+                return System.Environment.GetLogicalDrives();
             }
         }
         #endregion
@@ -115,33 +113,16 @@ namespace ITSolution.Framework.Core.BaseClasses
 
         public static FileInfo[] GetFiles(string tarjet)
         {
-            try
-            {
-                DirectoryInfo dir = new DirectoryInfo(tarjet);
-                return dir.GetFiles();
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            DirectoryInfo dir = new DirectoryInfo(tarjet);
+            return dir.GetFiles();
         }
 
         /// Summary:
         ///     Returns the subdirectories of the current directory.
         public static DirectoryInfo[] GetDirectories(string tarjet)
         {
-            try
-            {
-                DirectoryInfo dir = new DirectoryInfo(tarjet);
-                return dir.GetDirectories();
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            DirectoryInfo dir = new DirectoryInfo(tarjet);
+            return dir.GetDirectories();
         }
 
         /// <summary>
@@ -156,10 +137,8 @@ namespace ITSolution.Framework.Core.BaseClasses
                 //se o arquivo nao existe
                 if (!File.Exists(pathFile))
                 {
-                    using (FileStream fs = File.Create(pathFile))
-                    {
-                        return true;
-                    }
+                    using FileStream fs = File.Create(pathFile);
+                    return true;
                 }
             }
             catch (Exception ex)
@@ -194,9 +173,9 @@ namespace ITSolution.Framework.Core.BaseClasses
             }
             catch (IOException ex)
             {
-                string msg = string.Format("Falha ao abrir o arquivo {0}\n{1}", pathFile, ex.Message);
+                string msg = $"Falha ao abrir o arquivo {pathFile}\n{ex.Message}";
                 Console.WriteLine(msg);
-                throw ex;
+                throw;
             }
             return result;
         }
@@ -291,7 +270,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 string msg = string.Format("Falha ao abrir o arquivo {0}\n{1}", pathFile, ex.Message);
                 Trace.WriteLine(msg);
-                throw ex;
+                throw;
             }
             finally
             {
@@ -544,19 +523,12 @@ namespace ITSolution.Framework.Core.BaseClasses
         // <returns></returns>true vazio ou false não existe
         public static bool IsEmpty(string pathFile)
         {
-            try
-            {
-                FileInfo file = new FileInfo(pathFile);
+            FileInfo file = new FileInfo(pathFile);
 
-                if (file.Length <= 0)
-                    return true;
-                else
-                    return false;
-            }
-            catch (System.IO.FileNotFoundException ex)
-            {
-                throw ex;
-            }
+            if (file.Length <= 0)
+                return true;
+            else
+                return false;
         }
 
         /// <summary>
@@ -831,15 +803,7 @@ namespace ITSolution.Framework.Core.BaseClasses
         ///     The caller does not have the required permission.
         public static byte[] GetBytesFromFile(string path)
         {
-            try
-            {
-                return File.ReadAllBytes(path);
-
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            return File.ReadAllBytes(path);
         }
 
         /// <summary>
@@ -1075,7 +1039,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
             return fileList;
         }
@@ -1157,7 +1121,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
 
         }
@@ -1180,7 +1144,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
 
         }
@@ -1230,7 +1194,7 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 Console.WriteLine("Falha ao mover " + alvo + " para " + destino);
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
         }
 

@@ -7,8 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using ITSolution.Framework.Server.Core.BaseEnums;
-using ITSolution.Framework.Server.Core.BaseInterfaces;
-using ITSolution.Framework.Core.BaseClasses;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -17,29 +15,32 @@ using System.Reflection;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
 using System.Drawing;
+using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
+using ITSolution.Framework.Core.Common.BaseInterfaces;
+using ITSolution.Framework.Core.Server.BaseInterfaces;
+using Microsoft.AspNetCore.Identity;
 
 namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
 {
     /// <summary>
     /// Generic repository
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    public class ITSRepository<TEntity, TContext, Tpk> : IITSReporitory<TEntity, TContext, Tpk>
-        where TEntity : Entity<Tpk>
+    /// <typeparam name="TEntity">Entidade</typeparam>
+    /// <typeparam name="TContext">Contexto</typeparam>
+    /// <typeparam name="TPk">Tipo de chave</typeparam>
+    public class ItsRepository<TEntity, TContext, TPk> : IItsReporitory<TEntity, TContext, TPk>
+        where TEntity : class, IEntity<TPk>
         where TContext : ItSolutionAncestorDbContext
-        where Tpk : IEquatable<Tpk>
+        where TPk : IEquatable<TPk>
     {
         #region Private properties
         private readonly TContext _context;
         #endregion
-        public static IServiceProvider ServiceProvider;
 
         #region Constructor
-        public ITSRepository(TContext context)
+        public ItsRepository(TContext context)
         {
             _context = context;
-
-
         }
         #endregion
 
@@ -151,7 +152,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.Create(TEntity, bool)"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.Create(TEntity, bool)"/>
         /// </summary>
         public void Create(TEntity entity, bool saveChanges = false)
         {
@@ -162,13 +163,13 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
                 Type propType = entity.GetType().BaseType.GetProperty("Id").PropertyType;
 
                 if (propType.Name == "String")
-                    entity.Id = (Tpk)Convert.ChangeType(Guid.NewGuid().ToString(), propType);
+                    entity.Id = (TPk)Convert.ChangeType(Guid.NewGuid().ToString(), propType);
                 else if (propType.Name == "Int32")
-                    entity.Id = (Tpk)Convert.ChangeType(NextVal(entity), propType);
+                    entity.Id = (TPk)Convert.ChangeType(NextVal(entity), propType);
             }
             catch (Exception)
             {
-                entity.Id = (Tpk)Convert.ChangeType(Guid.NewGuid().ToString(), typeof(string));
+                entity.Id = (TPk)Convert.ChangeType(Guid.NewGuid().ToString(), typeof(string));
             }
 
             if ((_context.HttpContextAccessor.HttpContext != null) && _context.SignInManager.IsSignedIn(_context.HttpContextAccessor.HttpContext.User))
@@ -201,7 +202,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.CreateAsync(TEntity, bool)"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.CreateAsync(TEntity, bool)"/>
         /// </summary>
         public async Task CreateAsync(TEntity entity, bool saveChanges = false)
         {
@@ -239,7 +240,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.Delete(TEntity, bool)"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.Delete(TEntity, bool)"/>
         /// </summary>
         public void Delete(TEntity entity, bool saveChanges = false)
         {
@@ -252,7 +253,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.DeleteAsync(TEntity, bool)"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.DeleteAsync(TEntity, bool)"/>
         /// </summary>
         public async Task DeleteAsync(TEntity entity, bool saveChanges = false)
         {
@@ -265,7 +266,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.SaveChanges"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.SaveChanges"/>
         /// </summary>
         public void SaveChanges()
         {
@@ -274,7 +275,7 @@ namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
         }
 
         /// <summary>
-        /// <see cref="ITSRepository{TEntity}.SaveChangesAsync"/>
+        /// <see cref="ItsRepository{TEntity,TContext,TPk}.SaveChangesAsync"/>
         /// </summary>
         public async Task SaveChangesAsync()
         {

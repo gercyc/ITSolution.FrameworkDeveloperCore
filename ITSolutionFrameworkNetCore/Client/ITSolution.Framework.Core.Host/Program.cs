@@ -1,34 +1,41 @@
-﻿using ITSolution.Framework.BaseClasses;
-using ITSolution.Framework.Core.BaseClasses;
+﻿using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyModel;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
 
 namespace ITSolution.Framework.Core.Host
 {
     class Program
     {
-        static IWebHostBuilder webHostBuilder;
-        static void Main(string[] args)
+        //static IWebHostBuilder _webHostBuilder;
+        //static void Main(string[] args)
+        //{
+        //    CreateWebHostBuilder(args);
+        //    Console.WriteLine("Servidor Iniciado");
+        //    Console.ReadLine();
+        //}
+
+        //public static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        //{
+
+        //    _webHostBuilder = WebHost.CreateDefaultBuilder<Startup>(args).ConfigureAppConfiguration();
+        //    string url = $"http://*:{EnvironmentInformation.ServerPort}";
+        //    _webHostBuilder.UseUrls(url).UseEnvironment("Development");
+        //    _webHostBuilder.Build().Start();
+        //    return _webHostBuilder;
+        //}
+        private static IWebHost _webHost;
+        static IWebHostBuilder _webHostBuilder;
+        public static void Main(string[] args)
         {
-            CreateWebHostBuilder(args);
-            Console.WriteLine("Servidor Iniciado");
-            Console.ReadLine();
+            _webHost = CreateWebHostBuilder(args).Build();
+            _webHost.Run();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            string url = string.Format("http://*:{0}", EnvironmentInformation.ServerPort);
-            webHostBuilder = WebHost.CreateDefaultBuilder(args).UseUrls(url).UseStartup<Startup>();
-            webHostBuilder.Build().Start();
-            return webHostBuilder;
+            _webHostBuilder = WebHost.CreateDefaultBuilder(args).ConfigureAppConfiguration()
+                .UseStartup<Startup>();
+            return _webHostBuilder;
         }
     }
 

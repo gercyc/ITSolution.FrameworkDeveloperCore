@@ -1,6 +1,4 @@
-﻿using ITSolution.Framework.BaseClasses;
-using ITSolution.Framework.Core.BaseClasses;
-//using Oracle.ManagedDataAccess.Client;
+﻿//using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -15,6 +13,9 @@ using Microsoft.EntityFrameworkCore.Internal;
 using Oracle.ManagedDataAccess.Client;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations.Schema;
+using ITSolution.Framework.Common.Abstractions.EfOptions;
+using ITSolution.Framework.Core.Common.BaseClasses;
+using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {
@@ -260,7 +261,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
         private ConnectionFactory()
         {
             if (EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
-                ITSOracleConfiguration.ConfigureDataSources();
+                ItsOracleConfiguration.ConfigureDataSources();
 
             if (_connections == null)
                 _connections = new ConcurrentDictionary<string, ConnectionData>();

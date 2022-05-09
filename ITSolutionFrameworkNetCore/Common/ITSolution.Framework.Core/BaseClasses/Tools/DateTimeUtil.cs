@@ -1,7 +1,7 @@
-﻿using ITSolution.Framework.Core.BaseClasses;
-using System;
+﻿using System;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+#pragma warning disable CA1416 // Validate platform compatibility
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public static class DateTimeUtil
     {

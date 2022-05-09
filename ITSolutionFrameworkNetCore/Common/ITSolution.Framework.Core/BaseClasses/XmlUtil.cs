@@ -1,7 +1,7 @@
 ﻿using System.Xml;
 using System.Xml.Linq;
 
-namespace ITSolution.Framework.Core.BaseClasses
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
     public class XmlUtil
     {

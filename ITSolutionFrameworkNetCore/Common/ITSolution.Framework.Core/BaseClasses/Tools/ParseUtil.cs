@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+#pragma warning disable CA1416 // Validate platform compatibility
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
 
     /// <summary>

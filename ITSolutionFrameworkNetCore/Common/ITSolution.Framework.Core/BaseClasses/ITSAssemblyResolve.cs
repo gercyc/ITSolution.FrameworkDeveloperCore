@@ -1,14 +1,12 @@
-﻿using ITSolution.Framework.BaseClasses;
-using Microsoft.Extensions.DependencyModel;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using System.Text;
+using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using Microsoft.Extensions.DependencyModel;
 
-namespace ITSolution.Framework.Core.BaseClasses
+namespace ITSolution.Framework.Core.Common.BaseClasses
 {
     public class ItsAssemblyResolve : AssemblyLoadContext
     {
@@ -41,7 +39,15 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 try
                 {
-                    assembly = Assembly.LoadFile(Path.Combine(EnvironmentInformation.APIAssemblyFolder, assemblyName.Name + ".dll"));
+                    assembly = Assembly.LoadFile(Path.Combine(EnvironmentInformation.ApiAssemblyFolder,
+                        assemblyName.Name + ".dll"));
+                    DependencyContext.Load(assembly);
+                    return assembly;
+                }
+                catch (FileNotFoundException)
+                {
+                    assembly = Assembly.LoadFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory,
+                        assemblyName.Name + ".dll"));
                     DependencyContext.Load(assembly);
                     return assembly;
                 }
@@ -112,14 +118,14 @@ namespace ITSolution.Framework.Core.BaseClasses
             {
                 string exec = AppDomain.CurrentDomain.FriendlyName;
 
-                files = Directory.GetFiles(EnvironmentInformation.APIAssemblyFolder, "*.dll")
+                files = Directory.GetFiles(EnvironmentInformation.ApiAssemblyFolder, "*.dll")
                     .Where(f => f.Contains("ITSolution.Framework.Servers.Core") || f.Contains("Hunter.API")).ToArray();
 
             }
             catch (Exception ex)
             {
                 Utils.ShowExceptionStack(ex);
-                throw ex;
+                throw;
             }
             return files;
         }

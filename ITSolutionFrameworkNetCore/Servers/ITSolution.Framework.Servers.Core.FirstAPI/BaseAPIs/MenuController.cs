@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository;
-using ITSolution.Framework.Server.Core.BaseClasses.Repository;
+﻿using ITSolution.Framework.Common.Abstractions.EntityFramework;
+using ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
 using ITSolution.Framework.Servers.Core.FirstAPI.Data;
-using ITSolution.Framework.Servers.Core.FirstAPI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
 {
@@ -24,28 +20,28 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
 
         // GET api/values
         [HttpGet]
-        public IEnumerable<Menu> Get()
+        public IEnumerable<ApplicationMenu> Get()
         {
             return _context.MenuRep.GetAll();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public Menu Get(int id)
+        public ApplicationMenu Get(int id)
         {
             return _context.MenuRep.FirstOrDefault(id);
         }
 
         // POST api/values
         [HttpPost]
-        public void Post([FromBody] Menu value)
+        public void Post([FromBody] ApplicationMenu value)
         {
             _context.MenuRep.Create(value, true);
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Menu value)
+        public void Put(int id, [FromBody] ApplicationMenu value)
         {
             _context.MenuRep.Create(value, true);
         }
@@ -54,7 +50,7 @@ namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            Menu del = _context.MenuRep.FirstOrDefault(id);
+            ApplicationMenu del = _context.MenuRep.FirstOrDefault(id);
             _context.MenuRep.Delete(del);
         }
     }

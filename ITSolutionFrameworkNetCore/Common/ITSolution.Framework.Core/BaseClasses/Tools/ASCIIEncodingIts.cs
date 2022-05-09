@@ -1,11 +1,10 @@
-﻿using ITSolution.Framework.Core.BaseClasses;
-using System;
+﻿using System;
 using System.Text;
 
 /// <summary>
 /// Tools
 /// </summary>
-namespace ITSolution.Framework.Core.BaseClasses.Tools
+namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
 {
     public class ASCIIEncodingIts 
     {
