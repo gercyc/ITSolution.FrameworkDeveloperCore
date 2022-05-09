@@ -1,5 +1,5 @@
 ﻿using ITSolution.Framework.Common.Abstractions.EfOptions;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 #pragma warning disable CS8618

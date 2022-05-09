@@ -1,9 +1,9 @@
 ﻿using ITSolution.Framework.Common.Abstractions.EntityFramework;
-using ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
 using ITSolution.Framework.Servers.Core.FirstAPI.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using ITSolution.Framework.Common.BaseClasses.AbstractEntities;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.BaseAPIs
 {

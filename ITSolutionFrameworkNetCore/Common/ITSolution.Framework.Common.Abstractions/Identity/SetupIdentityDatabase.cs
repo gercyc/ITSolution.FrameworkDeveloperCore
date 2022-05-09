@@ -1,6 +1,6 @@
 ﻿using ITSolution.Framework.Common.Abstractions.Identity.DataAccess;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +13,8 @@ namespace ITSolution.Framework.Common.Abstractions.Identity
         /// Configura o ASP.NET Identity
         /// </summary>
         /// <param name="services"></param>
-        public static IServiceCollection AddIdentity(this IServiceCollection services)
+        /// <param name="useDefaultUI">Utilizar o UI padrão do EF</param>
+        public static IServiceCollection AddIdentity(this IServiceCollection services, bool useDefaultUI)
         {
             services.AddDbContext<ItsIdentityContext>(options =>
             {
@@ -24,7 +25,11 @@ namespace ITSolution.Framework.Common.Abstractions.Identity
             });
 
             //configurando o uso do ASP.NET Identity
-            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            //ja adiciona o padrao do authentication
+            //options.DefaultAuthenticateScheme = IdentityConstants.ApplicationScheme;
+            //options.DefaultChallengeScheme = IdentityConstants.ApplicationScheme;
+            //options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+            IdentityBuilder identityBuilder = services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
                 {
                     //configura as opcoes de senha. Devido a debug a segurança foi reduzida
                     options.SignIn.RequireConfirmedAccount = false;
@@ -37,6 +42,10 @@ namespace ITSolution.Framework.Common.Abstractions.Identity
                 })
                 .AddEntityFrameworkStores<ItsIdentityContext>()
                 .AddDefaultTokenProviders();
+
+                if(useDefaultUI)
+                    identityBuilder.AddDefaultUI();
+
             return services;
         }
     }

@@ -1,8 +1,7 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Identity
+namespace ITSolution.Framework.Common.BaseClasses.Identity
 {
     //AspNetUsers
     //[Table("ITS_USER")]

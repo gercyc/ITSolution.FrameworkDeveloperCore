@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
+namespace ITSolution.Framework.Common.BaseClasses.AbstractEntities;
 
 [Serializable]
 public class AbstractUser : Entity<string>

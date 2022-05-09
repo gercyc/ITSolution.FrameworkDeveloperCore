@@ -1,6 +1,6 @@
 ﻿using ITSolution.Framework.Common.Abstractions.EfOptions;
 using ITSolution.Framework.Common.Abstractions.EntityFramework;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 #pragma warning disable CS8618

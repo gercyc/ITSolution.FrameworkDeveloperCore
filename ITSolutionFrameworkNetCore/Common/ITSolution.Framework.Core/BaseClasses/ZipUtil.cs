@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     /// <summary>
     /// Nem tudo nessa classe foi testado

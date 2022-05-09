@@ -1,4 +1,4 @@
-﻿namespace ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig
+﻿namespace ITSolution.Framework.Common.BaseClasses.EnvironmentConfig
 {
     public enum DatabaseType
     {

@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using ITSolution.Framework.Core.Common.BaseClasses;
+using ITSolution.Framework.Common.BaseClasses;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Converters;
 
@@ -30,7 +30,9 @@ public static class ConfigureApplicationPart
             try
             {
                 if (asm.ExportedTypes != null)
+                {
                     mvcBuilder.AddApplicationPart(asm);
+                }
             }
             catch (Exception e)
             {

@@ -11,7 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj" />
+    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Common.csproj" />
     <ProjectReference Include="..\..\Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj" />
   </ItemGroup>
 

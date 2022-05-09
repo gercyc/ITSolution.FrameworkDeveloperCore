@@ -1,5 +1,5 @@
 ﻿using ITSolution.Framework.Common.Abstractions.EfOptions;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 #pragma warning disable CS8603

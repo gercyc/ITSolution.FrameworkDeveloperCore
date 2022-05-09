@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
+namespace ITSolution.Framework.Common.BaseClasses.AbstractEntities;
 
 [Serializable]
 public abstract class AbstractClient

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig
+namespace ITSolution.Framework.Common.BaseClasses.EnvironmentConfig
 {
     public static class EnvironmentInformation
     {

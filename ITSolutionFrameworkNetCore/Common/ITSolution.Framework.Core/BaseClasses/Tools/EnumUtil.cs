@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     //http://blog.spontaneouspublicity.com/associating-strings-with-enums-in-c
 

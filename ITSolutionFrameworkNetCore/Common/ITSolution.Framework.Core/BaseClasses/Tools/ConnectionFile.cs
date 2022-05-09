@@ -1,4 +1,4 @@
-﻿namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+﻿namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     public abstract class ConnectionFile
     {

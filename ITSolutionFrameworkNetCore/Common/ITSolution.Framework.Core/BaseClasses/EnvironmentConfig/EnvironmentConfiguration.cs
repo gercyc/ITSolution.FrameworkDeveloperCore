@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+namespace ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 
 public class EnvironmentConfiguration
 {

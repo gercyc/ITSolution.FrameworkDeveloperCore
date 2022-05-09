@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     public class RedeUtil
     {

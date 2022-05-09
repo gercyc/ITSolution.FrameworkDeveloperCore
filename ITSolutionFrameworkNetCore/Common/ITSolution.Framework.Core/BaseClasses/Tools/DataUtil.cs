@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Reflection;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     public static class DataUtil
     {

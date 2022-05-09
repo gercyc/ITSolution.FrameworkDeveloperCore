@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     /// <summary>
     /// Classe para validar os dados do Objeto antes da persistência

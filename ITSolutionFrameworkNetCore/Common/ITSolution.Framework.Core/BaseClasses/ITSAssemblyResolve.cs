@@ -3,10 +3,10 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 using Microsoft.Extensions.DependencyModel;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     public class ItsAssemblyResolve : AssemblyLoadContext
     {
@@ -55,16 +55,14 @@ namespace ITSolution.Framework.Core.Common.BaseClasses
                 {
                     Utils.ShowExceptionStack(exApi);
                     Utils.ShowExceptionStack(fileNotFound);
-                    throw;
                 }
 
             }
             catch (Exception exAsmNotFound)
             {
                 Utils.ShowExceptionStack(exAsmNotFound);
-                throw;
             }
-            //return assembly;
+            return assembly;
         }
 
         public Assembly Load(string assemblyPath)

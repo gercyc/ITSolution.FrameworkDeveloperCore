@@ -1,18 +1,8 @@
-﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
-using ITSolution.Framework.Server.Core.BaseEnums;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-using ITSolution.Framework.Common.Abstractions.EfOptions;
-using ITSolution.Framework.Common.Abstractions.EntityFramework;
+﻿using ITSolution.Framework.Common.Abstractions.EntityFramework;
 using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
-using ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository;
-using ITSolution.Framework.Core.Server.BaseInterfaces;
+using ITSolution.Framework.Common.Abstractions.EntityFramework.Repository;
+using ITSolution.Framework.Common.BaseClasses.AbstractEntities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ITSolution.Framework.Servers.Core.FirstAPI.Data
 {

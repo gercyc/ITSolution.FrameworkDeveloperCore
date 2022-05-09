@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig
+namespace ITSolution.Framework.Common.BaseClasses.EnvironmentConfig
 {
     public class AppConnectionString
     {

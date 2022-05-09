@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.AbstractEntities;
+namespace ITSolution.Framework.Common.BaseClasses.AbstractEntities;
 
 public enum TypeCliente
 {

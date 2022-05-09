@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     public static class Utils
     {

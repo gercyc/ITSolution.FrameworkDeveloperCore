@@ -1,7 +1,7 @@
 ﻿using System;
-using ITSolution.Framework.Core.Common.BaseInterfaces;
+using ITSolution.Framework.Common.BaseInterfaces;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     public class Entity<TPk> : IEntity<TPk>
     {

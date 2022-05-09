@@ -1,6 +1,4 @@
 ﻿using Hangfire;
-using ITSolution.Framework.Core.Common.BaseClasses;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
 using ITSolution.Framework.Core.Server.BaseInterfaces;
 using ITSolution.Framework.Core.Server.Services;
 using Microsoft.AspNetCore.Builder;
@@ -19,6 +17,8 @@ using ITSolution.Framework.Common.Abstractions.EntityFramework;
 using ITSolution.Framework.Common.Abstractions.Identity;
 using ITSolution.Framework.Common.Abstractions.Modules;
 using ITSolution.Framework.Common.Abstractions.OpenApi;
+using ITSolution.Framework.Common.BaseClasses;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {
@@ -48,7 +48,7 @@ namespace ITSolution.Framework.Core.Server.BaseClasses
         {
             try
             {
-                services.AddIdentity();
+                services.AddIdentity(useDefaultUI: false);
                 services.AddRazorPages();
                 services.AddScoped(typeof(ItsDbContextOptions));
                 services.AddCookiePolicy(options =>

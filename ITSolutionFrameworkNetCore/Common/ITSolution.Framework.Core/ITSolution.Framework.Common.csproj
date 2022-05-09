@@ -12,8 +12,8 @@
     <RepositoryUrl>https://github.com/gercyc/ITSolution.FrameworkDeveloperCore</RepositoryUrl>
     <SignAssembly>false</SignAssembly>
     <Nullable>disable</Nullable>
-    <AssemblyName>ITSolution.Framework.Core.Common</AssemblyName>
-    <RootNamespace>ITSolution.Framework.Core.Common</RootNamespace>
+    <AssemblyName>ITSolution.Framework.Common</AssemblyName>
+    <RootNamespace>ITSolution.Framework.Common</RootNamespace>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

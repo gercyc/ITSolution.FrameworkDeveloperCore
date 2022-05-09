@@ -1,13 +1,9 @@
-﻿using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
-using ITSolution.Framework.Core.Common.BaseInterfaces;
-using ITSolution.Framework.Server.Core.BaseEnums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
+﻿using System.Linq.Expressions;
+using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
+using ITSolution.Framework.Common.BaseInterfaces;
+#pragma warning disable CS8625,CS8603,CS8603
 
-namespace ITSolution.Framework.Core.Server.BaseInterfaces
+namespace ITSolution.Framework.Common.Abstractions.EntityFramework.Repository
 {
     //base https://github.com/stuartmcg123/GenericRepository/
 

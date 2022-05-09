@@ -5,9 +5,9 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
-using ITSolution.Framework.Core.Common.BaseInterfaces;
+using ITSolution.Framework.Common.BaseInterfaces;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig
+namespace ITSolution.Framework.Common.BaseClasses.EnvironmentConfig
 {
     /// <summary>
     /// Controle sobre o App.xml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;

@@ -1,6 +1,4 @@
-﻿using ITSolution.Framework.Core.Common.BaseClasses;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
-using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
+﻿using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
 using ITSolution.Framework.Core.Server.BaseInterfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -11,6 +9,8 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using ITSolution.Framework.Common.BaseClasses;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.Extensions.Configuration;
 
 namespace ITSolution.Framework.Core.Server.Services;

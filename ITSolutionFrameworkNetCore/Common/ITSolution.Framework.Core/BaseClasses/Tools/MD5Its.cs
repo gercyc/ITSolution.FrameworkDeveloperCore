@@ -2,7 +2,7 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     //https://dotnetfiddle.net/4mLWz7
     public class MD5Its  

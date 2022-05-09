@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using System.Text;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses
 {

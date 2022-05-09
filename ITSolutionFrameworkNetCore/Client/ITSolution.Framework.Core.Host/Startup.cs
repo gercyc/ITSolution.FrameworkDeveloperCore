@@ -1,20 +1,6 @@
-﻿using ITSolution.Framework.Server.Core.BaseClasses.Repository;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
+﻿using ITSolution.Framework.Common.Abstractions.EntityFramework;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
-using System.Text;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository;
 using StartupBase = ITSolution.Framework.Core.Server.BaseClasses.StartupBase;
 
 namespace ITSolution.Framework.Core.Host

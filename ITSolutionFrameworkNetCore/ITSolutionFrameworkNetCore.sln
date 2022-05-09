@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{C082D8
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.Host", "Client\ITSolution.Framework.Core.Host\ITSolution.Framework.Core.Host.csproj", "{BDB98D55-03B6-496E-9E60-217D968747D2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core", "Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj", "{A552CF9B-D80E-4A12-BE5C-50C4CC5DC930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Common", "Common\ITSolution.Framework.Core\ITSolution.Framework.Common.csproj", "{A552CF9B-D80E-4A12-BE5C-50C4CC5DC930}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.Server", "Servers\ITSolution.Framework.Server.Core\ITSolution.Framework.Core.Server.csproj", "{009E4D21-29E4-4772-B421-BCFB1779735A}"
 EndProject
@@ -24,18 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		SolutionInfo.cs = SolutionInfo.cs
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{CFDD1886-E192-48E7-8916-CF58886F16D3}"
-	ProjectSection(SolutionItems) = preProject
-		Templates\ITSolution ASP .NET Core Application.zip = Templates\ITSolution ASP .NET Core Application.zip
-		Templates\ITSolution ASP .NET Core Web API.zip = Templates\ITSolution ASP .NET Core Web API.zip
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.CustomUserAPI", "Templates\ITSolution.Framework.Servers.Core.CustomUserAPI\ITSolution.Framework.Servers.Core.CustomUserAPI.csproj", "{0A4726D3-402F-44A8-9B94-7DF022D34B9F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Files", "Files", "{29076EF1-B5F8-43ED-8B28-69F1CA8A3649}"
-	ProjectSection(SolutionItems) = preProject
-		TemplateReadme.txt = TemplateReadme.txt
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Core.AspHost", "Client\ITSolution.Framework.Core.AspHost\ITSolution.Framework.Core.AspHost.csproj", "{16E9482F-2454-48A3-9CE0-CE206B1B67C6}"
 EndProject
@@ -43,9 +32,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "Client\Conso
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Servers.Core.CustomersPages", "Servers\ITSolution.Framework.Servers.Core.CustomersPages\ITSolution.Framework.Servers.Core.CustomersPages.csproj", "{55B7970B-2266-4862-8323-4DFFC848E627}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Framework.Common.Abstractions", "Common\ITSolution.Framework.Common.Abstractions\ITSolution.Framework.Common.Abstractions.csproj", "{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ITSolution.Framework.Common.Abstractions", "Common\ITSolution.Framework.Common.Abstractions\ITSolution.Framework.Common.Abstractions.csproj", "{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ITSolution.Bootstraper", "Bootstraper\ITSolution.Bootstraper\ITSolution.Bootstraper.csproj", "{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{A468B1AF-A964-45BA-A4A2-A5B802744106}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,14 +76,14 @@ Global
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B7970B-2266-4862-8323-4DFFC848E627}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,14 +92,13 @@ Global
 		{BDB98D55-03B6-496E-9E60-217D968747D2} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 		{A552CF9B-D80E-4A12-BE5C-50C4CC5DC930} = {8D9BF89B-6E25-4686-AAD9-CF07A3420989}
 		{009E4D21-29E4-4772-B421-BCFB1779735A} = {C082D845-399E-41C3-BDAC-4A572DDDD411}
-		{8BB461EB-CC46-452D-9BC6-904639A4DF0E} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
-		{0A4726D3-402F-44A8-9B94-7DF022D34B9F} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
-		{29076EF1-B5F8-43ED-8B28-69F1CA8A3649} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
+		{8BB461EB-CC46-452D-9BC6-904639A4DF0E} = {A468B1AF-A964-45BA-A4A2-A5B802744106}
+		{0A4726D3-402F-44A8-9B94-7DF022D34B9F} = {A468B1AF-A964-45BA-A4A2-A5B802744106}
 		{16E9482F-2454-48A3-9CE0-CE206B1B67C6} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 		{76DDCC01-C8EF-4A70-9285-23F3DDA7258B} = {BB131043-263D-44F6-B6BB-70072D0C783D}
-		{55B7970B-2266-4862-8323-4DFFC848E627} = {CFDD1886-E192-48E7-8916-CF58886F16D3}
-		{3184EA71-3358-4C2F-B3CA-B967BB9F7A2A} = {BB131043-263D-44F6-B6BB-70072D0C783D}
+		{55B7970B-2266-4862-8323-4DFFC848E627} = {A468B1AF-A964-45BA-A4A2-A5B802744106}
 		{E22A4FEC-DA8D-47E1-AB78-62FC99F2EAB2} = {8D9BF89B-6E25-4686-AAD9-CF07A3420989}
+		{A9389D40-DFCC-4D18-A1D3-35743E1E3B4B} = {BB131043-263D-44F6-B6BB-70072D0C783D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5142566D-4AB3-46E6-99D0-9F766D6EC922}

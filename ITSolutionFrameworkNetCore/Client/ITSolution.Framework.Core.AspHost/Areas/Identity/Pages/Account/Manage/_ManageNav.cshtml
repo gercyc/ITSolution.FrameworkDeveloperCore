@@ -1,4 +1,4 @@
-@using ITSolution.Framework.Core.Common.BaseClasses.Identity
+@using ITSolution.Framework.Common.BaseClasses.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();

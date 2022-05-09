@@ -1,4 +1,4 @@
-﻿using ITSolution.Framework.Core.Server.BaseClasses.Configurators;
+﻿using ITSolution.Framework.Common.Abstractions.Configurations;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 

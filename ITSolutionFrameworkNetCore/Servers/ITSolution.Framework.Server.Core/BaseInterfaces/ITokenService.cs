@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ITSolution.Framework.Core.Common.BaseClasses;
+using ITSolution.Framework.Common.BaseClasses;
 
 namespace ITSolution.Framework.Core.Server.BaseInterfaces;
 

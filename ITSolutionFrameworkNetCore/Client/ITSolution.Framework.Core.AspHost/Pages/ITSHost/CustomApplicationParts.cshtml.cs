@@ -4,7 +4,6 @@ using System.ComponentModel.Composition.Hosting;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using ITSolution.Framework.Server.Core.BaseClasses.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.DependencyInjection;

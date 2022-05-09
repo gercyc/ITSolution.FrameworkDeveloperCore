@@ -60,7 +60,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\ITSolution.Framework.Common.Abstractions\ITSolution.Framework.Common.Abstractions.csproj" />
-    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Core.csproj" />
+    <ProjectReference Include="..\..\Common\ITSolution.Framework.Core\ITSolution.Framework.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

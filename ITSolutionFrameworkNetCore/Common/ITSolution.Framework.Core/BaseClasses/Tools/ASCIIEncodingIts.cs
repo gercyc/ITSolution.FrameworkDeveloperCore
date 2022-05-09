@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Text;
 
-/// <summary>
-/// Tools
-/// </summary>
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
+    /// <summary>
+    /// Tools
+    /// </summary>
     public class ASCIIEncodingIts 
     {
 

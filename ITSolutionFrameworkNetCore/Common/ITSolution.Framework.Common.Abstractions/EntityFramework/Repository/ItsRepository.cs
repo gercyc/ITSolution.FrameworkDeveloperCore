@@ -1,26 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using ITSolution.Framework.Core.Server.BaseClasses.Repository;
-using ITSolution.Framework.Server.Core.BaseEnums;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Common;
-using System.Drawing;
+using System.Linq.Expressions;
+using System.Reflection;
+using System.Security.Claims;
 using ITSolution.Framework.Common.Abstractions.EntityFramework.Context;
-using ITSolution.Framework.Core.Common.BaseInterfaces;
-using ITSolution.Framework.Core.Server.BaseInterfaces;
-using Microsoft.AspNetCore.Identity;
+using ITSolution.Framework.Common.BaseInterfaces;
+using Microsoft.EntityFrameworkCore;
+#pragma warning disable CS8625,CS8603,CS8602
 
-namespace ITSolution.Framework.Server.Core.BaseClasses.Repository
+namespace ITSolution.Framework.Common.Abstractions.EntityFramework.Repository
 {
     /// <summary>
     /// Generic repository

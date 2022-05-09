@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses;
+namespace ITSolution.Framework.Common.BaseClasses;
 
 public class AuthenticationResult
 {

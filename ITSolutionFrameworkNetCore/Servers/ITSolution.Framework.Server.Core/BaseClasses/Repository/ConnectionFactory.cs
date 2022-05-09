@@ -14,8 +14,8 @@ using Oracle.ManagedDataAccess.Client;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations.Schema;
 using ITSolution.Framework.Common.Abstractions.EfOptions;
-using ITSolution.Framework.Core.Common.BaseClasses;
-using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+using ITSolution.Framework.Common.BaseClasses;
+using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 
 namespace ITSolution.Framework.Core.Server.BaseClasses.Repository
 {

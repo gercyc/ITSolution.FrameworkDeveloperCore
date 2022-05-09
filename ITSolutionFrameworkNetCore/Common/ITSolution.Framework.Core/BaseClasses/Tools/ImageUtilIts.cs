@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 #pragma warning disable CA1416 // Validate platform compatibility
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Tools
+namespace ITSolution.Framework.Common.BaseClasses.Tools
 {
     public static class ImageUtilIts
     {

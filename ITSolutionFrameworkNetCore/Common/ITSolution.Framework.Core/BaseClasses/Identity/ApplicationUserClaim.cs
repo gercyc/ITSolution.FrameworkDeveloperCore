@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace ITSolution.Framework.Core.Common.BaseClasses.Identity
+namespace ITSolution.Framework.Common.BaseClasses.Identity
 {
     //AspNetUserClaims
     //[Table("ITS_USER_CLAIMS")]

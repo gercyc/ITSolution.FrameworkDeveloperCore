@@ -6,7 +6,7 @@ using System.Linq;
 
 
 //https://msdn.microsoft.com/pt-br/library/as2f1fez.aspx
-namespace ITSolution.Framework.Core.Common.BaseClasses
+namespace ITSolution.Framework.Common.BaseClasses
 {
     public class FileManagerIts
     {

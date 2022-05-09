@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace ITSolution.Framework.Core.Common.BaseInterfaces;
+namespace ITSolution.Framework.Common.BaseInterfaces;
 
 public interface IEntity<TPk>
 {

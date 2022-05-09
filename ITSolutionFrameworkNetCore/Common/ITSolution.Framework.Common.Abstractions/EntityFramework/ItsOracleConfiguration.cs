@@ -1,4 +1,4 @@
-﻿using ITSolution.Framework.Core.Common.BaseClasses.EnvironmentConfig;
+﻿using ITSolution.Framework.Common.BaseClasses.EnvironmentConfig;
 using Oracle.ManagedDataAccess.Client;
 //using Oracle.ManagedDataAccess.Client;
 

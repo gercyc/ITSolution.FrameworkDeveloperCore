@@ -6,7 +6,7 @@ using System.Text;
 using System.Text.Encodings.Web;
 using System.Linq;
 using System.Threading.Tasks;
-using ITSolution.Framework.Core.Common.BaseClasses.Identity;
+using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
