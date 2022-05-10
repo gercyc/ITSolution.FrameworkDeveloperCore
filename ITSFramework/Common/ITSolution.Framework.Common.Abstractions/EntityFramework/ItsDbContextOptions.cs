@@ -14,7 +14,7 @@ namespace ITSolution.Framework.Common.Abstractions.EntityFramework
         {
             _optionsBuilder = new DbContextOptionsBuilder();
             if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
-                _optionsBuilder.UseSqlServer(EnvironmentInformation.ConnectionString);
+                _optionsBuilder.UseSqlServer(EnvironmentInformation.ConnectionString, options => options.MigrationsAssembly("ITSolution.Bootstraper"));
             else if(EnvironmentInformation.DatabaseType == DatabaseType.Oracle)
             {
                 ItsOracleConfiguration.ConfigureDataSources();

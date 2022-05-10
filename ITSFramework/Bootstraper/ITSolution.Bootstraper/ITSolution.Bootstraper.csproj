@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Common\ITSolution.Framework.Common.Abstractions\ITSolution.Framework.Common.Abstractions.csproj" />
+    <ProjectReference Include="..\..\Servers\ITSolution.Framework.Servers.Core.CustomersPages\ITSolution.Framework.Servers.Core.CustomersPages.csproj" />
   </ItemGroup>
 
 

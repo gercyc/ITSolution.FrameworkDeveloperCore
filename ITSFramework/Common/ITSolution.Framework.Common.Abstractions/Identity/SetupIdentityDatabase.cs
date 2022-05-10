@@ -4,6 +4,8 @@ using ITSolution.Framework.Common.BaseClasses.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace ITSolution.Framework.Common.Abstractions.Identity
 {
@@ -19,7 +21,9 @@ namespace ITSolution.Framework.Common.Abstractions.Identity
             services.AddDbContext<ItsIdentityContext>(options =>
             {
                 if (EnvironmentInformation.DatabaseType == DatabaseType.MSSQL)
-                    options.UseSqlServer(EnvironmentInformation.ConnectionString);
+                {
+                    options.UseSqlServer(EnvironmentInformation.ConnectionString, options => options.MigrationsAssembly("ITSolution.Bootstraper"));
+                }
                 else if (EnvironmentInformation.DatabaseType == DatabaseType.SQLITE)
                     options.UseSqlite(EnvironmentInformation.ConnectionString);
             });

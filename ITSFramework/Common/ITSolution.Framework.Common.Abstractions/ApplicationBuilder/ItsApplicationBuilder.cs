@@ -48,11 +48,14 @@ namespace ITSolution.Framework.Common.Abstractions.ApplicationBuilder
             });
 
             WebApplicationBuilder.Services.AddHttpContextAccessor();
-            WebApplicationBuilder.Services.AddHangfire(config => config.UseSqlServerStorage(EnvironmentConfiguration.Instance.ConnectionStrings["DevConnection"]));
+            WebApplicationBuilder.Services.AddHangfire(config => 
+            {
+                config.UseSqlServerStorage(EnvironmentConfiguration.Instance.ConnectionStrings["DevConnection"]);
+            });
             WebApplicationBuilder.Services.AddHangfireServer();
             WebApplicationBuilder.Services.AddDatabaseDeveloperPageExceptionFilter();
             WebApplicationBuilder.Services.AddOpenApi(WebApplicationBuilder.Configuration);
-            WebApplicationBuilder.Services.AddApplicationParts();
+            //WebApplicationBuilder.Services.AddApplicationParts();
         }
 
         private void ConfigureApplication()
@@ -76,14 +79,8 @@ namespace ITSolution.Framework.Common.Abstractions.ApplicationBuilder
             //hangfire jobs
             WebApplication.UseHangfireDashboard("/jobs", new DashboardOptions());
             WebApplication.UseOpenApiDocumentation(WebApplicationBuilder.Configuration);
-            //WebApplication.MapRazorPages();
-            //WebApplication.MapControllers();
-
-            WebApplication.UseEndpoints(endpoints =>
-            {
-                endpoints.MapRazorPages();
-                endpoints.MapControllers();
-            });
+            WebApplication.MapRazorPages();
+            WebApplication.MapControllers();
         }
 
         /// <summary>

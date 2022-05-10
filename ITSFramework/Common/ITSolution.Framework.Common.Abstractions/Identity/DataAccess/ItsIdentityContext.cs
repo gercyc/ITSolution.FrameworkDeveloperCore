@@ -30,6 +30,7 @@ namespace ITSolution.Framework.Common.Abstractions.Identity.DataAccess
         {
             try
             {
+              
                 //base.Database.EnsureCreated();
 
             }
@@ -40,7 +41,6 @@ namespace ITSolution.Framework.Common.Abstractions.Identity.DataAccess
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
             base.OnModelCreating(builder);
             ConfigureUserTable(builder);
             ConfigureRoleTable(builder);

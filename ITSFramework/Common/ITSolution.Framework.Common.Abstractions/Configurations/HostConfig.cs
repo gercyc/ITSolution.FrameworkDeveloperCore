@@ -39,9 +39,9 @@ public static class CustomConfiguration
         {
             const string configurationsDirectory = "Configuration";
             var env = context.HostingEnvironment;
-            config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddJsonFile($"{configurationsDirectory}/appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"{configurationsDirectory}/EnvironmentConfiguration.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"{configurationsDirectory}/EnvironmentConfiguration.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"{configurationsDirectory}/appsettings.json", optional: true, reloadOnChange: true)
 
                 .AddEnvironmentVariables();
